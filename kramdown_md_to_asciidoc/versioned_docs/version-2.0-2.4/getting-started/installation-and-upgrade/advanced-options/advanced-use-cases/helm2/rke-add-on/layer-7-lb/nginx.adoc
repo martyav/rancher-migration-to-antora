@@ -1,0 +1,37 @@
+= NGINX Configuration
+
+____
+==== *Important: RKE add-on install is only supported up to Rancher v2.0.8*
+
+Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the xref:../../../../../resources/choose-a-rancher-version.adoc[Kubernetes Install].
+
+If you are currently using the RKE add-on install method, see xref:../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.adoc[Migrating from a Kubernetes Install with an RKE Add-on] for details on how to start using the Helm chart.
+____
+
+== Install NGINX
+
+Start by installing NGINX on your load balancer host. NGINX has packages available for all known operating systems.
+
+For help installing NGINX, refer to their https://www.nginx.com/resources/wiki/start/topics/tutorials/install/[install documentation].
+
+== Create NGINX Configuration
+
+See link:../../helm-rancher/chart-options.adoc#example-nginx-config[Example NGINX config].
+
+== Run NGINX
+
+* Reload or restart NGINX
++
+----
+  # Reload NGINX
+  nginx -s reload
+
+  # Restart NGINX
+  # Depending on your Linux distribution
+  service nginx restart
+  systemctl restart nginx
+----
+
+== Browse to Rancher UI
+
+You should now be to able to browse to `+https://FQDN+`.

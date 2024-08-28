@@ -1,0 +1,85 @@
+|===
+| Action | xref:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.adoc[Rancher launched Kubernetes Clusters] | xref:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.adoc[Hosted Kubernetes Clusters] | xref:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters.adoc[Imported Clusters]
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.adoc[Using kubectl and a kubeconfig file to Access a Cluster]
+| ✓
+| ✓
+| ✓
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/add-users-to-clusters.adoc[Managing Cluster Members]
+| ✓
+| ✓
+| ✓
+
+| xref:../reference-guides/cluster-configuration/cluster-configuration.adoc[Editing and Upgrading Clusters]
+| ✓
+| ✓
+| *
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools.adoc[Managing Nodes]
+| ✓
+| ✓
+| ✓
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/create-kubernetes-persistent-storage.adoc[Managing Persistent Volumes and Storage Classes]
+| ✓
+| ✓
+| ✓
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.adoc[Managing Projects, Namespaces and Workloads]
+| ✓
+| ✓
+| ✓
+
+| link:../how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.adoc/[Using App Catalogs]
+| ✓
+| ✓
+| ✓
+
+| xref:../reference-guides/rancher-cluster-tools.adoc[Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio)]
+| ✓
+| ✓
+| ✓
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration.adoc[Cloning Clusters]
+| ✓
+| ✓
+|
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.adoc[Ability to rotate certificates]
+| ✓
+|
+|
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd.adoc[Ability to back up your Kubernetes Clusters]
+| ✓
+|
+|
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd.adoc[Ability to recover and restore etcd]
+| ✓
+|
+|
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.adoc[Cleaning Kubernetes components when clusters are no longer reachable from Rancher]
+| ✓
+|
+|
+
+| xref:../how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy.adoc[Configuring Pod Security Policies]
+| ✓
+|
+|
+
+| xref:../explanations/integrations-in-rancher/cis-scans/cis-scans.adoc[Running Security Scans]
+| ✓
+|
+|
+
+| link:../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.adoc#authorized-cluster-endpoint[Authorized Cluster Endpoint]
+| ✓
+|
+|
+|===
+
+* Cluster configuration options can't be edited for imported clusters, except for K3s clusters.

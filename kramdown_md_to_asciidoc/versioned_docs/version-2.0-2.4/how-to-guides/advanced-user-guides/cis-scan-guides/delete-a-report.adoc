@@ -1,0 +1,6 @@
+= Delete a Report
+:experimental:
+
+. From the cluster view in Rancher, click menu:Tools[CIS Scans.]
+. Go to the report that should be deleted.
+. Click *⋮ > Delete.*

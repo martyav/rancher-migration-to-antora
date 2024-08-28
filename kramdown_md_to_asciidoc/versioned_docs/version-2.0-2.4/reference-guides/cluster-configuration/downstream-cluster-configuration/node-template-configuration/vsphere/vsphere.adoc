@@ -1,0 +1,10 @@
+= VMware vSphere Node Template Configuration
+
+The vSphere node templates in Rancher were updated in the following Rancher versions. Refer to the newest configuration reference that is less than or equal to your Rancher version:
+
+* xref:v2.3.3.adoc[v2.3.3]
+* xref:v2.3.0.adoc[v2.3.0]
+* xref:v2.2.0.adoc[v2.2.0]
+* xref:v2.0.4.adoc[v2.0.4]
+
+For Rancher versions before v2.0.4, refer to xref:prior-to-v2.0.4.adoc[this version.]

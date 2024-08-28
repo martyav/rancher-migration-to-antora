@@ -1,0 +1,15 @@
+= Backup, Restore, and Disaster Recovery
+:keywords: ["rancher v2.0-v2.4 backup restore", "rancher v2.0-v2.4 backup and restore", "backup restore rancher v2.0-v2.4", "backup and restore rancher v2.0-v2.4"]
+
+This section is devoted to protecting your data in a disaster scenario.
+
+To protect yourself from a disaster scenario, you should create backups on a regular basis.
+
+* Backup
+ ** xref:back-up-rancher-launched-kubernetes-clusters.adoc[RKE]
+ ** xref:back-up-k3s-installed-rancher.adoc[K3s]
+ ** xref:back-up-docker-installed-rancher.adoc[Docker]
+* Restore
+ ** xref:restore-rancher-launched-kubernetes-clusters-from-backup.adoc[RKE]
+ ** xref:restore-k3s-installed-rancher.adoc[K3s]
+ ** xref:restore-docker-installed-rancher.adoc[Docker]
