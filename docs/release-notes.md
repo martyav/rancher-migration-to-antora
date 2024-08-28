@@ -1,5 +1,5 @@
 ---
-title: Rancher Documentation Versions
+title: Rancher Release Notes & Documentation Versions
 ---
 
 <!-- releaseTask -->
