@@ -1,0 +1,7 @@
+name: rancher-docs
+title: Rancher Docs
+version: antora-1
+display_version: 'test'
+start_page: ROOT:rancher-manager.adoc
+nav:
+  - modules/ROOT/sidebars.adoc
