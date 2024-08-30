@@ -3,8 +3,8 @@ site:
   url: /
 content:
   sources:
-  - url: ./
-    branch: [antora-2]
+  - url: https://github.com/martyav/rancher-migration-to-antora.git
+    branches: [antora-2]
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
