@@ -2,3 +2,4 @@ name: rancher-docs
 title: Rancher Docs
 version: antora-2
 display_version: 'v2.9'
+start_page: ROOT:index.adoc
