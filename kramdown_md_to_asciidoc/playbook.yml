@@ -1,10 +1,12 @@
 site:
   title: SUSE Rancher Manager Documentation
-  url: /
+  url: https://127.0.0.1
+  start_page: latest::test.adoc
 
 content:
   sources:
     - url: https://github.com/martyav/rancher-migration-to-antora.git
+      start_path: rancher-docs
       branches: antora-1
 
 ui:
