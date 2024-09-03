@@ -1,0 +1,3 @@
+= How-to Guides
+
+*How-to guides* serve to describe practical steps for users to accomplish some task. In Rancher, we break down how-to guides further into xref:how-to-guides/new-user-guides/new-user-guides.adoc[new user guides] and xref:how-to-guides/advanced-user-guides/advanced-user-guides.adoc[advanced user guides].

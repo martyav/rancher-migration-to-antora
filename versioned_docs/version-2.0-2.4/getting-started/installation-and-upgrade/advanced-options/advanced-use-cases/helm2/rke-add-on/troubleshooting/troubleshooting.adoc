@@ -1,0 +1,29 @@
+= Troubleshooting HA RKE Add-On Install
+
+____
+==== *Important: RKE add-on install is only supported up to Rancher v2.0.8*
+
+Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the xref:../../../../../resources/helm-version-requirements.adoc[Kubernetes Install].
+
+If you are currently using the RKE add-on install method, see xref:../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.adoc[Migrating from a Kubernetes Install with an RKE Add-on] for details on how to start using the Helm chart.
+____
+
+This section contains common errors seen when setting up a Kubernetes installation.
+
+Choose from the following options:
+
+* xref:generic-troubleshooting.adoc[Generic troubleshooting]
++
+In this section, you can find generic ways to debug your Kubernetes cluster.
+
+* https://rancher.com/docs/rke/latest/en/troubleshooting/ssh-connectivity-errors/[Failed to set up SSH tunneling for host]
++
+In this section, you can find errors related to SSH tunneling when you run the `rke` command to setup your nodes.
+
+* xref:job-complete-status.adoc[Failed to get job complete status]
++
+In this section, you can find errors related to deploying addons.
+
+* xref:404-default-backend.adoc[404 - default backend]
++
+In this section, you can find errors related to the `404 - default backend` page that is shown when trying to access Rancher.

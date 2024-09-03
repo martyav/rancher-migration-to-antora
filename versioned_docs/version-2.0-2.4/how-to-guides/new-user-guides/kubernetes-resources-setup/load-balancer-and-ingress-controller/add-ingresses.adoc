@@ -1,0 +1,66 @@
+= Adding Ingresses to Your Project
+:description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add Rancher ingress to your project
+
+Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing. When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a xref:../../helm-charts-in-rancher/globaldns.adoc[Global DNS entry].
+
+. From the *Global* view, open the project that you want to add ingress to.
+. Click *Resources* in the main navigation bar. Click the *Load Balancing* tab. (In versions before v2.3.0, just click the *Load Balancing* tab.) Then click *Add Ingress*.
+. Enter a *Name* for the ingress.
+. Select an existing *Namespace* from the drop-down list. Alternatively, you can create a new namespace on the fly by clicking *Add to a new namespace*.
+. Create ingress forwarding *Rules*. For help configuring the rules, refer to <<ingress-rule-configuration,this section.>> If any of your ingress rules handle requests for encrypted ports, add a certificate to encrypt/decrypt communications.
+. *Optional:* click *Add Rule* to create additional ingress rules. For example, after you create ingress rules to direct requests for your hostname, you'll likely want to create a default backend to handle 404s.
+
+*Result:* Your ingress is added to the project. The ingress begins enforcing your ingress rules.
+
+== Ingress Rule Configuration
+
+* <<automatically-generate-a-sslipio-hostname,Automatically generate a sslip.io hostname>>
+* <<specify-a-hostname-to-use,Specify a hostname to use>>
+* <<use-as-the-default-backend,Use as the default backend>>
+* <<certificates,Certificates>>
+* <<labels-and-annotations,Labels and Annotations>>
+
+=== Automatically generate a sslip.io hostname
+
+If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses http://sslip.io/[sslip.io] to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
+
+NOTE: To use this option, you must be able to resolve to `sslip.io` addresses.
+
+. Add a *Target Backend*. By default, a workload is added to the ingress, but you can add more targets by clicking either *Service* or *Workload*.
+. *Optional:* If you want specify a workload or service when a request is sent to a particular hostname path, add a *Path* for the target. For example, if you want requests for `www.mysite.com/contact-us` to be sent to a different service than `www.mysite.com`, enter `/contact-us` in the *Path* field. Typically, the first rule that you create does not include a path.
+. Select a workload or service from the *Target* drop-down list for each target you've added.
+. Enter the *Port* number that each target operates on.
+
+=== Specify a hostname to use
+
+If you use this option, ingress routes requests for a hostname to the service or workload that you specify.
+
+. Enter the hostname that your ingress will handle request forwarding for. For example, `www.mysite.com`.
+. Add a *Target Backend*. By default, a workload is added to the ingress, but you can add more targets by clicking either *Service* or *Workload*.
+. *Optional:* If you want specify a workload or service when a request is sent to a particular hostname path, add a *Path* for the target. For example, if you want requests for `www.mysite.com/contact-us` to be sent to a different service than `www.mysite.com`, enter `/contact-us` in the *Path* field. Typically, the first rule that you create does not include a path.
+. Select a workload or service from the *Target* drop-down list for each target you've added.
+. Enter the *Port* number that each target operates on.
+
+=== Use as the default backend
+
+Use this option to set an ingress rule for handling requests that don't match any other ingress rules. For example, use this option to route requests that can't be found to a `404` page.
+
+NOTE: If you deployed Rancher using RKE, a default backend for 404s and 202s is already configured.
+
+. Add a *Target Backend*. Click either *Service* or *Workload* to add the target.
+. Select a service or workload from the *Target* drop-down list.
+
+=== Certificates
+
+NOTE: You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see xref:../encrypt-http-communication.adoc[Adding SSL Certificates].
+
+. Click *Add Certificate*.
+. Select a *Certificate* from the drop-down list.
+. Enter the *Host* using encrypted communication.
+. To add more hosts that use the same certificate, click *Add Hosts*.
+
+=== Labels and Annotations
+
+Add https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/[Labels] and/or https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/[Annotations] to provide metadata for your ingress.
+
+For a list of annotations available for use, see the https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/[Nginx Ingress Controller Documentation].

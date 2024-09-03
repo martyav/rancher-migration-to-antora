@@ -1,0 +1,26 @@
+= 1. Create Nodes and Load Balancer
+
+Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.
+
+NOTE: These nodes must be in the same region/datacenter.  You may place these servers in separate availability zones.
+
+=== Node Requirements
+
+View the supported operating systems and hardware/software/networking requirements for nodes running Rancher at xref:../../../../installation-requirements/installation-requirements.adoc[Node Requirements].
+
+View the OS requirements for RKE at https://rancher.com/docs/rke/latest/en/os/[RKE Requirements]
+
+=== Load Balancer
+
+RKE will configure an Ingress controller pod, on each of your nodes. The Ingress controller pods are bound to ports TCP/80 and TCP/443 on the host network and are the entry point for HTTPS traffic to the Rancher server.
+
+Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configuration will vary depending on your environment.
+
+IMPORTANT: Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
+
+==== Examples
+
+* xref:nginx.adoc[Nginx]
+* xref:nlb.adoc[Amazon NLB]
+
+=== xref:../kubernetes-rke/kubernetes-rke.adoc[Next: Install Kubernetes with RKE]

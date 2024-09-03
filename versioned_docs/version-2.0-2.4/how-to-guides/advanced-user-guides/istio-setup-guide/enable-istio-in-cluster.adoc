@@ -1,0 +1,34 @@
+= Enable Istio in the Cluster
+:experimental:
+
+This cluster uses the default Nginx controller to allow traffic into the cluster.
+
+A Rancher xref:../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[administrator] or link:../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-roles[cluster owner] can configure Rancher to deploy Istio in a Kubernetes cluster.
+
+== Prerequisites
+
+This guide assumes you have already xref:../../../getting-started/installation-and-upgrade/installation-and-upgrade.adoc[installed Rancher,] and you have already xref:../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.adoc[provisioned a separate Kubernetes cluster] on which you will install Istio.
+
+The nodes in your cluster must meet the xref:../../../explanations/integrations-in-rancher/istio/cpu-and-memory-allocations.adoc[CPU and memory requirements.]
+
+The workloads and services that you want to be controlled by Istio must meet https://istio.io/docs/setup/additional-setup/requirements/[Istio's requirements.]
+
+____
+If the cluster has a Pod Security Policy enabled there are xref:enable-istio-in-cluster-with-psp.adoc[additional prerequisites steps]
+____
+
+== Enable Istio in the Cluster
+
+. From the *Global* view, navigate to the *cluster* where you want to enable Istio.
+. Click menu:Tools[Istio.]
+. Optional: Configure member access and xref:../../../explanations/integrations-in-rancher/istio/cpu-and-memory-allocations.adoc[resource limits] for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
+. Click *Enable*.
+. Click *Save*.
+
+*Result:* Istio is enabled at the cluster level.
+
+The Istio application, `cluster-istio`, is added as an application to the cluster's `system` project.
+
+When Istio is enabled in the cluster, the label for Istio sidecar auto injection,`istio-injection=enabled`, will be automatically added to each new namespace in this cluster. This automatically enables Istio sidecar injection in all new workloads that are deployed in those namespaces. You will need to manually enable Istio in preexisting namespaces and workloads.
+
+=== xref:enable-istio-in-namespace.adoc[Next: Enable Istio in a Namespace]

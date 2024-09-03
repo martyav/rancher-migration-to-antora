@@ -1,0 +1,3 @@
+= Rancher Helm Chart Options
+
+The Rancher Helm chart options reference moved to xref:../../../reference-guides/installation-references/helm-chart-options.adoc[this page.]

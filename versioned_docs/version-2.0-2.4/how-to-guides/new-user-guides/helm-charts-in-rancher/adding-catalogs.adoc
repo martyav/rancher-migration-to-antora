@@ -1,0 +1,97 @@
+= Creating Custom Catalogs
+:experimental:
+
+Custom catalogs can be added into Rancher at a global scope, cluster scope, or project scope.
+
+== Adding Catalog Repositories
+
+Adding a catalog is as simple as adding a catalog name, a URL and a branch name.
+
+*Prerequisite:* An xref:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[admin] of Rancher has the ability to add or remove catalogs globally in Rancher.
+
+=== Add Custom Git Repositories
+
+The Git URL needs to be one that `git clone` https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a[can handle] and must end in `.git`. The branch name must be a branch that is in your catalog URL. If no branch name is provided, it will use the `master` branch by default. Whenever you add a catalog to Rancher, it will be available immediately.
+
+=== Add Custom Helm Chart Repositories
+
+You can add your own Helm chart repositories to serve chart packages to Rancher. You can use any HTTP server, as long as the server can respond to GET requests and serve YAML files and tar archives.
+
+For more information on Helm chart repositories, see the https://helm.sh/docs/topics/chart_repository/[official Helm docs].
+
+In Rancher, you can add the custom Helm chart repository with only a catalog name and the URL address of the chart repository.
+
+=== Add Private Git/Helm Chart Repositories
+
+_Available as of v2.2.0_
+
+Private catalog repositories can be added using credentials like Username and Password. You may also want to use the OAuth token if your Git or Helm repository server supports that.
+
+For more information on private Git/Helm catalogs, refer to the xref:./catalog-config.adoc[custom catalog configuration reference.]
+
+. From the *Global* view, choose menu:Tools[Catalogs] in the navigation bar. In versions before v2.2.0, you can select *Catalogs* directly in the navigation bar.
+. Click *Add Catalog*.
+. Complete the form and click *Create*.
+
+*Result:* Your catalog is added to Rancher.
+
+== Adding Global Catalogs
+
+____
+*Prerequisites:* In order to manage the xref:./built-in.adoc[built-in catalogs] or manage global catalogs, you need _one_ of the following permissions:
+
+* xref:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[Administrator Global Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc#custom-global-permissions[Custom Global Permissions] with the xref:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[Manage Catalogs] role assigned.
+____
+
+. From the *Global* view, choose menu:Tools[Catalogs] in the navigation bar. In versions before v2.2.0, you can select *Catalogs* directly in the navigation bar.
+. Click *Add Catalog*.
+. Complete the form. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to link:helm-charts-in-rancher.adoc#catalog-helm-deployment-versions[this section.]
+. Click *Create*.
+
+*Result*: Your custom global catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying xref:../deploy-apps-across-clusters.adoc[multi-cluster apps] or xref:./launching-apps.adoc[applications in any project] from this catalog.
+
+== Adding Cluster Level Catalogs
+
+_Available as of v2.2.0_
+
+____
+*Prerequisites:* In order to manage cluster scoped catalogs, you need _one_ of the following permissions:
+
+* xref:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[Administrator Global Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-roles[Cluster Owner Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-roles[Custom Cluster Permissions] with the link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-role-reference[Manage Cluster Catalogs] role assigned.
+____
+
+. From the *Global* view, navigate to your cluster that you want to start adding custom catalogs.
+. Choose the menu:Tools[Catalogs] in the navigation bar.
+. Click *Add Catalog*.
+. Complete the form. By default, the form will provide the ability to select `Scope` of the catalog. When you have added a catalog from the *Cluster* scope, it is defaulted to `Cluster`. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to link:helm-charts-in-rancher.adoc#catalog-helm-deployment-versions[this section.]
+. Click *Create*.
+
+*Result*: Your custom cluster catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying  xref:helm-charts-in-rancher.adoc[applications in any project in that cluster] from this catalog.
+
+== Adding Project Level Catalogs
+
+_Available as of v2.2.0_
+
+____
+*Prerequisites:* In order to manage project scoped catalogs, you need _one_ of the following permissions:
+
+* xref:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc[Administrator Global Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-roles[Cluster Owner Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#project-roles[Project Owner Permissions]
+* link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#cluster-roles[Custom Project Permissions] with the link:../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.adoc#project-role-reference[Manage Project Catalogs] role assigned.
+____
+
+. From the *Global* view, navigate to your project that you want to start adding custom catalogs.
+. Choose the menu:Tools[Catalogs] in the navigation bar.
+. Click *Add Catalog*.
+. Complete the form. By default, the form will provide the ability to select `Scope` of the catalog. When you have added a catalog from the *Project* scope, it is defaulted to `Cluster`. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to link:helm-charts-in-rancher.adoc#catalog-helm-deployment-versions[this section.]
+. Click *Create*.
+
+*Result*: Your custom project catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying  xref:helm-charts-in-rancher.adoc[applications in that project] from this catalog.
+
+== Custom Catalog Configuration Reference
+
+Refer to xref:./catalog-config.adoc[this page] more information on configuring custom catalogs.

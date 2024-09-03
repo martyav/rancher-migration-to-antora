@@ -1,0 +1,8 @@
+= CIS Scan Guides
+
+* xref:run-a-scan.adoc[Run a Scan]
+* xref:run-a-scan-periodically-on-a-schedule.adoc[Run a Scan Periodically on a Schedule]
+* xref:skip-tests.adoc[Skip Tests]
+* xref:configure-alerts-for-periodic-scan-on-a-schedule.adoc[Configure Alerts for Periodic Scan on a Schedule]
+* xref:delete-a-report.adoc[Delete a Report]
+* xref:download-a-report.adoc[Download a Report]

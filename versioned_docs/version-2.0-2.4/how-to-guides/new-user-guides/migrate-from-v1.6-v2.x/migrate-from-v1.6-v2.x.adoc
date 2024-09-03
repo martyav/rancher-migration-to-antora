@@ -1,0 +1,50 @@
+= Migrating from v1.6 to v2.x
+
+import YouTube from '@site/src/components/YouTube'
+
+Rancher v2.x has been rearchitected and rewritten with the goal of providing a complete management solution for Kubernetes and Docker.  Due to these extensive changes, there is no direct upgrade path from v1.6 to v2.x, but rather a migration of your v1.6 services into v2.x as Kubernetes workloads.  In v1.6, the most common orchestration used was Rancher's own engine called Cattle. The following guide explains and educates our Cattle users on running workloads in a Kubernetes environment.
+
+== Video
+
+This video demonstrates a complete walk through of migration from Rancher v1.6 to v2.x.+++<YouTube id="OIifcqj5Srw">++++++</YouTube>+++
+
+== Migration Plan
+
+____
+*Want to more about Kubernetes before getting started?* Read our xref:kubernetes-introduction.adoc[Kubernetes Introduction].
+____
+
+* xref:install-and-configure-rancher.adoc[1. Get Started]
++
+____
+*Already a Kubernetes user in v1.6?*
+
+_Get Started_ is the only section you need to review for migration to v2.x. You can skip everything else.
+____
+
+* xref:migrate-services.adoc[2. Migrate Your Services]
+* xref:expose-services.adoc[3. Expose Your Services]
+* xref:monitor-apps.adoc[4. Configure Health Checks]
+* xref:schedule-services.adoc[5. Schedule Your Services]
+* xref:discover-services.adoc[6. Service Discovery]
+* xref:load-balancing.adoc[7. Load Balancing]
+
+== Migration Example Files
+
+Throughout this migration guide, we will reference several example services from Rancher v1.6 that we're migrating to v2.x. These services are:
+
+* A service named `web`, which runs http://sdelements.github.io/lets-chat/[Let's Chat], a self-hosted chat for small teams.
+* A service named `database`, which runs https://www.mongodb.com/[Mongo DB], an open source document database.
+* A service named `webLB`, which runs http://www.haproxy.org/[HAProxy], an open source load balancer used in Rancher v1.6.
+
+During migration, we'll export these services from Rancher v1.6.  The export generates a unique directory for each Rancher v1.6 environment and stack, and two files are output into each stack's directory:
+
+* `docker-compose.yml`
++
+A file that contains standard Docker directives for each service in your stack. We'll be converting these files to Kubernetes manifests that can be read by Rancher v2.x.
+
+* `rancher-compose.yml`
++
+A file for Rancher-specific functionality such as health checks and load balancers. These files cannot be read by Rancher v2.x, so don't worry about their contents--we're discarding them and recreating them using the v2.x UI.
+
+=== xref:install-and-configure-rancher.adoc[Next: Get Started]

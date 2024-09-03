@@ -1,0 +1,10 @@
+= Run a Scan
+:experimental:
+
+== Run a Scan
+
+. From the cluster view in Rancher, click menu:Tools[CIS Scans.]
+. Click *Run Scan.*
+. Choose a CIS scan profile.
+
+*Result:* A report is generated and displayed in the *CIS Scans* page. To see details of the report, click the report's name.

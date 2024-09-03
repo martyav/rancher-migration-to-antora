@@ -1,0 +1,7 @@
+= Prerequisites
+
+Before using Rancher Prime on Azure as a pay-as-you-go (PAYG) offering, you need the following resources, information, and tools:
+
+* A Rancher-compatible AKS cluster. For more details, see the https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/[Rancher support matrix]. You can only install the Rancher Prime PAYG offering onto clusters in regions where AKS and Azure Container Apps are available. See the https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/?products=container-apps,kubernetes-service&regions=all[Azure documentation] for details. Refer to link:../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks.adoc#3-create-the-aks-cluster[Creating an AKS cluster] for bringing up an AKS cluster to xref:installing-rancher-prime.adoc[install Rancher Prime PAYG].
+* An ingress installed on the AKS cluster, so that Rancher is accessible outside the cluster. See the link:../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks.adoc#5-install-an-ingress[Rancher documentation] for instructions on deploying Ingress-NGINX on an AKS cluster.
+* The Rancher hostname. The hostname must be a fully qualified domain name (FQDN), and its corresponding IP address must be resolvable from a public DNS. See the link:../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks.adoc#7-set-up-dns[Rancher documentation] for instructions on how to set up DNS.
