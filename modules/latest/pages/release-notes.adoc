@@ -287,7 +287,7 @@ Here you can find links to supporting documentation for previous versions of Ran
 | *v2.6.7*
 | https://ranchermanager.docs.rancher.com/v2.6[Documentation]
 | https://github.com/rancher/rancher/releases/tag/v2.6.7[Release Notes]
-| | https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-6-7/[Support Matrix]
+| https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-6-7/[Support Matrix]
 
 | *v2.6.6*
 | https://ranchermanager.docs.rancher.com/v2.6[Documentation]
@@ -387,7 +387,7 @@ Here you can find links to supporting documentation for legacy versions of Ranch
 | *v2.5.7*
 | https://ranchermanager.docs.rancher.com/v2.5[Documentation]
 | https://github.com/rancher/rancher/releases/tag/v2.5.7[Release Notes]
-| | https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-5-7/[Support Matrix]
+| https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-5-7/[Support Matrix]
 
 | *v2.5.6*
 | https://ranchermanager.docs.rancher.com/v2.5[Documentation]
