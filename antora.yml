@@ -2,6 +2,6 @@ name: rancher-docs
 title: Rancher Manager
 version: antora-2
 display_version: 'v2.9'
-start_page: latest:rancher-manager.adoc
+start_page: en:rancher-manager.adoc
 nav: 
-- modules/latest/nav.adoc
+- modules/en/nav.adoc

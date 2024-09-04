@@ -1,5 +1,0 @@
-= Integrations in Rancher
-
-Over time, Rancher has accrued several products and projects that have been integrated into the Rancher UI.
-
-Examples of some of these integrations are xref:fleet-gitops-at-scale/fleet-gitops-at-scale.adoc[Continuous Delivery with Fleet] and xref:monitoring-and-alerting/monitoring-and-alerting.adoc[Monitoring and Alerting].

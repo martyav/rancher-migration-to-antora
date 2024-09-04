@@ -1,3 +1,0 @@
-= Introduction
-
-The xref:overview.adoc[overview] will discuss Rancher's features, capabilities, and how it makes running Kubernetes easy. The guide to the xref:what-are-divio-docs.adoc[new Rancher docs structure, Divio,] will explain more about the updated look and function of our docs.

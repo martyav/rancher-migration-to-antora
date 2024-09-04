@@ -1,4 +1,0 @@
-= RKE Add-On Install
-
-* xref:layer-4-lb.adoc[Kubernetes Install with External Load Balancer (TCP/Layer 4)]
-* xref:layer-7-lb.adoc[Kubernetes Install with External Load Balancer (HTTPS/Layer 7)]

@@ -1,7 +1,0 @@
-= Other Cloud Providers
-
-The following sections will outline how to set up the following cloud providers:
-
-* xref:amazon.adoc[Amazon Cloud Provider]
-* xref:azure.adoc[Azure Cloud Provider]
-* xref:google-compute-engine.adoc[Google Compute Cloud Engine Provider]

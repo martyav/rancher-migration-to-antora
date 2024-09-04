@@ -1,8 +1,0 @@
-= Other Troubleshooting Tips
-
-* xref:kubernetes-resources.adoc[Kubernetes Resources]
-* xref:networking.adoc[Networking]
-* xref:dns.adoc[DNS]
-* xref:rancher-ha.adoc[Rancher HA]
-* xref:registered-clusters.adoc[Registered Clusters]
-* xref:logging.adoc[Logging]

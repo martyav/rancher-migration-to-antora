@@ -1,7 +1,0 @@
-= Download a Report
-:experimental:
-
-. From the cluster view in Rancher, click menu:Tools[CIS Scans.]
-. Go to the report that you want to download. Click *⋮ > Download.*
-
-*Result:* The report is downloaded in CSV format.

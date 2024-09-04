@@ -1,4 +1,0 @@
-= Rancher Server Configuration
-
-* xref:rke1-cluster-configuration.adoc[RKE1 Cluster Configuration]
-* xref:use-existing-nodes/use-existing-nodes.adoc[Use Existing Nodes]

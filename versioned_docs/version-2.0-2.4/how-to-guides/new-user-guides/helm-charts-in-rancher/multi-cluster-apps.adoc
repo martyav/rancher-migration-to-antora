@@ -1,5 +1,0 @@
-= Multi-Cluster Apps
-
-_Available as of v2.2.0_
-
-The documentation about multi-cluster apps has moved xref:../deploy-apps-across-clusters.adoc[here.]
