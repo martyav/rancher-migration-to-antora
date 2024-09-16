@@ -1,16 +1,17 @@
 = Creating an AKS Cluster
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks">++++++</link>++++++</head>+++
+
 You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
 
 == Prerequisites in Microsoft Azure
 
-[CAUTION]
-====
+:::caution
 
 Deploying to AKS will incur charges.
-====
 
+:::
 
 To interact with Azure APIs, an AKS cluster requires an Azure Active Directory (AD) service principal. The service principal is needed to dynamically create and manage other Azure resources, and it provides credentials for your cluster to communicate with AKS. For more information about the service principal, refer to the https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal[AKS documentation].
 
@@ -86,7 +87,7 @@ To give role-based access to your service principal,
 . Click *Cloud Credentials*.
 . Click *Create*.
 . Click *Azure*.
-. Fill out the form. For help with filling out the form, see the link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.adoc#cloud-credentials[configuration reference.]
+. Fill out the form. For help with filling out the form, see the link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md#cloud-credentials[configuration reference.]
 . Click *Create*.
 
 == Create the AKS Cluster
@@ -134,12 +135,11 @@ The first way to ensure that Rancher is running on the same https://docs.microso
 
 The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
 
-[NOTE]
-====
+:::note
 
 Please be aware that when registering an existing AKS cluster, the cluster might take some time, possibly hours, to appear in the `Cluster To register` dropdown list. This outcome will be based on region.
-====
 
+:::
 
 For more information about connecting to an AKS private cluster, see the https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster[AKS documentation.]
 
@@ -249,7 +249,7 @@ For more information about connecting to an AKS private cluster, see the https:/
 
 The AKS provisioner can synchronize the state of an AKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see xref:../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.adoc[Syncing.]
 
-For information on configuring the refresh interval, see link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.adoc#configuring-the-refresh-interval[this section.]
+For information on configuring the refresh interval, see link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md#configuring-the-refresh-interval[this section.]
 
 == Programmatically Creating AKS Clusters
 

@@ -1,16 +1,16 @@
 = 2. Configuring Rancher for Microsoft AD FS
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/configure-microsoft-ad-federation-service-saml/configure-rancher-for-ms-adfs">++++++</link>++++++</head>+++
+
 After you complete xref:configure-ms-adfs-for-rancher.adoc[Configuring Microsoft AD FS for Rancher], enter your Active Directory Federation Service (AD FS) information into Rancher so that AD FS users can authenticate with Rancher.
 
-[NOTE]
-.Important Notes For Configuring Your ADFS Server:
-====
+:::note Important Notes For Configuring Your ADFS Server:
 
 * The SAML 2.0 WebSSO Protocol Service URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/acs`
 * The Relying Party Trust identifier URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/metadata`
 * You must export the `federationmetadata.xml` file from your AD FS server. This can be found at: `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`
-====
 
+:::
 
 . In the top left corner, click *☰ > Users & Authentication*.
 . In the left navigation menu, click *Auth Provider*.
@@ -20,14 +20,11 @@ After you complete xref:configure-ms-adfs-for-rancher.adoc[Configuring Microsoft
 +
 Rancher redirects you to the AD FS login page. Enter credentials that authenticate with Microsoft AD FS to validate your Rancher AD FS configuration.
 +
-
-[NOTE]
-====
+:::note
 +
 You may have to disable your popup blocker to see the AD FS login page.
 +
-====
-
+:::
 
 *Result:* Rancher is configured to work with MS FS. Your users can now sign into Rancher using their MS FS logins.
 

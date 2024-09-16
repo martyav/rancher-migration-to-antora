@@ -1,5 +1,7 @@
 = Access Clusters
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/access-clusters">++++++</link>++++++</head>+++
+
 This section is about what tools can be used to access clusters managed by Rancher.
 
 For information on how to give users permission to access a cluster, see the section on xref:add-users-to-clusters.adoc[adding users to clusters.]

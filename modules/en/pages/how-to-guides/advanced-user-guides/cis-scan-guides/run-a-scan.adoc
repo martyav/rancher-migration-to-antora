@@ -1,14 +1,15 @@
 = Run a Scan
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan">++++++</link>++++++</head>+++
+
 When a ClusterScan custom resource is created, it launches a new CIS scan on the cluster for the chosen ClusterScanProfile.
 
-[NOTE]
-====
+:::note
 
 There is currently a limitation of running only one CIS scan at a time for a cluster. If you create multiple ClusterScan custom resources, they will be run one after the other by the operator, and until one scan finishes, the rest of the ClusterScan custom resources will be in the "Pending" state.
-====
 
+:::
 
 To run a scan,
 

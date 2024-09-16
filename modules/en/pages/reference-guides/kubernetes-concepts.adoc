@@ -1,17 +1,18 @@
 = Kubernetes Concepts
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/kubernetes-concepts">++++++</link>++++++</head>+++
+
 This page explains concepts related to Kubernetes that are important for understanding how Rancher works. The descriptions below provide a simplified overview of Kubernetes components. For more details, refer to the https://kubernetes.io/docs/concepts/overview/components/[official documentation on Kubernetes components.]
 
 == About Docker
 
 Docker is the container packaging and runtime standard. Developers build container images from Dockerfiles and distribute container images from Docker registries. https://hub.docker.com[Docker Hub] is the most popular public registry. Many organizations also set up private Docker registries. Docker is primarily used to manage containers on individual nodes.
 
-[NOTE]
-====
+:::note
 
 Although Rancher 1.6 supported Docker Swarm clustering technology, it is no longer supported in Rancher 2.x due to the success of Kubernetes.
-====
 
+:::
 
 == About Kubernetes
 

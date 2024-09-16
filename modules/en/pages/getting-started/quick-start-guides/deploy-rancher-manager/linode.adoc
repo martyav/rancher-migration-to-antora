@@ -1,23 +1,23 @@
 = Rancher Linode Quick Start Guide
 :description: Read this step by step guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/linode">++++++</link>++++++</head>+++
+
 The following steps will quickly deploy a Rancher server on Linode in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
-[CAUTION]
-====
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Prerequisites
 
-[CAUTION]
-====
+:::caution
 
 Deploying to Linode will incur charges.
-====
 
+:::
 
 * https://linode.com[Linode Account]: The Linode account to run provision server and cluster under.
 * https://www.linode.com/docs/products/tools/api/guides/manage-api-tokens/[Linode Personal Access Token]: A Linode Personal Access Token to authenticate with.
@@ -30,7 +30,7 @@ Deploying to Linode will incur charges.
 . Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 . Edit `terraform.tfvars` and customize the following variables:
  ** `linode_token` - The Linode Personal Access Token mentioned above.
- ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.adoc#password-requirements[Setting up the Bootstrap Password] for password requirments.
+ ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements[Setting up the Bootstrap Password] for password requirments.
 . *Optional:* Modify optional variables within `terraform.tfvars`.
 See the https://github.com/rancher/quickstart[Quickstart Readme] and the https://github.com/rancher/quickstart/tree/master/rancher/linode[Linode Quickstart Readme] for more information. Suggestions include:
  ** `linode_region` - The target Linode region to provision the server and cluster in.

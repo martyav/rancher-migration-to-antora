@@ -1,16 +1,17 @@
 = Configuring Authentication
 :weight: 10
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config">++++++</link>++++++</head>+++
+
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
 
 This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed along with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
 
-[CAUTION]
-====
+:::warning
 
 The account used to enable the external provider will be granted admin permissions. If you use a test account or non-admin account, that account will still be granted admin-level permissions. See <<external-authentication-configuration-and-principal-users,External Authentication Configuration and Principal Users>> to understand why.
-====
 
+:::
 
 == External vs. Local Authentication
 
@@ -42,12 +43,11 @@ In most cases, you should use an external authentication service over local auth
 
 Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, and global DNS providers and entries. When you give access to a group, all users who are a member of that group in the authentication provider will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see xref:../manage-role-based-access-control-rbac/manage-role-based-access-control-rbac.adoc[Role Based Access Control].
 
-[NOTE]
-====
+:::note
 
 Local authentication does not support creating or managing groups.
-====
 
+:::
 
 For more information, see xref:manage-users-and-groups.adoc[Users and Groups]
 
@@ -68,12 +68,11 @@ After you configure Rancher to allow sign on using an external authentication se
 | Only users in the authentication service or groups added to the Authorized Users and Organizations can log in to Rancher.
 |===
 
-[CAUTION]
-====
+:::warning
 
 Only trusted admin-level users should have access to the local cluster, which manages all of the other clusters in a Rancher instance. Rancher is directly installed on the local cluster, and Rancher's management features allow admins on the local cluster to provision, modify, connect to, and view details about downstream clusters. Since the local cluster is key to a Rancher instance's architecture, inappropriate access carries security risks.
-====
 
+:::
 
 To set the Rancher access level for users in the authorization service, follow these steps:
 
@@ -85,16 +84,14 @@ To set the Rancher access level for users in the authorization service, follow t
 
 *Result:* The Rancher access configuration settings are applied.
 
-[NOTE]
-.SAML Provider Caveats:
-====
+:::note SAML Provider Caveats:
 
 * SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
 * When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
 * When adding groups, you must select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
 * The group drop-down shows only the groups that you are a member of. You will not be able to add groups that you are not a member of.
-====
 
+:::
 
 == External Authentication Configuration and Principal Users
 
@@ -129,14 +126,12 @@ image::/img/users-page.png[Sign In External Principal]
 
 . The external principal and the local principal share the same access rights.
 
-[NOTE]
-.Reconfiguring a previously set up auth provider
-====
+:::note Reconfiguring a previously set up auth provider
 
 If you need to reconfigure or disable then re-enable a provider that had been previously set up, ensure that the user who attempts to do so
 is logged in to Rancher as an external user, not the local admin.
-====
 
+:::
 
 == Disabling An Auth Provider
 

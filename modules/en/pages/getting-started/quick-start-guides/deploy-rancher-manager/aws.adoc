@@ -1,23 +1,23 @@
 = Rancher AWS Quick Start Guide
 :description: Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/aws">++++++</link>++++++</head>+++
+
 The following steps will quickly deploy a Rancher server on AWS in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
-[CAUTION]
-====
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Prerequisites
 
-[CAUTION]
-====
+:::caution
 
 Deploying to Amazon AWS will incur charges.
-====
 
+:::
 
 * https://aws.amazon.com/account/[Amazon AWS Account]: An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 * https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html[Amazon AWS Access Key]: Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
@@ -50,7 +50,7 @@ The AWS module just creates an EC2 KeyPair, an EC2 SecurityGroup and an EC2 inst
 . Edit `terraform.tfvars` and customize the following variables:
  ** `aws_access_key` - Amazon AWS Access Key
  ** `aws_secret_key` - Amazon AWS Secret Key
- ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.adoc#password-requirements[Setting up the Bootstrap Password] for password requirments.
+ ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements[Setting up the Bootstrap Password] for password requirments.
 . *Optional:* Modify optional variables within `terraform.tfvars`. See the https://github.com/rancher/quickstart[Quickstart Readme] and the https://github.com/rancher/quickstart/tree/master/rancher/aws[AWS Quickstart Readme] for more information.
 Suggestions include:
  ** `aws_region` - Amazon AWS region, choose the closest instead of the default (`us-east-1`)

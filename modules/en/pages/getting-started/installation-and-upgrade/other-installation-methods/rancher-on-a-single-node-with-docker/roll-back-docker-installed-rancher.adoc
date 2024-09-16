@@ -1,6 +1,6 @@
 = Rolling Back Rancher Installed with Docker
 
-+++<DockerSupportWarning>++++++</DockerSupportWarning>+++
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher">++++++</link>++++++</head>++++++<DockerSupportWarning>++++++</DockerSupportWarning>+++
 
 If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before xref:upgrade-docker-installed-rancher.adoc[Docker Upgrade]. Rolling back restores:
 
@@ -35,12 +35,11 @@ You can obtain `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 If you have issues upgrading Rancher, roll it back to its latest known healthy state by pulling the last version you used and then restoring the backup you made before upgrade.
 
-[WARNING]
-====
+:::danger
 
 Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
-====
 
+:::
 
 . Using a remote Terminal connection, log into the node running your Rancher Server.
 . Pull the version of Rancher that you were running before upgrade. Replace the `<PRIOR_RANCHER_VERSION>` with that version.
@@ -81,16 +80,13 @@ If you followed the naming convention we suggested in xref:upgrade-docker-instal
  rancher/rancher:<PRIOR_RANCHER_VERSION>
 ----
 +
-Privileged access is link:rancher-on-a-single-node-with-docker.adoc#privileged-access-for-rancher[required.]
+Privileged access is link:rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher[required.]
 +
-
-[WARNING]
-====
+:::danger
 +
 *_Do not_* stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 +
-====
-
+:::
 
 . Wait a few moments and then open Rancher in a web browser. Confirm that the rollback succeeded and that your data is restored.
 

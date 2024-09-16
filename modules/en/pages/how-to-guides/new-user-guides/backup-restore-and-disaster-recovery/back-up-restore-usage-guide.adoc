@@ -1,5 +1,7 @@
 = Backup Restore Usage Guide
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-restore-usage-guide">++++++</link>++++++</head>+++
+
 The Rancher Backups chart is our solution for disaster recovery and migration. This chart allows you to take backups of your Kubernetes resources and save them to a variety of persistent storage locations.
 
 This chart is a very simple tool which has its hands in many different areas of the Rancher ecosystem. As a result, edge cases have arisen which lead to undocumented functionality. The purpose of this document is to highlight the proper and defined usage for Rancher Backups, as well as discussing some of these edge cases we've run into.
@@ -12,16 +14,15 @@ The operator collects all the resources captured by the resourceSet in the chart
 
 See the xref:../../../reference-guides/backup-restore-configuration/backup-configuration.adoc[Backup Configuration documentation] for more information about the options, including encryption, to configure a backup.
 
-[NOTE]
-====
+:::note
 
 As noted in the xref:./back-up-rancher.adoc[Backing up Rancher documentation], you must manually save the encryption configuration file contents since the operator will *not* back it up.
-====
 
+:::
 
 === Restore
 
-There are two main restore scenarios, restoring to a cluster with Rancher running and restoring to a fresh cluster. You can only restore to a cluster with Rancher running if it's the same cluster the backup was taken from and the link:../../../reference-guides/backup-restore-configuration/restore-configuration.adoc#prune-during-restore[`prune` option] is enabled during the restore. A restore has similar inputs as a backup. It requires a backup filename, the encryptionConfigSecret name, and the storage location.
+There are two main restore scenarios, restoring to a cluster with Rancher running and restoring to a fresh cluster. You can only restore to a cluster with Rancher running if it's the same cluster the backup was taken from and the link:../../../reference-guides/backup-restore-configuration/restore-configuration.md#prune-during-restore[`prune` option] is enabled during the restore. A restore has similar inputs as a backup. It requires a backup filename, the encryptionConfigSecret name, and the storage location.
 
 Resources are restored in this order:
 
@@ -50,12 +51,11 @@ These are the different fields available for a resourceSelector:
 
 The Rancher Backups chart contains a https://github.com/rancher/backup-restore-operator/tree/release/v3.0/charts/rancher-backup/files/default-resourceset-contents[default resourceSet], which is a combination of YAML files that are appended to one large resourceSet when the chart is installed. The file order does not matter. The resourceSets may differ between versions.
 
-[CAUTION]
-====
+:::caution
 
 If you wish to make edits to the resourceSet please edit it *before* installing the chart.
-====
 
+:::
 
 == Proper Usage
 
@@ -114,12 +114,11 @@ Below are some examples of some *incorrect* uses or expectations of Rancher Back
 * Some resources have external results produced, such as provisioning a downstream cluster. Deleting a downstream cluster and restoring the cluster resource on the local cluster does *not* cause Rancher to reprovision said cluster. Depending on the resource, restoring may not fully bring back the resource to an available state.
 * The corner case of "restoring a deleted cluster" is *not* a supported feature. When it comes to downstream clusters, whether provisioned or imported, deleting them causes a series of cleanup tasks which doesn't allow the user to restore the deleted clusters. Provisioned clusters will have their nodes and Rancher-related provisioning resources destroyed, and imported clusters will likely have their Rancher agents and other resources/services related to registration with a local cluster destroyed.
 
-[CAUTION]
-====
+:::caution
 
 Trying to delete and restore a downstream cluster can lead to a variety of issues with Rancher, Rancher Backups, rancher-webhook, Fleet, and more. It is not recommended to do this.
-====
 
+:::
 
 === Fleet, Harvester, and Other Services
 

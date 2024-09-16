@@ -1,11 +1,12 @@
 = Creating Apps
 
-[TIP]
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps">++++++</link>++++++</head>+++
+
+:::tip
 
 For a complete walkthrough of developing charts, see the https://helm.sh/docs/chart_template_guide/[Chart Template Developer's Guide] in the official Helm documentation.
-====
 
+:::
 
 == Chart Types
 
@@ -102,12 +103,11 @@ Inside the `questions.yml`, most of the content will be around the questions to 
 
 For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
 
-[NOTE]
-====
+:::note
 
 Even though Rancher release versions are prefixed with a `v`, there is _no_ prefix for the release version when using this option.
-====
 
+:::
 
 ----
 rancher_min_version: 2.3.0
@@ -186,9 +186,8 @@ The following values are not yet supported and are pending a merge of https://gi
 | 	required          | bool    | false      |  Define if the variable is required or not (true \| false)|
 ////
 
-[NOTE]
-====
+:::note
 
 `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
-====
 
+:::

@@ -1,5 +1,7 @@
 = Creating a GKE Cluster
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/gke">++++++</link>++++++</head>+++
+
 == Prerequisites
 
 Some setup in Google Kubernetes Engine is required.
@@ -29,12 +31,11 @@ To get the project ID of an existing project, refer to the Google cloud document
 
 == Provisioning a GKE Cluster
 
-[CAUTION]
-====
+:::caution
 
 Deploying to GKE will incur charges.
-====
 
+:::
 
 === 1. Create a Cloud Credential
 
@@ -84,18 +85,17 @@ For details on configuring GKE clusters in Rancher, see xref:../../../../referen
 
 The Kubernetes version of a cluster can be upgraded to any version available in the region or zone for the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
 
-[NOTE]
-====
+:::note
 
 GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in Rancher when an upgrade to 1.19+ is attempted. You can follow the https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password[Google documentation]. After this, the Kubernetes version can be updated to 1.19+ via Rancher.
-====
 
+:::
 
 == Syncing
 
 The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see xref:../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.adoc[Syncing.]
 
-For information on configuring the refresh interval, see link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.adoc#configuring-the-refresh-interval[this section.]
+For information on configuring the refresh interval, see link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md#configuring-the-refresh-interval[this section.]
 
 == Programmatically Creating GKE Clusters
 

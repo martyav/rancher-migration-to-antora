@@ -1,5 +1,7 @@
 = Resource Quota Type Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types">++++++</link>++++++</head>+++
+
 When you create a resource quota, you are configuring the pool of resources available to the project. You can set the following resource limits for the following resource types.
 
 |===
@@ -45,10 +47,8 @@ When you create a resource quota, you are configuring the pool of resources avai
 | The maximum number of secrets that can exist in the project/namespace.
 |===
 
-[NOTE]
-.*^*^*
-====
+:::note *^*^*
 
 When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project / namespace, all containers will require a respective CPU or Memory field set during creation. A container default resource limit can be set at the same time to avoid the need to explicitly set these limits for every workload. See the https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits[Kubernetes documentation] for more details on why this is required.
-====
 
+:::

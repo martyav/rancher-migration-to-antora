@@ -1,5 +1,7 @@
 = Monitoring Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/monitoring-v2-configuration">++++++</link>++++++</head>+++
+
 The following sections will explain important options essential to configuring Monitoring V2 in Rancher:
 
 * xref:receivers.adoc[Receiver Configuration]

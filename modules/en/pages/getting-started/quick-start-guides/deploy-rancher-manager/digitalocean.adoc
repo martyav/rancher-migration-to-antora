@@ -1,23 +1,23 @@
 = Rancher DigitalOcean Quick Start Guide
 :description: Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/digitalocean">++++++</link>++++++</head>+++
+
 The following steps will quickly deploy a Rancher server on DigitalOcean in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
-[CAUTION]
-====
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Prerequisites
 
-[CAUTION]
-====
+:::caution
 
 Deploying to DigitalOcean will incur charges.
-====
 
+:::
 
 * https://www.digitalocean.com[DigitalOcean Account]: You will require an account on DigitalOcean as this is where the server and cluster will run.
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key[DigitalOcean Access Key]: Use this link to create a DigitalOcean Access Key if you don't have one.
@@ -30,7 +30,7 @@ Deploying to DigitalOcean will incur charges.
 . Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 . Edit `terraform.tfvars` and customize the following variables:
  ** `do_token` - DigitalOcean access key
- ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.adoc#password-requirements[Setting up the Bootstrap Password] for password requirments.
+ ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements[Setting up the Bootstrap Password] for password requirments.
 . *Optional:* Modify optional variables within `terraform.tfvars`.
 See the https://github.com/rancher/quickstart[Quickstart Readme] and the https://github.com/rancher/quickstart/tree/master/rancher/do[DO Quickstart Readme] for more information. Suggestions include:
  ** `do_region` - DigitalOcean region, choose the closest instead of the default (`nyc1`)

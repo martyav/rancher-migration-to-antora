@@ -1,12 +1,13 @@
 = Applying Pod Security Policies to Projects
 :experimental:
 
-[NOTE]
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies">++++++</link>++++++</head>+++
+
+:::note
 
 These cluster options are only available for xref:../../new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.adoc[clusters in which Rancher has launched Kubernetes].
-====
 
+:::
 
 You can always assign a pod security policy (PSP) to an existing project if you didn't assign one during creation.
 
@@ -32,9 +33,8 @@ You can always assign a pod security policy (PSP) to an existing project if you 
 
 *Result:* The PSP is applied to the project and any namespaces added to the project.
 
-[NOTE]
-====
+:::note
 
 Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked to determine if they comply with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
-====
 
+:::

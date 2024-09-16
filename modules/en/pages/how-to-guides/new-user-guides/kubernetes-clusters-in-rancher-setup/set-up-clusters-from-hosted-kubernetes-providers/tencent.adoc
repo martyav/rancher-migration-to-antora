@@ -1,15 +1,16 @@
 = Creating a Tencent TKE Cluster
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the xref:../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.adoc[cluster driver] for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to link:../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.adoc#activatingdeactivating-cluster-drivers[enable the TKE cluster driver]. After enabling the cluster driver, you can start provisioning TKE clusters.
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/tencent">++++++</link>++++++</head>+++
+
+You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the xref:../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.adoc[cluster driver] for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to link:../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers[enable the TKE cluster driver]. After enabling the cluster driver, you can start provisioning TKE clusters.
 
 == Prerequisites in Tencent
 
-[CAUTION]
-====
+:::caution
 
 Deploying to TKE will incur charges.
-====
 
+:::
 
 . Make sure that the account you will be using to create the TKE cluster has the appropriate permissions by referring to the  https://intl.cloud.tencent.com/document/product/598/10600[Cloud Access Management] documentation for details.
 . Create a https://console.cloud.tencent.com/capi[Cloud API Secret ID and Secret Key].
@@ -65,14 +66,11 @@ When the cluster driver is finished downloading, you will be able to create Tenc
 | Enter the CIDR range of your Kubernetes cluster, you may check the available range of the CIDR in the VPC service of the Tencent Cloud Console. Default to 172.16.0.0/16.
 |===
 +
-
-[NOTE]
-====
+:::note
 +
-If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.adoc#config-file-structure-in-rancher[the config file structure in Rancher v2.3.0+.]
+If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher[the config file structure in Rancher v2.3.0+.]
 +
-====
-
+:::
 
 . Click `Next: Select Instance Type` to choose the instance type that will use for your TKE cluster.
 +

@@ -1,5 +1,7 @@
 = Rancher Server Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration">++++++</link>++++++</head>+++
+
 * xref:rke1-cluster-configuration.adoc[RKE1 Cluster Configuration]
 * xref:rke2-cluster-configuration.adoc[RKE2 Cluster Configuration]
 * xref:k3s-cluster-configuration.adoc[K3s Cluster Configuration]

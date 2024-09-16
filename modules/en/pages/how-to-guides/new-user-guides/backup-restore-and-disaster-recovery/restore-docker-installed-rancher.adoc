@@ -1,5 +1,7 @@
 = Restoring Backups—Docker Installs
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher">++++++</link>++++++</head>+++
+
 If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.
 
 == Before You Start
@@ -47,14 +49,11 @@ If you followed the naming convention we suggested in xref:back-up-docker-instal
 
 . Enter the following command to delete your current state data and replace it with your backup data, replacing the placeholders. Don't forget to close the quotes.
 +
-
-[WARNING]
-====
+:::danger
 +
 This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 +
-====
-
+:::
 +
 ----
  docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \

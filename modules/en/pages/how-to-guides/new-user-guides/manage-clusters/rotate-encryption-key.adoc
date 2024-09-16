@@ -1,6 +1,8 @@
 = Encryption Key Rotation
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/rotate-encryption-key">++++++</link>++++++</head>+++
+
 === RKE1 Encryption Key Rotation
 
 . Enable encryption key rotation with either of the following two options:

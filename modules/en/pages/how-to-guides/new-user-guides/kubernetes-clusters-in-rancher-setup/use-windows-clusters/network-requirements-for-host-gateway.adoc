@@ -1,5 +1,7 @@
 = Networking Requirements for Host Gateway (L2bridge)
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters/network-requirements-for-host-gateway">++++++</link>++++++</head>+++
+
 This section describes how to configure custom Windows clusters that are using _Host Gateway (L2bridge)_ mode.
 
 === Disabling Private IP Address Checks

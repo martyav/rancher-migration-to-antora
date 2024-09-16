@@ -1,22 +1,23 @@
 = Custom Roles
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/custom-roles">++++++</link>++++++</head>+++
+
 Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
 
 Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
 
-[WARNING]
-====
+:::danger
 
 It is possible for a custom role to enable privilege escalation. For details, see <<privilege-escalation,this section.>>
-====
 
+:::
 
 == Prerequisites
 
 To complete the tasks on this page, one of the following permissions are required:
 
 * xref:global-permissions.adoc[Administrator Global Permissions].
-* link:global-permissions.adoc#custom-global-permissions[Custom Global Permissions] with the xref:global-permissions.adoc[Manage Roles] role assigned.
+* link:global-permissions.md#custom-global-permissions[Custom Global Permissions] with the xref:global-permissions.adoc[Manage Roles] role assigned.
 
 == Creating A Custom Role
 
@@ -100,17 +101,15 @@ When a user in the group logs in, they get the built-in Standard User global rol
 
 If a user is removed from the external authentication provider group, they would lose their permissions from the custom role that was assigned to the group. They would continue to have their individual Standard User role.
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 You can only assign a global role to a group if:
 
-* You have set up an link:../authentication-config/authentication-config.adoc#external-vs-local-authentication[external authentication provider]
+* You have set up an link:../authentication-config/authentication-config.md#external-vs-local-authentication[external authentication provider]
 * The external authentication provider supports xref:../../authentication-permissions-and-global-configuration/authentication-config/manage-users-and-groups.adoc[user groups]
 * You have already set up at least one user group with the authentication provider
-====
 
+:::
 
 To assign a custom role to a group, follow these steps:
 

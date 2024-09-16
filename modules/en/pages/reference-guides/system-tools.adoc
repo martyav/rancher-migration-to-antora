@@ -1,11 +1,12 @@
 = System Tools
 
-[NOTE]
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/system-tools">++++++</link>++++++</head>+++
+
+:::note
 
 System Tools has been deprecated since June 2022.
-====
 
+:::
 
 == Logs
 
@@ -15,12 +16,11 @@ Please use https://github.com/rancherlabs/support-tools/tree/master/collection/r
 
 If you want to replicate the stats command, you can run the following command on your cluster nodes:
 
-[NOTE]
-====
+:::note
 
 This command below requires the package `sysstat` on the cluster node.
-====
 
+:::
 
 ----
 /usr/bin/sar -u -r -F 1 1

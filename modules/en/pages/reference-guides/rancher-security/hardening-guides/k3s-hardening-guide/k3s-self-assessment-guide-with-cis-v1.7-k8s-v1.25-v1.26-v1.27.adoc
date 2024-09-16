@@ -1,5 +1,7 @@
 = K3s Self-Assessment Guide - CIS Benchmark v1.7 - K8s v1.25/v1.26/v1.27
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/hardening-guides/k3s-hardening-guide/k3s-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27">++++++</link>++++++</head>+++
+
 This document is a companion to the xref:k3s-hardening-guide.adoc[K3s Hardening Guide], which provides prescriptive guidance on how to harden K3s clusters that are running in production and managed by Rancher. This benchmark guide helps you evaluate the security of a hardened cluster against each control in the CIS Kubernetes Benchmark.
 
 This guide corresponds to the following versions of Rancher, CIS Benchmarks, and Kubernetes:
@@ -30,12 +32,11 @@ These are the possible results for each control:
 
 This guide makes the assumption that K3s is running as a Systemd unit. Your installation may vary. Adjust the "audit" commands to fit your scenario.
 
-[NOTE]
-====
+:::note
 
 This guide only covers `automated` (previously called `scored`) tests.
-====
 
+:::
 
 === Controls
 

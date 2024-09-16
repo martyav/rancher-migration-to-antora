@@ -1,10 +1,10 @@
 = UI Server-Side Pagination
 
-[CAUTION]
-====
-UI server-side pagination is not intended for use in production at this time. This feature is considered highly experimental. SUSE customers should consult SUSE Support before activating this feature.
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/enable-experimental-features/ui-server-side-pagination">++++++</link>++++++</head>+++
 
+:::caution
+UI server-side pagination is not intended for use in production at this time. This feature is considered highly experimental. SUSE customers should consult SUSE Support before activating this feature.
+:::
 
 UI server-side pagination caching provides an optional SQLite-backed cache of Kubernetes objects to improve performance. This unlocks sorting, filtering and pagination features used by the UI to restrict the amount of resources it fetches and stores in browser memory. These features are primarily used to improve list performance for resources with high counts.
 

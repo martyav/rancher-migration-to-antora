@@ -1,6 +1,8 @@
 = Overview
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/neuvector/overview">++++++</link>++++++</head>+++
+
 === NeuVector Integration in Rancher
 
 https://open-docs.neuvector.com/[NeuVector 5.x] is an open-source container-centric security platform that is integrated with Rancher. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on Rancher security, please see the xref:../../reference-guides/rancher-security/rancher-security.adoc[security documentation].
@@ -27,13 +29,11 @@ Some examples are as follows:
 * GKE: `containerd` (see the https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd[Google docs] for more)
 
 ....
-
-[NOTE]
-====
+:::note
 
 Only one container runtime engine may be selected at a time during installation.
-====
 
+:::
 ....
 
 *To navigate to and install the NeuVector chart through Cluster Tools:*
@@ -112,19 +112,8 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 * Minimum 1GB of memory total required for Controller, Manager, and Scanner containers combined.
 
-=== Hardened Cluster Support - Calico and Canal
-
-[tabs]
-======
-Tab RKE1::
-+
-- All NeuVector components are deployable if PSP is set to true. You will need to set additional configuration for your hardened cluster environment as follows: 1. Click **☰ > Cluster Management**. 1. Go to the cluster that you created and click **Explore**. 1. In the left navigation bar, click **Apps**. 1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`. - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box (no other config needed): ![Enable PSP for RKE1 Hardened Cluster](/img/psp-nv-rke.png) 1. Click **Install** at the bottom-right to complete. 
-
-Tab RKE2::
-+
-- NeuVector components Controller and Enforcer are deployable if PSP is set to true. **Applicable to NeuVector chart version 100.0.0+up2.2.0 only:** - For Manager, Scanner, and Updater components, additional configuration is required as shown below: ``` kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}' ``` +
-You will need to set additional configuration for your hardened cluster environment. >**Note:** You must update your config in both RKE2 and K3s hardened clusters as shown below. 1. Click **☰ > Cluster Management**. 1. Go to the cluster that you created and click **Explore**. 1. In the left navigation bar, click **Apps**. 1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`. - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box. Note that you must also enter a value greater than `zero` for `Manager runAsUser ID`, `Scanner runAsUser ID`, and `Updater runAsUser ID`: ![Enable PSP for RKE2 and K3s Hardened Clusters](/img/psp-nv-rke2.png) 1. Click **Install** at the bottom-right to complete.
-======
+=== Hardened Cluster Support - Calico and Canal+++<Tabs>++++++<TabItem value="RKE1">+++- All NeuVector components are deployable if PSP is set to true. You will need to set additional configuration for your hardened cluster environment as follows: 1. Click **☰ > Cluster Management**. 1. Go to the cluster that you created and click **Explore**. 1. In the left navigation bar, click **Apps**. 1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`. - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box (no other config needed): ![Enable PSP for RKE1 Hardened Cluster](/img/psp-nv-rke.png) 1. Click **Install** at the bottom-right to complete.+++</TabItem>+++ +++<TabItem value="RKE2">+++- NeuVector components Controller and Enforcer are deployable if PSP is set to true. **Applicable to NeuVector chart version 100.0.0+up2.2.0 only:** - For Manager, Scanner, and Updater components, additional configuration is required as shown below: ``` kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}' ``` +
+You will need to set additional configuration for your hardened cluster environment. >**Note:** You must update your config in both RKE2 and K3s hardened clusters as shown below. 1. Click **☰ > Cluster Management**. 1. Go to the cluster that you created and click **Explore**. 1. In the left navigation bar, click **Apps**. 1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`. - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box. Note that you must also enter a value greater than `zero` for `Manager runAsUser ID`, `Scanner runAsUser ID`, and `Updater runAsUser ID`: ![Enable PSP for RKE2 and K3s Hardened Clusters](/img/psp-nv-rke2.png) 1. Click **Install** at the bottom-right to complete.+++</TabItem>++++++</Tabs>+++
 
 === SELinux-enabled Cluster Support - Calico and Canal
 

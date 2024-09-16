@@ -1,5 +1,7 @@
 = Helm Version Requirements
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/helm-version-requirements">++++++</link>++++++</head>+++
+
 This section contains the requirements for Helm, which is the tool used to install Rancher on a high-availability Kubernetes cluster.
 
 ____

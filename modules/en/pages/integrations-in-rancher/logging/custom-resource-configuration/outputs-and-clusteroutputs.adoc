@@ -1,8 +1,10 @@
 = Outputs and ClusterOutputs
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs">++++++</link>++++++</head>+++
+
 See the https://kube-logging.github.io/docs/configuration/flow/[Logging operator documentation] for the full details on how to configure  `Flows` and `ClusterFlows`.
 
-See link:../logging.adoc#The-Logging-Buffer-Overloads-Pods[Rancher Integration with Logging Services: Troubleshooting] for how to resolve memory problems with the logging buffer.
+See link:../logging.md#The-Logging-Buffer-Overloads-Pods[Rancher Integration with Logging Services: Troubleshooting] for how to resolve memory problems with the logging buffer.
 
 == Outputs
 
@@ -203,13 +205,11 @@ spec:
 
 For the final example, we create an `Output` to write logs to a destination that is not supported out of the box:
 
-[NOTE]
-.Note on syslog:
-====
+:::note Note on syslog:
 
 `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
-====
 
+:::
 
 [,yaml]
 ----

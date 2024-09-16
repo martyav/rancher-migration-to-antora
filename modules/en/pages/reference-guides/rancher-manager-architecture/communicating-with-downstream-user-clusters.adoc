@@ -1,5 +1,7 @@
 = Communicating with Downstream User Clusters
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters">++++++</link>++++++</head>+++
+
 This section describes how Rancher provisions and manages the downstream user clusters that run your apps and services.
 
 The below diagram shows how the cluster controllers, cluster agents, and node agents allow Rancher to control downstream clusters.+++<figcaption>+++Communicating with Downstream Clusters+++</figcaption>+++
@@ -73,12 +75,11 @@ ____
 
 With this endpoint enabled for the downstream cluster, Rancher generates an extra Kubernetes context in the kubeconfig file in order to connect directly to the cluster. This file has the credentials for `kubectl` and `helm`.
 
-[NOTE]
-====
+:::note
 
 To use the ACE context in your kubeconfig, run `kubectl use-context <ace context name>` after enabling it.
-====
 
+:::
 
 For more information, refer to the section on accessing your cluster with xref:../../how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.adoc[kubectl and the kubeconfig file].
 
@@ -86,13 +87,11 @@ We recommend exporting the kubeconfig file so that if Rancher goes down, you can
 
 == Impersonation
 
-[CAUTION]
-.Known Issue
-====
+:::caution Known Issue
 
 Service account impersonation (`--as`) used by lower privileged user accounts to remove privileges is not implemented and is a https://github.com/rancher/rancher/issues/41988[feature] being tracked.
-====
 
+:::
 
 Users technically exist only on the upstream cluster. Rancher creates https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding[RoleBindings and ClusterRoleBindings] that refer to Rancher users, even though there is https://kubernetes.io/docs/reference/access-authn-authz/authentication/#users-in-kubernetes[no actual User resource] on the downstream cluster.
 
@@ -229,4 +228,4 @@ The GitHub repositories for Rancher can be found at the following links:
 * https://github.com/rancher/cli[Rancher CLI]
 * https://github.com/rancher/helm[Catalog applications]
 
-This is a partial list of the most important Rancher repositories. For more details about Rancher source code, refer to the section on link:../../contribute-to-rancher.adoc#rancher-repositories[contributing to Rancher.] To see all libraries and projects used in Rancher, see the https://github.com/rancher/rancher/blob/master/go.mod[`go.mod` file] in the `rancher/rancher` repository.
+This is a partial list of the most important Rancher repositories. For more details about Rancher source code, refer to the section on link:../../contribute-to-rancher.md#rancher-repositories[contributing to Rancher.] To see all libraries and projects used in Rancher, see the https://github.com/rancher/rancher/blob/master/go.mod[`go.mod` file] in the `rancher/rancher` repository.

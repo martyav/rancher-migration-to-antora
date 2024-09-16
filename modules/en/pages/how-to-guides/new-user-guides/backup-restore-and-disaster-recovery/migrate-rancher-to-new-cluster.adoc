@@ -1,17 +1,18 @@
 = Migrating Rancher to a New Cluster
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster">++++++</link>++++++</head>+++
+
 If you are migrating Rancher to a new Kubernetes cluster, you don't need to install Rancher on the new cluster first. If Rancher is restored to a new cluster with Rancher already installed, it can cause problems.
 
 === Prerequisites
 
 These instructions assume that you have xref:back-up-rancher.adoc[created a backup] and  already installed a new Kubernetes cluster where Rancher will be deployed. The backup is specific to the Rancher application and can only migrate the Rancher application.
 
-[CAUTION]
-====
+:::caution
 
 You must use the same hostname that was set as the server URL in the original cluster. If you don't, downstream clusters will show as unavailable in the cluster management page of the UI, and you won't be able to click inside the cluster or on the cluster's *Explore* button.
-====
 
+:::
 
 Rancher version must be v2.5.0 and up
 
@@ -46,9 +47,7 @@ helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-reso
 helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system --version $CHART_VERSION
 ----
 +
-
-[NOTE]
-====
+:::note
 +
 The above assumes an environment with outbound connectivity to Docker Hub.
 +
@@ -59,8 +58,7 @@ For an *air-gapped environment*, use the following Helm value to pull the `backu
 --set image.repository <registry>/rancher/backup-restore-operator
 ----
 +
-====
-
+:::
 
 === 2. Restore from backup using a Restore custom resource
 
@@ -75,14 +73,11 @@ kubectl create secret generic s3-creds \
   --from-literal=secretKey=<secret key>
 ----
 +
-
-[NOTE]
-====
+:::note
 +
 Add your access key and secret key as values for `accessKey` and `secretKey` in the command above.
 +
-====
-
+:::
 
 . Create a `Restore` object:
 +
@@ -111,16 +106,13 @@ spec:
       endpoint: s3.us-west-2.amazonaws.com
 ----
 +
-
-[NOTE]
-.Important
-====
+:::note Important
 +
 The field `encryptionConfigSecretName` should be used only if your backup was created with encryption enabled.
 +
 If this applies, provide the name of the `Secret` object containing the encryption config file. If you only have the encryption config file, but don't have the secret created in this cluster, use the following steps to create the secret:
 
- .. Create an link:../../../reference-guides/backup-restore-configuration/backup-configuration.adoc#encryption[encryption configuration file]
+ .. Create an link:../../../reference-guides/backup-restore-configuration/backup-configuration.md#encryption[encryption configuration file]
  .. The command below uses a file named `encryption-provider-config.yaml`, with the `--from-file` flag. Run the below once the `EncryptionConfiguration` is saved in a file called `encryption-provider-config.yaml`:
 +
 [,bash]
@@ -131,8 +123,7 @@ kubectl create secret generic encryptionconfig \
 ----
 
 +
-====
-
+:::
 
 . Apply the manifest, and monitor the Restore status:
  .. Apply the `Restore` object resource:
@@ -160,7 +151,7 @@ kubectl logs -n cattle-resources-system --tail 100 -f -l app.kubernetes.io/insta
 
 === 3. Install cert-manager
 
-Follow the steps to link:../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.adoc#4-install-cert-manager[install cert-manager] in the documentation about installing cert-manager on Kubernetes.
+Follow the steps to link:../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-install-cert-manager[install cert-manager] in the documentation about installing cert-manager on Kubernetes.
 
 === 4. Bring up Rancher with Helm
 
@@ -176,8 +167,7 @@ helm install rancher rancher-latest/rancher \
   --version x.y.z
 ----
 
-[NOTE]
-====
+:::note
 
 If the original Rancher environment is running, you can collect the current values with a kubeconfig for the original environment:
 
@@ -192,8 +182,8 @@ These values can be reused using the `rancher-values.yaml` file. Be sure to swit
 ----
 helm install rancher rancher-latest/rancher -n cattle-system -f rancher-values.yaml --version x.y.z
 ----
-====
 
+:::
 
 === 5. Redirect Traffic to the New Cluster
 

@@ -1,5 +1,7 @@
 = Restore Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/backup-restore-configuration/restore-configuration">++++++</link>++++++</head>+++
+
 The Restore Create page lets you provide details of the backup to restore from
 
 image::/img/backup_restore/restore/restore.png[]
@@ -24,7 +26,7 @@ image::/img/backup_restore/restore/default.png[]
 
 === An S3-compatible object store
 
-Select this option if no default storage location is configured at the operator-level, OR if the backup file exists in a different S3 bucket than the one configured as the default storage location. Provide the exact filename in the *Backup Filename* field. Refer to <<getting-the-backup-filename-from-s3,this section>> for exact steps on getting the backup filename from s3. Fill in all the details for the S3 compatible object store. Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the link:backup-configuration.adoc#storage-location[Backup custom resource.]
+Select this option if no default storage location is configured at the operator-level, OR if the backup file exists in a different S3 bucket than the one configured as the default storage location. Provide the exact filename in the *Backup Filename* field. Refer to <<getting-the-backup-filename-from-s3,this section>> for exact steps on getting the backup filename from s3. Fill in all the details for the S3 compatible object store. Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the link:backup-configuration.md#storage-location[Backup custom resource.]
 
 image::/img/backup_restore/restore/s3store.png[]
 
@@ -45,13 +47,11 @@ The `Encryption Config Secret` dropdown will filter out and list only those Secr
 | Provide the name of the Secret from `cattle-resources-system` namespace, that contains the encryption config file.
 |===
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 This field should only be set if the backup was created with encryption enabled. Providing the incorrect encryption config will cause the restore to fail.
-====
 
+:::
 
 == Prune During Restore
 

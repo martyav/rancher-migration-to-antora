@@ -1,5 +1,7 @@
 = Best Practices for Rancher Managed Clusters
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/best-practices/rancher-managed-clusters">++++++</link>++++++</head>+++
+
 === Logging
 
 Refer to xref:logging-best-practices.adoc[this guide] for our recommendations for cluster-level logging and application logging.

@@ -1,5 +1,7 @@
 = Kubernetes on the Desktop with Rancher Desktop
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/rancher-desktop">++++++</link>++++++</head>+++
+
 Rancher Desktop bundles together essential tools for developing and testing cloud-native applications from your desktop.
 
 If you're working from your local machine on apps intended for cloud environments, you normally need a lot of preparation. You need to select a container run-time, install Kubernetes and popular utilities, and possibly set up a virtual machine. Installing components individually and getting them to work together can be a time-consuming process.

@@ -1,5 +1,7 @@
 = HTTP Proxy Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/single-node-rancher-in-docker/http-proxy-configuration">++++++</link>++++++</head>+++
+
 If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
 
 Make sure `NO_PROXY` contains the network addresses, network address ranges and domains that should be excluded from using the proxy.
@@ -17,13 +19,11 @@ Make sure `NO_PROXY` contains the network addresses, network address ranges and 
 | Network address(es), network address range(s) and domains to exclude from using the proxy when initiating connection(s)
 |===
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 NO_PROXY must be in uppercase to use network range (CIDR) notation.
-====
 
+:::
 
 == Docker Installation
 
@@ -49,7 +49,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ----
 
-Privileged access is link:../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.adoc#privileged-access-for-rancher[required.]
+Privileged access is link:../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher[required.]
 
 === Air-gapped proxy configuration
 

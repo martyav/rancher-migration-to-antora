@@ -1,5 +1,7 @@
 = RKE2 Cluster Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration">++++++</link>++++++</head>+++
+
 This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.
 
 == Overview
@@ -94,12 +96,11 @@ For more detail, see xref:../../../getting-started/installation-and-upgrade/upgr
 
 The https://kubernetes.io/docs/concepts/cluster-administration/networking/[Network Provider] that the cluster uses.
 
-[CAUTION]
-====
+:::caution
 
 After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you to tear down the entire cluster and all its applications.
-====
 
+:::
 
 Out of the box, Rancher is compatible with the following network providers:
 
@@ -108,7 +109,7 @@ Out of the box, Rancher is compatible with the following network providers:
 * https://docs.projectcalico.org/v3.11/introduction/[Calico]
 * https://github.com/k8snetworkplumbingwg/multus-cni[Multus]
 
-* When using <<project-network-isolation,project network isolation>> in the link:../../../faq/container-network-interface-providers.adoc#cilium[Cilium CNI], it is possible to enable cross-node ingress routing. Click the link:../../../faq/container-network-interface-providers.adoc#ingress-routing-across-nodes-in-cilium[CNI provider docs] to learn more.
+* When using <<project-network-isolation,project network isolation>> in the link:../../../faq/container-network-interface-providers.md#cilium[Cilium CNI], it is possible to enable cross-node ingress routing. Click the link:../../../faq/container-network-interface-providers.md#ingress-routing-across-nodes-in-cilium[CNI provider docs] to learn more.
 
 For more details on the different networking providers and how to configure them, please view our https://docs.rke2.io/install/network_options[RKE2 documentation].
 
@@ -124,12 +125,11 @@ When using `cilium` or `multus,cilium` as your container network interface provi
 
 You can configure a xref:../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.adoc[Kubernetes cloud provider]. If you want to use dynamically provisioned xref:../../../how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/create-kubernetes-persistent-storage.adoc[volumes and storage] in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
-[NOTE]
-====
+:::note
 
 If the cloud provider you want to use is not listed as an option, you will need to use the <<cluster-config-file-reference,config file option>> to configure the cloud provider. Please reference https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/[this documentation] on how to configure the cloud provider.
-====
 
+:::
 
 ===== Default Pod Security Policy
 
@@ -235,9 +235,9 @@ Authorized Cluster Endpoint can be used to directly access the Kubernetes API se
 
 This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
-For more detail on how an authorized cluster endpoint works and why it is used, refer to the link:../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.adoc#4-authorized-cluster-endpoint[architecture section.]
+For more detail on how an authorized cluster endpoint works and why it is used, refer to the link:../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint[architecture section.]
 
-We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the link:../../rancher-manager-architecture/architecture-recommendations.adoc#architecture-for-an-authorized-cluster-endpoint-ace[recommended architecture section.]
+We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the link:../../rancher-manager-architecture/architecture-recommendations.md#architecture-for-an-authorized-cluster-endpoint-ace[recommended architecture section.]
 
 ==== Registries
 
@@ -286,14 +286,13 @@ additionalManifest: |-
     name: name-xxxx
 ----
 
-[NOTE]
-====
+:::note
 
 If you want to customize system charts, you should use the `chartValues` field as described below.
 
 Alternatives, such as using a HelmChartConfig to customize the system charts via `additionalManifest`, can cause unexpected behavior, due to having multiple HelmChartConfigs for the same chart.
-====
 
+:::
 
 === chartValues
 
@@ -383,12 +382,11 @@ machineSelectorConfig
 
 === machineSelectorFiles
 
-[NOTE]
-====
+:::note
 
 This feature is available in Rancher v2.7.2 and later.
-====
 
+:::
 
 Deliver files to nodes, so that the files can be in place before initiating RKE2 server or agent processes.
 The content of the file is retrieved from either a secret or a configmap. The target nodes are filtered by the `machineLabelSelector`.
@@ -441,12 +439,11 @@ The secret or configmap must meet the following requirements:
 . It must be in the `fleet-default` namespace where the Cluster object exists.
 . It must have the annotation `rke.cattle.io/object-authorized-for-clusters: cluster-name1,cluster-name2`, which permits the target clusters to use it.
 
-[TIP]
-====
+:::tip
 
 Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
-====
 
+:::
 
 Example:
 

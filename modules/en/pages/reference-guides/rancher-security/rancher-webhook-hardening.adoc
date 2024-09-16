@@ -1,5 +1,7 @@
 = Hardening the Rancher Webhook
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/rancher-webhook-hardening">++++++</link>++++++</head>+++
+
 Rancher Webhook is an important component within Rancher, playing a role in enforcing security requirements for Rancher and its workloads. To decrease its attack surface, access to it should be limited to the only valid caller it has: the Kubernetes API server. This can be done by using network policies and authentication independently or in conjunction with each other to harden the webhook against attacks.
 
 == Block External Traffic Using Network Policies
@@ -108,12 +110,9 @@ For RKE2, `rke2-server` can be started with a config file like so:
  - /etc/rancher/admission:/etc/rancher/admission:ro
 ----
 +
-
-[WARNING]
-====
+:::danger
  Some distros set this flag by default. If your distro provisions its own AdmissionConfiguration, you must include it in your custom admission control config file. For example, RKE2 installs an AdmissionConfiguration file at `/etc/rancher/rke2/rke2-pss.yaml`, which configures the PodSecurity admission plugin. Setting `admission-control-config-file` in config.yaml will override this essential security setting. To include both plugins, consult https://docs.rke2.io/security/pod_security_standards[the Default Pod Security Standards documentation] and copy the appropriate plugin configuration to your admission.yaml.
-====
-
+ :::
 
 . If you're using Rancher to provision your cluster using existing nodes, create these files on the node before you provision them.
 +

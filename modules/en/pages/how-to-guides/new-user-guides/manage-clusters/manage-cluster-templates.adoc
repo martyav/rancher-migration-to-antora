@@ -1,6 +1,8 @@
 = Cluster Templates
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/manage-cluster-templates">++++++</link>++++++</head>+++
+
 Cluster templates encompass both Kubernetes configuration and node pool configuration, allowing a single template to contain all the information Rancher needs to provision new nodes in a cloud provider and install Kubernetes on those nodes.
 
 == Overview
@@ -25,14 +27,12 @@ See the example repository for an https://github.com/rancher/cluster-template-ex
 
 In this section, you'll learn how to add the cluster template to the `local` cluster's chart repo list. The result is that Rancher will include the cluster template as an option when users install new Kubernetes clusters.
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 * You will need permission to install Helm charts on the `local` Rancher cluster.
 * To make the chart viewable in the cluster creation form, both the chart and the index.yaml file must have the annotation, `catalog.cattle.io/type: cluster-template`.
-====
 
+:::
 
 . Go to a cluster template example repository. Rancher's examples are in https://github.com/rancher/cluster-template-examples[this GitHub repository.]
 . Fork the repository.
@@ -49,25 +49,21 @@ In this section, you'll learn how to add the cluster template to the `local` clu
 
 *Result:* The cluster template available from the *Apps* in Rancher's `local` cluster. It can now be used to deploy clusters.
 
-[NOTE]
-.Restricted Admin access:
-====
+:::note Restricted Admin access:
 
 If you are a restricted admin and don't have access to the `local` cluster, you may still add new RKE2 templates and manage cluster repositories. To navigate to the chart repository, go to the left navigation bar and click *☰ > Cluster Management >  Advanced > Repositories*. You will bypass steps 1 - 6 above, then proceed to follow steps 7 - 12 to create the cluster template.
-====
 
+:::
 
 == Creating a Cluster from a Cluster Template
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 * You will need permission to provision new Kubernetes clusters.
 * You will need cloud credentials for provisioning infrastructure using the template.
 * In order to show in the form for creating new clusters, the cluster template's Helm chart must have the `catalog.cattle.io/type: cluster-template` annotation.
-====
 
+:::
 
 . Click *☰ > Cluster Management*.
 . On the *Clusters* page, click *Create.*
@@ -82,9 +78,7 @@ You can update any clusters using a template from the menu:Apps[Installed Apps] 
 
 == Deploying Clusters from a Template with Fleet
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 * You will need permission to provision new Kubernetes clusters.
 * You will need cloud credentials for provisioning infrastructure using the template.
@@ -92,8 +86,8 @@ You can update any clusters using a template from the menu:Apps[Installed Apps] 
 * In order to use a template as part of continuous delivery/GitOps, the cluster template needs to be deployed in the `fleet-local` namespace of the `local` cluster.
 * All values must be set in the `values.yaml` of the template.
 * Fleet repositories must follow these https://fleet.rancher.io/gitrepo-content[guidelines]. For RKE2 cluster templates, that means a `fleet.yaml` file must be added to the repository.
-====
 
+:::
 
 . Click *☰ > Cluster Management*.
 . On the *Clusters* page, click *Create.*

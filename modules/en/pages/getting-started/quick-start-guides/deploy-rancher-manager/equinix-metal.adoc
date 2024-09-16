@@ -1,5 +1,7 @@
 = Rancher Equinix Metal Quick Start
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal">++++++</link>++++++</head>+++
+
 == This tutorial walks you through the following:
 
 * Provisioning an Equinix Metal Server
@@ -7,12 +9,11 @@
 * Creation of your first cluster
 * Deployment of an application, Nginx
 
-[CAUTION]
-====
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. The Docker install is not recommended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Quick Start Outline
 
@@ -32,16 +33,14 @@ Begin deploying an Equinix Metal Host. Equinix Metal Servers can be provisioned 
 * https://metal.equinix.com/developers/docs/servers/about/[Equinix Metal Server Types]
 * https://metal.equinix.com/developers/docs/servers/server-specs/[Equinix Metal Pricing]
 
-[NOTE]
-.Notes:
-====
+:::note Notes:
 
 * When provisioning a new Equinix Metal Server via the CLI or API you will need to provide the following information: project-id, plan, metro, and operating-system.
 * When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443. Please see your cloud host's documentation for information regarding port configuration.
 * For a full list of port requirements, refer to xref:../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.adoc[Docker Installation].
 * Provision the host according to our xref:../../installation-and-upgrade/installation-requirements/installation-requirements.adoc[Requirements].
-====
 
+:::
 
 === 2. Install Rancher
 

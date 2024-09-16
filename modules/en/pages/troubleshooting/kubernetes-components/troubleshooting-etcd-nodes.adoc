@@ -1,5 +1,7 @@
 = Troubleshooting etcd Nodes
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes">++++++</link>++++++</head>+++
+
 This section contains commands and tips for troubleshooting nodes with the `etcd` role.
 
 == Checking if the etcd Container is Running
@@ -234,12 +236,11 @@ docker exec etcd etcdctl alarm list
 
 == Configure Log Level
 
-[NOTE]
-====
+:::note
 
 You can no longer dynamically change the log level in etcd v3.5 or later.
-====
 
+:::
 
 === etcd v3.5 And Later
 

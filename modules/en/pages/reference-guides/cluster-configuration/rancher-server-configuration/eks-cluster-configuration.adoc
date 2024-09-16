@@ -1,5 +1,7 @@
 = EKS Cluster Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration">++++++</link>++++++</head>+++
+
 === Account Access
 
 Complete each drop-down and field using the information obtained for your IAM policy.
@@ -131,12 +133,11 @@ Also, if you provide the launch template, you can only update the template versi
 | Optional
 |===
 
-[CAUTION]
-====
+:::caution
 
 You can't directly update a node group to a newer Kubernetes version if the node group was created from a custom launch template. You must create a new launch template with the proper Kubernetes version, and associate the node group with the new template.
-====
 
+:::
 
 ==== Rancher-managed Launch Templates
 
@@ -148,23 +149,21 @@ If you specify a custom AMI, whether in a launch template or in Rancher, then th
 
 If you specify a launch template that does not contain a custom AMI, then Amazon will use the https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html[EKS-optimized AMI] for the Kubernetes version and selected region. You can also select a https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html#gpu-ami[GPU enabled instance] for workloads that would benefit from it.
 
-[NOTE]
-====
+:::note
 
 The GPU enabled instance setting in Rancher is ignored if a custom AMI is provided, either in the dropdown or in a launch template.
-====
 
+:::
 
 ==== Spot instances
 
 Spot instances are now https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types-spot[supported by EKS]. If a launch template is specified, Amazon recommends that the template not provide an instance type. Instead, Amazon recommends providing multiple instance types. If the "Request Spot Instances" checkbox is enabled for a node group, then you will have the opportunity to provide multiple instance types.
 
-[NOTE]
-====
+:::note
 
 Any selection you made in the instance type dropdown will be ignored in this situation and you must specify at least one instance type to the "Spot Instance Types" section. Furthermore, a launch template used with EKS cannot request spot instances. Requesting spot instances must be part of the EKS configuration.
-====
 
+:::
 
 ==== Node Group Settings
 
@@ -200,12 +199,11 @@ You can register an EKS cluster containing self-managed Amazon Linux nodes. You 
 
 An Applications Deployment running on an EKS cluster can make requests to AWS services via IAM permissions. These applications must sign their requests with AWS credentials. IAM roles for service accounts manage these credentials using an AWS OIDC endpoint. Rather than distributing AWS credentials to containers or relying on an EC2 instance's role, you can link an https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html[IAM role to a Kubernetes service account] and configure your Pods to use this account.
 
-[NOTE]
-====
+:::note
 
 Linking to an IAM role is not supported for Rancher pods in an EKS cluster.
-====
 
+:::
 
 To enable IAM roles for service accounts:
 

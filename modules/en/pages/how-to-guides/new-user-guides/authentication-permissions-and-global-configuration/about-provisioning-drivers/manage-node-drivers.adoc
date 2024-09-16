@@ -1,21 +1,21 @@
 = Node Drivers
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers">++++++</link>++++++</head>+++
+
 A node driver is the same as a https://docs.docker.com/machine/drivers/[Docker Machine driver]. Node drivers are used to provision hosts, which Rancher uses to launch and manage Kubernetes clusters. By default, Rancher is packaged with many node drivers, but you can also create and add custom node drivers to Rancher.
 
 Only `Active` node drivers are displayed in the Rancher UI when you create node templates. If there are specific node drivers that you don't want to show your users, you must deactivate these node drivers.
 
 == Managing Node Drivers
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 To create, edit, or delete drivers, you need _one_ of the following permissions:
 
 * xref:../manage-role-based-access-control-rbac/global-permissions.adoc[Administrator Global Permissions]
-* link:../manage-role-based-access-control-rbac/global-permissions.adoc#custom-global-permissions[Custom Global Permissions] with the xref:../manage-role-based-access-control-rbac/global-permissions.adoc[Manage Node Drivers] role assigned.
-====
+* link:../manage-role-based-access-control-rbac/global-permissions.md#custom-global-permissions[Custom Global Permissions] with the xref:../manage-role-based-access-control-rbac/global-permissions.adoc[Manage Node Drivers] role assigned.
 
+:::
 
 === Activating/Deactivating Node Drivers
 
@@ -25,8 +25,7 @@ By default, Rancher only activates drivers for the most popular cloud providers,
 . In the left navigation menu, click *Drivers*.
 . On the *Node Drivers* tab, select the driver that you wish to activate or deactivate and click *⋮ > Activate* or *⋮ > Deactivate*.
 
-[WARNING]
-====
+:::danger
 
 You can lose access to clusters after deactivating a node driver.
 
@@ -39,8 +38,8 @@ Before you deactivate a node driver, make sure that it has no associated cluster
 . In the upper left corner, click *☰ > Cluster Management*.
 . Select *Clusters*.
 . Check the *Provider* column of the table for instances of the node driver you are deactivating.
-====
 
+:::
 
 === Adding Custom Node Drivers
 

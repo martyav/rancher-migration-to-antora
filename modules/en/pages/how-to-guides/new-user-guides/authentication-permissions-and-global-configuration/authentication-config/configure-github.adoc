@@ -1,14 +1,14 @@
 = Configure GitHub
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-github">++++++</link>++++++</head>+++
+
 In environments using GitHub, you can configure Rancher to allow sign on using GitHub credentials.
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
-Read link:authentication-config.adoc#external-authentication-configuration-and-principal-users[External Authentication Configuration and Principal Users].
-====
+Read link:authentication-config.md#external-authentication-configuration-and-principal-users[External Authentication Configuration and Principal Users].
 
+:::
 
 . Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
 . In the top left corner, click *☰ > Users & Authentication*.
@@ -16,29 +16,21 @@ Read link:authentication-config.adoc#external-authentication-configuration-and-p
 . Click *GitHub*.
 . Follow the directions displayed to set up a GitHub Application. Rancher redirects you to GitHub to complete registration.
 +
-
-[NOTE]
-.What's an Authorization Callback URL?
-====
+:::note What's an Authorization Callback URL?
 +
 The Authorization Callback URL is the URL where users go to begin using your application (i.e. the splash screen).
 +
 When you use external authentication, authentication does not actually take place in your application. Instead, authentication takes place externally (in this case, GitHub). After this external authentication completes successfully, the Authorization Callback URL is the location where the user re-enters your application.
 +
-====
-
+:::
 
 . From GitHub, copy the *Client ID* and *Client Secret*. Paste them into Rancher.
 +
-
-[NOTE]
-.Where do I find the Client ID and Client Secret?
-====
+:::note Where do I find the Client ID and Client Secret?
 +
 From GitHub, select Settings > Developer Settings > OAuth Apps. The Client ID and Client Secret are displayed prominently.
 +
-====
-
+:::
 
 . Click *Authenticate with GitHub*.
 . Use the *Site Access* options to configure the scope of user authorization.

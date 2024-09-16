@@ -1,5 +1,7 @@
 = K3s Cluster Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration">++++++</link>++++++</head>+++
+
 This section covers the configuration options that are available in Rancher for a new or existing K3s Kubernetes cluster.
 
 == Overview
@@ -182,9 +184,9 @@ Add hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server 
 
 Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
 
-For more detail on how an authorized cluster endpoint works and why it is used, refer to the link:../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.adoc#4-authorized-cluster-endpoint[architecture section.]
+For more detail on how an authorized cluster endpoint works and why it is used, refer to the link:../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint[architecture section.]
 
-We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the link:../../rancher-manager-architecture/architecture-recommendations.adoc#architecture-for-an-authorized-cluster-endpoint-ace[recommended architecture section.]
+We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the link:../../rancher-manager-architecture/architecture-recommendations.md#architecture-for-an-authorized-cluster-endpoint-ace[recommended architecture section.]
 
 ==== Registries
 
@@ -233,14 +235,13 @@ additionalManifest: |-
     name: name-xxxx
 ----
 
-[NOTE]
-====
+:::note
 
 If you want to customize system charts, you should use the `chartValues` field as described below.
 
 Alternatives, such as using a HelmChartConfig to customize the system charts via `additionalManifest`, can cause unexpected behavior, due to having multiple HelmChartConfigs for the same chart.
-====
 
+:::
 
 === chartValues
 
@@ -326,12 +327,11 @@ machineSelectorConfig
 
 === machineSelectorFiles
 
-[NOTE]
-====
+:::note
 
 This feature is available in Rancher v2.7.2 and later.
-====
 
+:::
 
 Deliver files to nodes, so that the files can be in place before initiating K3s server or agent processes.
 The content of the file is retrieved from either a secret or a configmap. The target nodes are filtered by the `machineLabelSelector`.
@@ -384,12 +384,11 @@ The secret or configmap must meet the following requirements:
 . It must be in the `fleet-default` namespace where the Cluster object exists.
 . It must have the annotation `rke.cattle.io/object-authorized-for-clusters: cluster-name1,cluster-name2`, which permits the target clusters to use it.
 
-[TIP]
-====
+:::tip
 
 Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
-====
 
+:::
 
 Example:
 

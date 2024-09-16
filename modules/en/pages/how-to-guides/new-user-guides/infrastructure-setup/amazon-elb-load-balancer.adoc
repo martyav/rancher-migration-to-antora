@@ -1,5 +1,7 @@
 = Setting up Amazon ELB Network Load Balancer
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer">++++++</link>++++++</head>+++
+
 This how-to guide describes how to set up a Network Load Balancer (NLB) in Amazon's EC2 service that will direct traffic to multiple instances on EC2.
 
 These examples show the load balancer being configured to direct traffic to three Rancher server nodes. If Rancher is installed on an RKE Kubernetes cluster, three nodes are required. If Rancher is installed on a K3s Kubernetes cluster, only two nodes are required.
@@ -24,12 +26,11 @@ Regardless of whether an NGINX Ingress or Traefik Ingress controller is used, th
 . Select *Services* and choose *EC2*, find the section *Load Balancing* and open *Target Groups*.
 . Click *Create target group* to create the first target group, regarding TCP port 443.
 
-[NOTE]
-====
+:::note
 
 Health checks are handled differently based on the Ingress. For details, refer to <<health-check-paths-for-nginx-ingress-and-traefik-ingresses,this section.>>
-====
 
+:::
 
 [discrete]
 ==== Target Group (TCP port 443)

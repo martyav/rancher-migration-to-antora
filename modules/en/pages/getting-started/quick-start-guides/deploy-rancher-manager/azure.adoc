@@ -1,23 +1,23 @@
 = Rancher Azure Quick Start Guide
 :description: Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/azure">++++++</link>++++++</head>+++
+
 The following steps will quickly deploy a Rancher server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
-[CAUTION]
-====
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Prerequisites
 
-[CAUTION]
-====
+:::caution
 
 Deploying to Microsoft Azure will incur charges.
-====
 
+:::
 
 * https://azure.microsoft.com/en-us/free/[Microsoft Azure Account]: A Microsoft Azure Account is required to create resources for deploying Rancher and Kubernetes.
 * https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal[Microsoft Azure Subscription]: Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.
@@ -35,7 +35,7 @@ Deploying to Microsoft Azure will incur charges.
  ** `azure_client_id` - Microsoft Azure Client ID
  ** `azure_client_secret` - Microsoft Azure Client Secret
  ** `azure_tenant_id` - Microsoft Azure Tenant ID
- ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.adoc#password-requirements[Setting up the Bootstrap Password] for password requirments.
+ ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements[Setting up the Bootstrap Password] for password requirments.
 . *Optional:* Modify optional variables within `terraform.tfvars`.
 See the https://github.com/rancher/quickstart[Quickstart Readme] and the https://github.com/rancher/quickstart/tree/master/rancher/azure[Azure Quickstart Readme] for more information. Suggestions include:
  ** `azure_location` - Microsoft Azure region, choose the closest instead of the default (`East US`)

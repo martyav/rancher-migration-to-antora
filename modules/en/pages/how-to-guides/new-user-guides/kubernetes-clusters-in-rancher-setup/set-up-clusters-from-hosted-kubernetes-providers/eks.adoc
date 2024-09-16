@@ -1,15 +1,16 @@
 = Creating an EKS Cluster
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/eks">++++++</link>++++++</head>+++
+
 Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html[documentation].
 
 == Prerequisites in Amazon Web Services
 
-[CAUTION]
-====
+:::caution
 
 Deploying to Amazon AWS will incur charges. For more information, refer to the https://aws.amazon.com/eks/pricing/[EKS pricing page].
-====
 
+:::
 
 To set up a cluster on EKS, you will need to set up an Amazon VPC (Virtual Private Cloud). You will also need to make sure that the account you will be using to create the EKS cluster has the appropriate <<minimum-eks-permissions,permissions.>> For details, refer to the official guide on https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-prereqs[Amazon EKS Prerequisites].
 
@@ -25,13 +26,11 @@ Rancher needs access to your AWS account in order to provision and administer yo
 . Next, create an IAM policy that defines what this user has access to in your AWS account. It's important to only grant this user minimal access within your account. The minimum permissions required for an EKS cluster are listed <<minimum-eks-permissions,here.>> Follow the steps https://docs.aws.amazon.com/eks/latest/userguide/EKS_IAM_user_policies.html[here] to create an IAM policy and attach it to your user.
 . Finally, follow the steps https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey[here] to create an access key and secret key for this user.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 It's important to regularly rotate your access and secret keys. See this https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#rotating_access_keys_console[documentation] for more information.
-====
 
+:::
 
 For more detailed information on IAM policies for EKS, refer to the official https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html[documentation on Amazon EKS IAM Policies, Roles, and Permissions].
 
@@ -86,11 +85,9 @@ This https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/[tuto
 
 These are the minimum set of permissions necessary to access the full functionality of Rancher's EKS driver. You'll need additional permissions for Rancher to provision the `Service Role` and `VPC` resources. If you create these resources *before* you create the cluster, they'll be available when you configure the cluster.
 
-[NOTE]
-====
+:::note
 In EKS v1.23 and above, you must use the out-of-tree drivers for EBS-backed volumes. You need <<ebs-csi-driver-addon-permissions,specific permissions>> to enable this add-on.
-====
-
+:::
 
 |===
 | Resource | Description
@@ -364,7 +361,7 @@ Permissions required for Rancher to install the Amazon EBS CSI Driver add-on.
 
 The EKS provisioner can synchronize the state of an EKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see xref:../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.adoc[Syncing.]
 
-For information on configuring the refresh interval, refer to link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration.adoc#configuring-the-refresh-interval[this section.]
+For information on configuring the refresh interval, refer to link:../../../../reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration.md#configuring-the-refresh-interval[this section.]
 
 == Troubleshooting
 

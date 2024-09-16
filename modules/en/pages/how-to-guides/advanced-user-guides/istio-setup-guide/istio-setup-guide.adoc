@@ -1,5 +1,7 @@
 = Istio Setup Guides
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/istio-setup-guide">++++++</link>++++++</head>+++
+
 This section describes how to enable Istio and start using it in your projects.
 
 If you use Istio for traffic management, you will need to allow external traffic to the cluster. In that case, you will need to follow all of the steps below.
@@ -14,13 +16,11 @@ The workloads and services that you want to be controlled by Istio must meet htt
 
 == Install
 
-[TIP]
-.Quick Setup Tip:
-====
+:::tip Quick Setup Tip:
 
 If you don't need external traffic to reach Istio, and you just want to set up Istio for monitoring and tracing traffic within the cluster, skip the steps for xref:set-up-istio-gateway.adoc[setting up the Istio gateway] and xref:set-up-traffic-management.adoc[setting up Istio's components for traffic management.]
-====
 
+:::
 
 . xref:enable-istio-in-cluster.adoc[Enable Istio in the cluster.]
 . xref:enable-istio-in-namespace.adoc[Enable Istio in all the namespaces where you want to use it.]

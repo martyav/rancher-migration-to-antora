@@ -1,5 +1,7 @@
 = Sample PodSecurityConfiguration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/psa-restricted-exemptions">++++++</link>++++++</head>+++
+
 The following PodSecurityConfiguration contains the required Rancher namespace exemptions for a `rancher-restricted` cluster to run properly.
 
 [,yaml]

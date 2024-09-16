@@ -1,6 +1,8 @@
 = Helm Chart Options
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/monitoring-v2-configuration/helm-chart-options">++++++</link>++++++</head>+++
+
 == Configuring Resource Limits and Requests
 
 The resource requests and limits can be configured when installing `rancher-monitoring`.
@@ -85,7 +87,7 @@ Many values aren't exposed in the top level chart. However, you can add values t
 
 === Increase the Replicas of Alertmanager
 
-As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to link:../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.adoc#multiple-alertmanager-replicas[this section.]
+As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to link:../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md#multiple-alertmanager-replicas[this section.]
 
 === Configuring the Namespace for a Persistent Grafana Dashboard
 

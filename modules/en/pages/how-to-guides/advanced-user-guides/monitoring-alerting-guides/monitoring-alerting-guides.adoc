@@ -1,5 +1,7 @@
 = Monitoring/Alerting Guides
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-alerting-guides">++++++</link>++++++</head>+++
+
 * xref:enable-monitoring.adoc[Enable monitoring]
 * xref:uninstall-monitoring.adoc[Uninstall monitoring]
 * xref:set-up-monitoring-for-workloads.adoc[Monitoring workloads]

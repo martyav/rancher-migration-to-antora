@@ -1,6 +1,6 @@
 = OPA Gatekeeper
 
-+++<DeprecationOPAGatekeeper link="kubewarden">++++++</DeprecationOPAGatekeeper>+++
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/opa-gatekeeper">++++++</link>++++++</head>++++++<DeprecationOPAGatekeeper link="kubewarden">++++++</DeprecationOPAGatekeeper>+++
 
 To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. https://www.openpolicyagent.org/[OPA (Open Policy Agent)] is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.
 
@@ -23,20 +23,17 @@ OPA Gatekeeper is made available via Rancher's Helm system chart, and it is inst
 
 == Enabling OPA Gatekeeper in a Cluster
 
-[NOTE]
-====
+:::note
 
 In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in Rancher v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`.
-====
 
+:::
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 Only administrators and cluster owners can enable OPA Gatekeeper.
-====
 
+:::
 
 The OPA Gatekeeper Helm chart can be installed from *Apps*.
 
@@ -64,13 +61,11 @@ Rancher also provides the ability to create your own constraint templates by imp
 
 https://github.com/open-policy-agent/gatekeeper#constraints[Constraints] are Kubernetes custom resources that define the scope of objects to which a specific constraint template applies to. The complete policy is defined by constraint templates and constraints together.
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 OPA Gatekeeper must be enabled in the cluster.
-====
 
+:::
 
 To list the constraints installed, go to the left side menu under OPA Gatekeeper, and click on *Constraints*.
 

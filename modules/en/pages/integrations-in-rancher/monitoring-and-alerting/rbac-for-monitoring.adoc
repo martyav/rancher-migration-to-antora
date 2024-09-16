@@ -1,5 +1,7 @@
 = Role-based Access Control
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring">++++++</link>++++++</head>+++
+
 This section describes the expectations for RBAC for Rancher Monitoring.
 
 == Cluster Admins
@@ -96,13 +98,11 @@ Admins should use these roles to provide more fine-grained access to users:
 
 Admins may assign custom roles in the Rancher UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
 
-[NOTE]
-.Important
-====
+:::note Important
 
 The UI won't offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` options when users are being added to a cluster. These monitoring roles can only be assigned by manually creating a custom role that inherits from Project Owner and Project Monitoring View roles.
-====
 
+:::
 
 . Create the custom role:
 
@@ -145,12 +145,11 @@ Monitoring also creates additional `ClusterRoles` that aren't assigned to users 
 This role doesn't grant access to monitoring endpoints. As a result, users with this role won't be able to view cluster monitoring graphs and dashboards in the Rancher UI; however, they are able to access the monitoring Grafana, Prometheus, and Alertmanager UIs if provided those links.
 |===
 
-[NOTE]
-====
+:::note
 
 A user bound to the *View Monitoring* Rancher role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the *View Monitoring* role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project.
-====
 
+:::
 
 === Assigning Roles and ClusterRoles with kubectl
 
@@ -158,31 +157,9 @@ A user bound to the *View Monitoring* Rancher role and read-only project permiss
 
 One method is to use either `kubectl create clusterrolebinding` or `kubectl create rolebinding` to assign a `Role` or `ClusterRole`. This is shown in the following examples:
 
-* Assign to a specific user:
+* Assign to a specific user:+++<Tabs groupId="role-type">++++++<TabItem value="clusterrolebinding">+++```plain kubectl create clusterrolebinding my-binding --clusterrole=monitoring-ui-view --user=u-l4npx ```+++</TabItem>+++ +++<TabItem value="rolebinding">+++```plain kubectl create rolebinding my-binding --clusterrole=monitoring-ui-view --user=u-l4npx --namespace=my-namespace ```+++</TabItem>++++++</Tabs>+++
 
-[tabs,sync-group-id=role-type]
-======
-Tab clusterrolebinding::
-+
-```plain kubectl create clusterrolebinding my-binding --clusterrole=monitoring-ui-view --user=u-l4npx ``` 
-
-Tab rolebinding::
-+
-```plain kubectl create rolebinding my-binding --clusterrole=monitoring-ui-view --user=u-l4npx --namespace=my-namespace ```
-======
-
-* Assign to all authenticated users:
-
-[tabs,sync-group-id=role-type]
-======
-Tab clusterrolebinding::
-+
-```plain kubectl create clusterrolebinding my-binding --clusterrole=monitoring-ui-view --group=system:authenticated ``` 
-
-Tab rolebinding::
-+
-```plain kubectl create rolebinding my-binding --clusterrole=monitoring-ui-view --group=system:authenticated --namespace=my-namespace ```
-======
+* Assign to all authenticated users:+++<Tabs groupId="role-type">++++++<TabItem value="clusterrolebinding">+++```plain kubectl create clusterrolebinding my-binding --clusterrole=monitoring-ui-view --group=system:authenticated ```+++</TabItem>+++ +++<TabItem value="rolebinding">+++```plain kubectl create rolebinding my-binding --clusterrole=monitoring-ui-view --group=system:authenticated --namespace=my-namespace ```+++</TabItem>++++++</Tabs>+++
 
 ==== Using YAML Files
 
@@ -190,12 +167,11 @@ Another method is to define bindings in YAML files that you create. You must fir
 
 * *Roles*: Below is an example YAML file to help you configure `RoleBindings` in Kubernetes. You'll need to fill in the name below.
 
-[NOTE]
-====
+:::note
 
 Names are case-sensitive.
-====
 
+:::
 
 [,yaml]
 ----
@@ -261,12 +237,11 @@ In addition to these default roles, the following Rancher project roles can be a
 | 9.4.204+
 |===
 
-[NOTE]
-====
+:::note
 
 A user bound to the *View Monitoring* Rancher role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the *View Monitoring* role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project.
-====
 
+:::
 
 === Differences in 2.5.x
 

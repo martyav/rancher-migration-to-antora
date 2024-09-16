@@ -1,5 +1,7 @@
 = General Troubleshooting
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/general-troubleshooting">++++++</link>++++++</head>+++
+
 This section contains information to help you troubleshoot issues when using Rancher.
 
 * xref:kubernetes-components/kubernetes-components.adoc[Kubernetes components]

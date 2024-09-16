@@ -1,5 +1,7 @@
 = Windows Cluster Support for Monitoring V2
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/monitoring-and-alerting/windows-support">++++++</link>++++++</head>+++
+
 Monitoring V2 can be deployed on a Windows cluster to scrape metrics from Windows nodes using https://github.com/prometheus-community/windows_exporter[prometheus-community/windows_exporter] (previously named `wmi_exporter`).
 
 == Cluster Requirements
@@ -28,17 +30,13 @@ To facilitate this upgrade, Rancher 2.5.8 has released a brand new Helm chart ca
    as: c:\\etc\wmi-exporter\wmi-exporter.exe
 ----
 +
-
-[NOTE]
-.Note for Non-Default Windows Prefix Path:
-====
+:::note Note for Non-Default Windows Prefix Path:
 
  ** If you set up the RKE cluster with a `cluster.yml` that has a non-default `win_prefix_path`, you will need to update the `masquerade.as` field with your prefix path in place of  `c:\\`.
  ** For example, if you have `win_prefix_path: 'c:\host\opt\'`, then you will need to set `as: c:\host\opt\etc\wmi-exporter\wmi-exporter.exe`.
 
 +
-====
-
+:::
 
 . Once all your hosts have been successfully upgraded, please ensure that you deploy the Helm chart once again with default values to avoid conflicts with the following settings:
 +

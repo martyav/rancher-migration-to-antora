@@ -1,23 +1,23 @@
 = Rancher Outscale Quick Start Guide
 :description: Read this step by step Rancher Outscale guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/outscale-qs">++++++</link>++++++</head>+++
+
 The following steps will quickly deploy a Rancher server on Outscale in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
-[NOTE]
-====
+:::note
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see xref:../../installation-and-upgrade/installation-and-upgrade.adoc[Installation].
-====
 
+:::
 
 == Prerequisites
 
-[CAUTION]
-====
+:::caution
 
 Deploying to Outscale will incur charges.
-====
 
+:::
 
 * https://en.outscale.com/[Outscale Account]: You will require an account on Outscale as this is where the server and cluster will run.
 * https://docs.outscale.com/en/userguide/About-Access-Keys.html[Outscale Access Key]: Use these instructions to create an Outscale Access Key if you don't have one.
@@ -31,7 +31,7 @@ Deploying to Outscale will incur charges.
 . Edit `terraform.tfvars` and customize the following variables:
  ** `access_key_id` - Outscale access key
  ** `secret_key_id` - Outscale secret key
- ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.adoc#password-requirements[Setting up the Bootstrap Password] for password requirments.
+ ** `rancher_server_admin_password` - Admin password for created Rancher server. See link:../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements[Setting up the Bootstrap Password] for password requirments.
 . *Optional:* Modify optional variables within `terraform.tfvars`.
 See the https://github.com/rancher/quickstart[Quickstart Readme] and the https://github.com/rancher/quickstart/tree/master/rancher/outscale[Outscale Quickstart Readme] for more information.
 Suggestions include:

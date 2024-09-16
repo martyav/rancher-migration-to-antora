@@ -1,9 +1,11 @@
 = Managing HPAs with the Rancher UI
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-ui">++++++</link>++++++</head>+++
+
 The Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
 
-If you want to create HPAs that scale based on other metrics than CPU and memory, refer to link:./manage-hpas-with-kubectl.adoc#configuring-hpa-to-scale-using-custom-metrics-with-prometheus[Configuring HPA to Scale Using Custom Metrics with Prometheus].
+If you want to create HPAs that scale based on other metrics than CPU and memory, refer to link:./manage-hpas-with-kubectl.md#configuring-hpa-to-scale-using-custom-metrics-with-prometheus[Configuring HPA to Scale Using Custom Metrics with Prometheus].
 
 == Creating an HPA
 
@@ -15,16 +17,14 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 . Enter a *Name* for the HPA.
 . Select a *Target Reference* as scale target for the HPA.
 . Specify the *Minimum Replicas* and *Maximum Replicas* for the HPA.
-. Configure the metrics for the HPA. You can choose memory or CPU usage as the metric that will cause the HPA to scale the service up or down. In the *Quantity* field, enter the percentage of the workload's memory or CPU usage that will cause the HPA to scale the service. To configure other HPA metrics, including metrics available from Prometheus, you need to link:./manage-hpas-with-kubectl.adoc#configuring-hpa-to-scale-using-custom-metrics-with-prometheus[manage HPAs using kubectl].
+. Configure the metrics for the HPA. You can choose memory or CPU usage as the metric that will cause the HPA to scale the service up or down. In the *Quantity* field, enter the percentage of the workload's memory or CPU usage that will cause the HPA to scale the service. To configure other HPA metrics, including metrics available from Prometheus, you need to link:./manage-hpas-with-kubectl.md#configuring-hpa-to-scale-using-custom-metrics-with-prometheus[manage HPAs using kubectl].
 . Click *Create* to create the HPA.
 
-[NOTE]
-.Result:
-====
+:::note Result:
 
 The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's Resources > HPA view.
-====
 
+:::
 
 == Get HPA Metrics and Status
 
@@ -43,10 +43,8 @@ For more detailed metrics and status of a specific HPA, click the name of the HP
 . Find the HPA which you would like to delete and click *⋮ > Delete*.
 . Click *Delete* to confirm.
 
-[NOTE]
-.Result:
-====
+:::note Result:
 
 The HPA is deleted from the current cluster.
-====
 
+:::

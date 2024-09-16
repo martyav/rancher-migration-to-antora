@@ -1,5 +1,7 @@
 = Docker Install with TLS Termination at Layer-7 NGINX Load Balancer
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/configure-layer-7-nginx-load-balancer">++++++</link>++++++</head>+++
+
 For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.
 
 A layer-7 load balancer can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with.
@@ -20,70 +22,16 @@ Provision a single Linux host according to our xref:../../getting-started/instal
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
-[NOTE]
-.Do you want to..
-====
+:::note Do you want to..
 
 * Complete an Air Gap Installation?
 * Record all transactions with the Rancher API?
 
 See <<advanced-options,Advanced Options>> below before continuing.
-====
 
+:::
 
-Choose from the following options:
-
-.Option A-Bring Your Own Certificate: Self-Signed
-[%collapsible]
-======
-If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
-
-[NOTE]
-.Prerequisites:
-====
-
-Create a self-signed certificate.
-
-* The certificate files must be in PEM format.
-====
-
-
-*To Install Rancher Using a Self-Signed Cert:*
-
-. While running the Docker command to deploy Rancher, point Docker toward your CA certificate file.
-+
-----
-docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
-  -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
-  rancher/rancher:latest
-----
-+
-======
-.Option B-Bring Your Own Certificate: Signed by Recognized CA
-[%collapsible]
-======
-If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
-
-[NOTE]
-.Prerequisites:
-====
-
-* The certificate files must be in PEM format.
-====
-
-
-*To Install Rancher Using a Cert Signed by a Recognized CA:*
-
-If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container.
-
-. Enter the following command.
-
- ```
- docker run -d --restart=unless-stopped \
- -p 80:80 -p 443:443 \
- rancher/rancher:latest --no-cacerts
- ``` ======
+Choose from the following options:+++<details id="option-a">++++++<summary>+++Option A-Bring Your Own Certificate: Self-Signed+++</summary>+++ If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate. :::note Prerequisites: Create a self-signed certificate. - The certificate files must be in PEM format. ::: **To Install Rancher Using a Self-Signed Cert:** 1. While running the Docker command to deploy Rancher, point Docker toward your CA certificate file. ``` docker run -d --restart=unless-stopped \ -p 80:80 -p 443:443 \ -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \ rancher/rancher:latest ```+++</details>++++++<details id="option-b">++++++<summary>+++Option B-Bring Your Own Certificate: Signed by Recognized CA+++</summary>+++ If your cluster is public facing, it's best to use a certificate signed by a recognized CA. :::note Prerequisites: - The certificate files must be in PEM format. ::: **To Install Rancher Using a Cert Signed by a Recognized CA:** If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container. 1. Enter the following command. ``` docker run -d --restart=unless-stopped \ -p 80:80 -p 443:443 \ rancher/rancher:latest --no-cacerts ```+++</details>+++
 
 == 3. Configure Load Balancer
 
@@ -108,12 +56,11 @@ The load balancer or proxy has to be configured to support the following:
 
 This NGINX configuration is tested on NGINX 1.14.
 
-[NOTE]
-====
+:::note
 
 This NGINX configuration is only an example and may not suit your environment. For complete documentation, see https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/[NGINX Load Balancing - HTTP Load Balancing].
-====
 
+:::
 
 * Replace `rancher-server` with the IP address or hostname of the node running the Rancher container.
 * Replace both occurrences of `FQDN` to the DNS name for Rancher.
@@ -213,16 +160,15 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ----
 
-This operation requires link:../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.adoc#privileged-access-for-rancher[privileged access].
+This operation requires link:../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher[privileged access].
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 
-[NOTE]
-====
+:::note
 
 This NGINX configuration is only an example and may not suit your environment. For complete documentation, see https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/[NGINX Load Balancing - TCP and UDP Load Balancer].
-====
 
+:::
 
 ----
 upstream rancher {

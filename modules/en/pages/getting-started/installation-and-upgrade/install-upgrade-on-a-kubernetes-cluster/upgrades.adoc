@@ -1,5 +1,7 @@
 = Upgrades
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades">++++++</link>++++++</head>+++
+
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air-gapped installs with Helm.
 
 For the instructions to upgrade Rancher installed with Docker, refer to xref:../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.adoc[this page.]
@@ -20,7 +22,7 @@ The kubeconfig can also be manually targeted for the intended cluster with the `
 
 Review the list of known issues for each Rancher version, which can be found in the release notes on https://github.com/rancher/rancher/releases[GitHub] and on the https://forums.rancher.com/c/announcements/12[Rancher forums.]
 
-Note that upgrades _to_ or _from_ any chart in the link:../resources/choose-a-rancher-version.adoc#helm-chart-repositories[rancher-alpha repository] aren't supported.
+Note that upgrades _to_ or _from_ any chart in the link:../resources/choose-a-rancher-version.md#helm-chart-repositories[rancher-alpha repository] aren't supported.
 
 === Helm Version
 
@@ -56,7 +58,7 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
 
 . Get the repository name that you used to install Rancher.
 +
-For information about the repos and their differences, see link:../resources/choose-a-rancher-version.adoc#helm-chart-repositories[Helm Chart Repositories].
+For information about the repos and their differences, see link:../resources/choose-a-rancher-version.md#helm-chart-repositories[Helm Chart Repositories].
 
  ** Latest: Recommended for trying out the newest features
 +
@@ -87,14 +89,11 @@ NOTE: Upgrades are not supported to, from, or between Alphas.
  rancher-<CHART_REPO>	 https://releases.rancher.com/server-charts/<CHART_REPO>
 ----
 +
-
-[NOTE]
-====
+:::note
 +
-If you want to switch to a different Helm chart repository, please follow the link:../resources/choose-a-rancher-version.adoc#switching-to-a-different-helm-chart-repository[steps on how to switch repositories]. If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+If you want to switch to a different Helm chart repository, please follow the link:../resources/choose-a-rancher-version.md#switching-to-a-different-helm-chart-repository[steps on how to switch repositories]. If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 +
-====
-
+:::
 
 . Fetch the latest chart to install Rancher from the Helm chart repository.
 +
@@ -116,13 +115,11 @@ You can fetch the chart for the specific version you are upgrading to by adding 
 
 This section describes how to upgrade normal (Internet-connected) or air-gapped installations of Rancher with Helm.
 
-[NOTE]
-.Air Gap Instructions:
-====
+:::note Air Gap Instructions:
 
 If you are installing Rancher in an air-gapped environment, skip the rest of this page and render the Helm template by following the instructions on xref:air-gapped-upgrades.adoc[this page.]
-====
 
+:::
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
 
@@ -132,15 +129,13 @@ helm get values rancher -n cattle-system
 hostname: rancher.my.org
 ----
 
-[NOTE]
-====
+:::note
 
 There will be more values that are listed with this command. This is just an example of one of the values.
-====
 
+:::
 
-[TIP]
-====
+:::tip
 
 Your deployment name may vary; for example, if you're deploying Rancher through the AWS Marketplace, the deployment name is 'rancher-stable'.
 Thus:
@@ -150,10 +145,10 @@ helm get values rancher-stable -n cattle-system
 
 hostname: rancher.my.org
 ----
-====
 
+:::
 
-If you are upgrading cert-manager to the latest version from v1.5 or below, follow the link:../resources/upgrade-cert-manager.adoc#option-c-upgrade-cert-manager-from-versions-15-and-below[cert-manager upgrade docs] to learn how to upgrade cert-manager without needing to perform an uninstall or reinstall of Rancher. Otherwise, follow the <<steps-to-upgrade-rancher,steps to upgrade Rancher>> below.
+If you are upgrading cert-manager to the latest version from v1.5 or below, follow the link:../resources/upgrade-cert-manager.md#option-c-upgrade-cert-manager-from-versions-15-and-below[cert-manager upgrade docs] to learn how to upgrade cert-manager without needing to perform an uninstall or reinstall of Rancher. Otherwise, follow the <<steps-to-upgrade-rancher,steps to upgrade Rancher>> below.
 
 ==== Steps to Upgrade Rancher
 
@@ -169,15 +164,13 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org
 ----
 
-[NOTE]
-====
+:::note
 
 The above is an example, there may be more values from the previous step that need to be appended.
-====
 
+:::
 
-[TIP]
-====
+:::tip
 
 If you deploy Rancher through the AWS Marketplace, the deployment name is 'rancher-stable'.
 Thus:
@@ -187,8 +180,8 @@ helm upgrade rancher-stable rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ----
-====
 
+:::
 
 Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
 
@@ -213,14 +206,13 @@ For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when u
 
 Log into Rancher to confirm that the upgrade succeeded.
 
-[TIP]
-====
+:::tip
 
 Having network issues following upgrade?
 
 See xref:/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration.adoc[Restoring Cluster Networking].
-====
 
+:::
 
 == Known Upgrade Issues
 

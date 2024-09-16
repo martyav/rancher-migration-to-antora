@@ -1,5 +1,7 @@
 = Workload with NodePort Quick Start
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-workloads/nodeports">++++++</link>++++++</head>+++
+
 === Prerequisite
 
 You have a running cluster with at least 1 node.
@@ -47,6 +49,32 @@ When using a cloud-hosted virtual machine, you may not have access to the port r
 gettingstarted@rancher:~$ curl http://localhost:31568
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Rancher</title>
+    <link rel="icon" href="img/favicon.png">
+    <style>
+      body {
+        background-color: white;
+        text-align: center;
+        padding: 50px;
+        font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+      }
+      button {
+          background-color: #0075a8;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+      }
+
+      #logo {
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
   <body>
     <img id="logo" src="img/rancher-logo.svg" alt="Rancher logo" width=400 />
     <h1>Hello world!</h1>
@@ -105,6 +133,6 @@ Congratulations! You have successfully deployed a workload exposed via a NodePor
 
 When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
 
-* link:../deploy-rancher-manager/aws.adoc#destroying-the-environment[Amazon AWS: Destroying the Environment]
-* link:../deploy-rancher-manager/digitalocean.adoc#destroying-the-environment[DigitalOcean: Destroying the Environment]
-* link:../deploy-rancher-manager/vagrant.adoc#destroying-the-environment[Vagrant: Destroying the Environment]
+* link:../deploy-rancher-manager/aws.md#destroying-the-environment[Amazon AWS: Destroying the Environment]
+* link:../deploy-rancher-manager/digitalocean.md#destroying-the-environment[DigitalOcean: Destroying the Environment]
+* link:../deploy-rancher-manager/vagrant.md#destroying-the-environment[Vagrant: Destroying the Environment]

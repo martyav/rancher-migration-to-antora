@@ -1,6 +1,8 @@
 = Kubernetes Clusters in Rancher Setup
 :description: Provisioning Kubernetes Clusters
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup">++++++</link>++++++</head>+++
+
 Rancher simplifies the creation of clusters by allowing you to create them through the Rancher UI rather than more complex alternatives. Rancher provides multiple options for launching a cluster. Use the option that best fits your use case.
 
 This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the xref:../../../reference-guides/kubernetes-concepts.adoc[concepts] page.
@@ -37,11 +39,11 @@ For more information, refer to the section on xref:../launch-kubernetes-with-ran
 
 Rancher can dynamically provision nodes in infrastructure providers such as Amazon EC2, DigitalOcean, Azure, or vSphere, then install Kubernetes on them.
 
-Using Rancher, you can create pools of nodes based on a link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-templates[node template]. This template defines the parameters used to launch nodes in your cloud providers.
+Using Rancher, you can create pools of nodes based on a link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-templates[node template]. This template defines the parameters used to launch nodes in your cloud providers.
 
 One benefit of using nodes hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically replace it, thus maintaining the expected cluster configuration.
 
-The cloud providers available for creating a node template are decided based on the link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-drivers[node drivers] active in the Rancher UI.
+The cloud providers available for creating a node template are decided based on the link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-drivers[node drivers] active in the Rancher UI.
 
 For more information, refer to the section on xref:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc[nodes hosted by an infrastructure provider]
 

@@ -1,5 +1,7 @@
 = GKE Cluster Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration">++++++</link>++++++</head>+++
+
 == Cluster Location
 
 |===
@@ -102,23 +104,21 @@ The address range assigned to the services in the cluster. Must be a valid CIDR 
 
 _Mutable: no_
 
-[CAUTION]
-====
+:::caution
 
 Private clusters require additional planning and configuration outside of Rancher. Refer to the xref:gke-private-clusters.adoc[private cluster guide].
-====
 
+:::
 
 Assign nodes only internal IP addresses. Private cluster nodes cannot access the public internet unless additional networking steps are taken in GCP.
 
 === Enable Private Endpoint
 
-[CAUTION]
-====
+:::caution
 
 Private clusters require additional planning and configuration outside of Rancher. Refer to the xref:gke-private-clusters.adoc[private cluster guide].
-====
 
+:::
 
 _Mutable: no_
 
@@ -200,19 +200,17 @@ _Mutable: yes_
 
 The node operating system image. For more information for the node image options that GKE offers for each OS, refer to https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#available_node_images[this page.]
 
-[NOTE]
-====
+:::note
 
 The default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the xref:/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/cluster-logging.adoc[legacy logging] implementation in Rancher. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The xref:../../../../integrations-in-rancher/logging/logging.adoc[current logging feature] is compatible with the Container-Optimized OS image.
-====
 
+:::
 
-[NOTE]
-====
+:::note
 
 If selecting "Windows Long Term Service Channel" or "Windows Semi-Annual Channel" for the node pool image type, you must also add at least one Container-Optimized OS or Ubuntu node pool.
-====
 
+:::
 
 === Machine Type
 

@@ -1,6 +1,8 @@
 = Using an External Ceph Driver
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/use-external-ceph-driver">++++++</link>++++++</head>+++
+
 These instructions are about using the external Ceph driver in an RKE2 cluster. If you are using RKE, additional steps are required. For details, refer to <<using-the-ceph-driver-with-rke,this section.>>
 
 == Requirements
@@ -29,12 +31,11 @@ For more information about the `extra_binds` directive, refer to https://rancher
 
 == Installing the ceph-csi driver on an RKE2 cluster
 
-[NOTE]
-====
+:::note
 
 These steps are needed for dynamic RBD provisioning only.
-====
 
+:::
 
 For more information about the `ceph-csi-rbd` chart, refer to https://github.com/ceph/ceph-csi/blob/devel/charts/ceph-csi-rbd/README.md[this page.]
 

@@ -1,5 +1,7 @@
 = Custom Resource Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging/custom-resource-configuration">++++++</link>++++++</head>+++
+
 The following Custom Resource Definitions are used to configure logging:
 
 * xref:flows-and-clusterflows.adoc[Flow and ClusterFlow]

@@ -1,5 +1,7 @@
 = Built-in Dashboards
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards">++++++</link>++++++</head>+++
+
 == Grafana UI
 
 https://grafana.com/grafana/[Grafana] allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data driven culture.
@@ -16,30 +18,27 @@ To create a persistent Grafana dashboard, see xref:../../how-to-guides/advanced-
 
 === Access to Grafana
 
-For information about role-based access control for Grafana, see link:rbac-for-monitoring.adoc#role-based-access-control-for-grafana[this section.]
+For information about role-based access control for Grafana, see link:rbac-for-monitoring.md#role-based-access-control-for-grafana[this section.]
 
 == Alertmanager UI
 
 When `rancher-monitoring` is installed, the Prometheus Alertmanager UI is deployed, allowing you to view your alerts and the current Alertmanager configuration.
 
-[NOTE]
-====
+:::note
 
-This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see link:how-monitoring-works.adoc#3-how-alertmanager-works[How Alertmanager Works.]
-====
+This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see link:how-monitoring-works.md#3-how-alertmanager-works[How Alertmanager Works.]
 
+:::
 
 === Accessing the Alertmanager UI
 
 The Alertmanager UI lets you see the most recently fired alerts.
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 The `rancher-monitoring` application must be installed.
-====
 
+:::
 
 To see the Alertmanager UI,
 

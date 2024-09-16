@@ -1,5 +1,7 @@
 = Uninstall Prometheus Federator
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-alerting-guides/prometheus-federator-guides/uninstall-prometheus-federator">++++++</link>++++++</head>+++
+
 . Click *☰ > Cluster Management*.
 . Go to the cluster that you created and click *Explore*.
 . In the left navigation bar, click *Apps*.

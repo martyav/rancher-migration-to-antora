@@ -1,5 +1,7 @@
 = Pod Security Standards (PSS) & Pod Security Admission (PSA)
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/pod-security-standards">++++++</link>++++++</head>+++
+
 https://kubernetes.io/docs/concepts/security/pod-security-standards/[Pod Security Standards (PSS)] and https://kubernetes.io/docs/concepts/security/pod-security-admission/[Pod Security Admission (PSA)] define security restrictions for a broad set of workloads.
 They became available and were turned on by default in Kubernetes v1.23, and replace https://kubernetes.io/docs/concepts/security/pod-security-policy/[Pod Security Policies (PSP)] in Kubernetes v1.25 and above.
 
@@ -9,11 +11,9 @@ PSS define security levels for workloads. PSAs describe requirements for pod sec
 
 Ensure that you migrate all PSPs to another workload security mechanism. This includes mapping your current PSPs to Pod Security Standards for enforcement with the https://kubernetes.io/docs/concepts/security/pod-security-admission/[PSA controller]. If the PSA controller won't meet all of your organization's needs, we recommend that you use a policy engine, such as https://github.com/open-policy-agent/gatekeeper[OPA Gatekeeper], https://www.kubewarden.io/[Kubewarden], https://kyverno.io/[Kyverno], or https://neuvector.com/[NeuVector]. Refer to the documentation of your policy engine of choice for more information on how to migrate from PSPs.
 
-[CAUTION]
-====
+:::caution
 You must add your new policy enforcement mechanisms _before_ you remove the PodSecurityPolicy objects. If you don't, you may create an opportunity for privilege escalation attacks within the cluster.
-====
-
+:::
 
 === Removing PodSecurityPolicies from Rancher-Maintained Apps & Marketplace Workloads
 
@@ -24,12 +24,9 @@ You must perform the following steps _while still in Kubernetes v1.24_:
 . Configure the PSA controller to suit your needs. You can use one of Rancher's built-in <<pod-security-admission-configuration-templates,PSA Configuration Templates>>, or create a custom template and apply it to the clusters that you are migrating.
 . Map your active PSPs to Pod Security Standards:
  .. See which PSPs are still active in your cluster:
-
-[CAUTION]
-====
+:::caution
 This strategy may miss workloads that aren't currently running, such as CronJobs, workloads currently scaled to zero, or workloads that haven't rolled out yet.
-====
-
+:::
 +
 [,shell]
 ----
@@ -42,12 +39,9 @@ kubectl get pods \
  .. Follow the Kubernetes guide on https://kubernetes.io/docs/reference/access-authn-authz/psp-to-pod-security-standards/[Mapping PSPs to Pod Security Standards] to apply PSSs to your workloads that were relying on PSPs. See https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/[Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission controller] for more details.
 . To remove PSPs from Rancher charts, upgrade the charts to the latest v102.x.y version _before_ you upgrade to Kubernetes v1.25. Make sure that the *Enable PodSecurityPolicies* option is *disabled*. This will remove any PSPs that were installed with previous chart versions.
 
-[IMPORTANT]
-.important
-====
+:::info important
 If you want to upgrade your charts to v102.x.y, but don't plan on upgrading your clusters to Kubernetes v1.25 and moving away from PSPs, make sure that you select the option *Enable PodSecurityPolicies* for each chart that you are upgrading.
-====
-
+:::
 
 === Cleaning Up Releases After a Kubernetes v1.25 Upgrade
 
@@ -81,13 +75,9 @@ You will see output similar to the following:
  Installed plugin: mapkubeapis
 ----
 +
-
-[IMPORTANT]
-.important
-====
+:::info important
  Ensure that the `helm-mapkubeapis` plugin is at least v0.4.1, as older versions _do not_ support removal of resources.
-====
-
+ :::
 
 . Verify that the plugin was correctly installed:
 +
@@ -128,11 +118,9 @@ After you install the `helm-mapkubeapis` plugin, clean up the releases that beca
 You can proceed with your upgrade once any releases that had lingering PSPs are cleaned up. For Rancher-maintained workloads, follow the steps outlined in the <<removing-podsecuritypolicies-from-rancher-maintained-apps--marketplace-workloads,Removing PodSecurityPolicies from Rancher-maintained Apps & Marketplace workloads>> section of this document.
 For workloads not maintained by Rancher, refer to the vendor documentation.
 
-[CAUTION]
-====
+:::caution
 Do not skip this step. Applications incompatible with Kubernetes v1.25 aren't guaranteed to work after a cleanup.
-====
-
+:::
 
 == Pod Security Admission Configuration Templates
 
@@ -140,6 +128,6 @@ Rancher offers PSA configuration templates. These are pre-defined security confi
 
 === Rancher on PSA-restricted Clusters
 
-Rancher system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt Rancher's system namespaces after you assign the template, or else the cluster won't operate correctly. See link:./psa-config-templates.adoc#exempting-required-rancher-namespaces[Pod Security Admission (PSA) Configuration Templates] for more details.
+Rancher system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt Rancher's system namespaces after you assign the template, or else the cluster won't operate correctly. See link:./psa-config-templates.md#exempting-required-rancher-namespaces[Pod Security Admission (PSA) Configuration Templates] for more details.
 
 For a complete file which has all the exemptions you need to run Rancher, please refer to this xref:../../../reference-guides/rancher-security/psa-restricted-exemptions.adoc[sample Admission Configuration].

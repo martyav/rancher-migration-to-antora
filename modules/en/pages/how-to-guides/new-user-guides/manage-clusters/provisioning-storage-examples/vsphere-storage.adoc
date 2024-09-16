@@ -1,6 +1,8 @@
 = VMware vSphere Storage
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/provisioning-storage-examples/vsphere-storage">++++++</link>++++++</head>+++
+
 To provide stateful workloads with VMware vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a PersistentVolumeClaim.
 
 In order to dynamically provision storage in vSphere, the vSphere provider must be enabled. See the following pages for more: xref:../../../new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-out-of-tree-vsphere.adoc[Out-of-tree vSphere] and xref:../../../new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-in-tree-vsphere.adoc[in-tree vSphere].
@@ -11,12 +13,11 @@ In order to provision vSphere volumes in a cluster created with the xref:../../l
 
 === Creating a StorageClass
 
-[TIP]
-====
+:::tip
 
 The following steps can also be performed using the `kubectl` command line tool. See https://kubernetes.io/docs/concepts/storage/persistent-volumes/[Kubernetes documentation on persistent volumes] for details.
-====
 
+:::
 
 . Click *☰ > Cluster Management*.
 . Choose the cluster you want to provide vSphere storage to and click *Exlpore*.

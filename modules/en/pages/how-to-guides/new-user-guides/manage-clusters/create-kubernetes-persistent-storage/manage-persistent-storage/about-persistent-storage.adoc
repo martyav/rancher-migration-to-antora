@@ -1,6 +1,8 @@
 = How Persistent Storage Works
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/about-persistent-storage">++++++</link>++++++</head>+++
+
 A persistent volume (PV) is a piece of storage in the Kubernetes cluster, while a persistent volume claim (PVC) is a request for storage.
 
 There are two ways to use persistent storage in Kubernetes:
@@ -44,13 +46,11 @@ PVs can represent a physical disk or file system that you host on premise, or a 
 
 Creating a persistent volume in Rancher will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 PVs are created at the cluster level, which means that in a multi-tenant cluster, teams with access to separate namespaces could have access to the same PV.
-====
 
+:::
 
 === Binding PVs to PVCs
 

@@ -1,5 +1,7 @@
 = Configure Azure AD
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-azure-ad">++++++</link>++++++</head>+++
+
 == Microsoft Graph API
 
 Microsoft Graph API is now the flow through which you will set up Azure AD. The below sections will assist <<new-user-setup,new users>> in configuring Azure AD with a new instance as well as assist existing Azure app owners in <<migrating-from-azure-ad-graph-api-to-microsoft-graph-api,migrating to the new flow>>.
@@ -10,25 +12,22 @@ The Microsoft Graph API flow in Rancher is constantly evolving. We recommend tha
 
 If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
 
-[NOTE]
-.Notes
-====
+:::note Notes
 
 * Azure AD integration only supports Service Provider initiated logins.
 * Most of this procedure takes place from the https://portal.azure.com/[Microsoft Azure Portal].
-====
 
+:::
 
 ==== Azure Active Directory Configuration Outline
 
 Configuring Rancher to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
 
-[TIP]
-====
+:::tip
 
 Before you start, open two browser tabs: one for Rancher, and one for the Azure portal. This will help with copying and pasting configuration values from the portal to Rancher.
-====
 
+:::
 
 ==== 1. Register Rancher with Azure
 
@@ -43,34 +42,27 @@ image::/img/new-app-registration.png[New App Registration]
  .. Enter a *Name* (something like `Rancher`).
  .. From *Supported account types*, select "Accounts in this organizational directory only (AzureADTest only - Single tenant)" This corresponds to the legacy app registration options.
 +
-
-[NOTE]
-====
+:::note
 +
 In the updated Azure portal, Redirect URIs are synonymous with Reply URLs. In order to use Azure AD with Rancher, you must whitelist Rancher with Azure (previously done through Reply URLs). Therefore, you must ensure to fill in the Redirect URI with your Rancher server URL, to include the verification path as listed below.
 +
-====
-
+:::
 
  .. In the https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url[*Redirect URI*] section, make sure *Web* is selected from the dropdown and enter the URL of your Rancher Server in the text box next to the dropdown. This Rancher server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 +
-
-[TIP]
-====
+:::tip
 +
 You can find your personalized Azure Redirect URI (reply URL) in Rancher on the Azure AD Authentication page (Global View > Authentication > Web).
 +
-====
-
+:::
 
  .. Click *Register*.
 
-[NOTE]
-====
+:::note
 
 It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
-====
 
+:::
 
 ==== 2. Create a new client secret
 
@@ -94,12 +86,11 @@ Note that users won't be able to log in to Rancher if it detects that the applic
 
 Next, set API permissions for Rancher within Azure.
 
-[CAUTION]
-====
+:::caution
 
 Ensure that you set Application permissions, and _not_ Delegated permissions. Otherwise, you won't be able to login to Azure AD.
-====
 
+:::
 
 . From the navigation pane on, select *API permissions*.
 . Click *Add a permission*.
@@ -111,8 +102,7 @@ image::/img/api-permissions.png[Select API Permissions]
 
 image::/img/select-req-permissions.png[Open Required Permissions]
 
-[NOTE]
-====
+:::note
 
 Rancher doesn't validate the permissions you grant to the app in Azure. You're free to try any permissions you want, as long as they allow Rancher to work with AD users and groups.
 
@@ -131,8 +121,8 @@ Here are a few examples of permission combinations that satisfy Rancher's needs:
 * `Directory.Read.All`
 * `User.Read.All` and `GroupMember.Read.All`
 * `User.Read.All` and `Group.Read.All`
-====
 
+:::
 
 ==== 4. Allow Public Client Flows
 
@@ -161,12 +151,11 @@ image::/img/tenant-application-id-secret.png[Standard Endpoint Options]
 
 *For Custom Endpoints:*
 
-[CAUTION]
-====
+:::caution
 
 Custom Endpoints are not tested or fully supported by Rancher.
-====
 
+:::
 
 You'll also need to manually enter the Graph, Token, and Auth Endpoints.
 
@@ -189,14 +178,11 @@ To complete configuration, enter information about your AD instance in the Ranch
 . Click *AzureAD*.
 . Complete the *Configure Azure AD Account* form using the information you copied while completing <<5-copy-azure-application-data,Copy Azure Application Data>>.
 +
-
-[CAUTION]
-====
+:::caution
 +
 The Azure AD account will be granted administrator privileges, since its details will be mapped to the Rancher local principal account. Make sure that this level of privilege is appropriate before you continue.
 +
-====
-
+:::
 +
 *For Standard or China Endpoints:*
 +
@@ -256,12 +242,11 @@ If Rancher is still configured to use the Azure AD Graph API when it is retired,
 
 ==== Updating Endpoints in the Rancher UI
 
-[CAUTION]
-====
+:::caution
 
 Admins should create a xref:../../../new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.adoc[Rancher backup] before they commit to the endpoint migration described below.
-====
 
+:::
 
 . <<3-set-required-permissions-for-rancher,Update>> the permissions of your Azure AD app registration. This is critical.
 . Log into Rancher.
@@ -292,12 +277,11 @@ If you need to roll back your migration, please note the following:
 . Admins are encouraged to use the proper restore process if they want to go back. Please see xref:../../../new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.adoc[backup docs], xref:../../../new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.adoc[restore docs], and xref:../../../../reference-guides/backup-restore-configuration/examples.adoc[examples] for reference.
 . Azure app owners who want to rotate the Application Secret will need to also rotate it in Rancher as Rancher does not automatically update the Application Secret when it is changed in Azure. In Rancher, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
 
-[CAUTION]
-====
+:::caution
 
 If you upgrade to Rancher v2.7.0+ with an existing Azure AD setup, and choose to disable the auth provider, you won't be able to restore the previous setup. You also won't be able to set up Azure AD using the old flow. You'll need to re-register with the new auth flow. Since Rancher now uses the Graph API, users need set up the <<3-set-required-permissions-for-rancher,proper permissions in the Azure portal>>.
-====
 
+:::
 
 ==== Global:
 
@@ -371,14 +355,13 @@ If you upgrade to Rancher v2.7.0+ with an existing Azure AD setup, and choose to
 
 In Rancher v2.9.0 and later, you can filter users' group memberships from Azure AD to reduce the amount of log data generated. If you did not filter group memberships during initial setup, you can still add filters on an existing Azure AD configuration.
 
-[CAUTION]
-====
+:::warning
 
 Filtering out a user group membership affects more than just logging.
 
 Since the filter prevents Rancher from seeing that the user belongs to an excluded group, it also does not see any permissions from that group. This means that excluding a group from the filter can have the side effect of denying users permissions they should have.
-====
 
+:::
 
 . In Rancher, in the top left corner, click *☰ > Users & Authentication*.
 . In the left navigation menu, click *Auth Provider*.

@@ -1,5 +1,7 @@
 = Cluster Autoscaler
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/install-cluster-autoscaler">++++++</link>++++++</head>+++
+
 In this section, you'll learn how to install and use the https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/[Kubernetes cluster-autoscaler] on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
 
 The cluster autoscaler is a tool that automatically adjusts the size of the Kubernetes cluster when one of the following conditions is true:

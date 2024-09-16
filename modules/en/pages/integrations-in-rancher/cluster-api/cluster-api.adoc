@@ -1,6 +1,8 @@
 = Cluster API (CAPI) with Rancher Turtles
 
-https://turtles.docs.rancher.com/[Rancher Turtles] is a xref:../rancher-extensions.adoc[Rancher extension] that manages the lifecycle of provisioned Kubernetes clusters, by providing integration between your Cluster API (CAPI) and Rancher. With Rancher Turtles, you can:
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/cluster-api">++++++</link>++++++</head>+++
+
+https://turtles.docs.rancher.com/[Rancher Turtles] is a https://kubernetes.io/docs/concepts/extend-kubernetes/operator/#operators-in-kubernetes[Kubernetes Operator] that manages the lifecycle of provisioned Kubernetes clusters, by providing integration between your Cluster API (CAPI) and Rancher. With Rancher Turtles, you can:
 
 * Import CAPI clusters into Rancher, by installing the Rancher Cluster Agent in CAPI provisioned clusters.
 * Configure the https://turtles.docs.rancher.com/reference-guides/rancher-turtles-chart/values#cluster-api-operator-values[CAPI Operator].

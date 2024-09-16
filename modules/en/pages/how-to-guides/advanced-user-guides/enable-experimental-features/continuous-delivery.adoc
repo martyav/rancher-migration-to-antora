@@ -1,5 +1,7 @@
 = Continuous Delivery
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/enable-experimental-features/continuous-delivery">++++++</link>++++++</head>+++
+
 xref:../../../integrations-in-rancher/fleet/fleet.adoc[Continuous Delivery with Fleet] comes preinstalled in Rancher and can't be fully disabled. However, the Fleet feature for GitOps continuous delivery may be disabled using the `continuous-delivery` feature flag.
 
 To enable or disable this feature, refer to the instructions on xref:enable-experimental-features.adoc[the main page about enabling experimental features.]

@@ -1,6 +1,8 @@
 = API Keys
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/user-settings/api-keys">++++++</link>++++++</head>+++
+
 == API Keys and User Authentication
 
 If you want to access your Rancher clusters, projects, or other objects using external applications, you can do so using the Rancher API. However, before your application can access the API, you must provide the app with a key used to authenticate with Rancher. You can obtain a key using the Rancher UI.
@@ -14,12 +16,11 @@ API Keys are composed of four components:
 * *Secret Key:* The token's password. For applications that prompt you for two different strings for API authentication, you usually enter the two keys together.
 * *Bearer Token:* The token username and password concatenated together. Use this string for applications that prompt you for one authentication string.
 
-[NOTE]
-====
+:::note
 
 Users may opt to enable xref:../../api/api-tokens.adoc[token hashing].
-====
 
+:::
 
 == Creating an API Key
 
@@ -31,7 +32,7 @@ The API key won't be valid after expiration. Shorter expiration periods are more
 +
 Expiration period is bound by `v3/settings/auth-token-max-ttl-minutes`. If it exceeds the max-ttl, the API key is created with max-ttl as the expiration period.
 +
-A scope limits the API key so that it only works against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you are able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See link:../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.adoc#4-authorized-cluster-endpoint[Authorized Cluster Endpoints] for more information.
+A scope limits the API key so that it only works against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you are able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See link:../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint[Authorized Cluster Endpoints] for more information.
 
 . Click *Create*.
 +

@@ -1,5 +1,7 @@
 = Custom Branding
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/custom-branding">++++++</link>++++++</head>+++
+
 == Prerequisite
 
 You will need to have at least cluster member permissions.
@@ -51,13 +53,11 @@ Links can be created at the top level and multiple links can be grouped together
 
 === Adding a Custom Navigation Link
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 You will need to have at least cluster member or project member permissions.
-====
 
+:::
 
 . Click *☰ > Cluster Management*.
 . On the *Clusters* page, go to the cluster where you would like to add custom navigation links and click *Explore*.

@@ -1,6 +1,8 @@
 = Container Network Interface (CNI) Providers
 :description: Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/faq/container-network-interface-providers">++++++</link>++++++</head>+++
+
 == What is CNI?
 
 CNI (Container Network Interface), a https://cncf.io/[Cloud Native Computing Foundation project], consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of  plugins. CNI concerns itself only with network connectivity of containers and removing allocated resources when the container is deleted.
@@ -72,7 +74,7 @@ Encapsulated traffic is unencrypted by default. Flannel provides two solutions f
 * https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#ipsec[IPSec], which makes use of https://www.strongswan.org/[strongSwan] to establish encrypted IPSec tunnels between Kubernetes workers. It is an experimental backend for encryption.
 * https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#wireguard[WireGuard], which is a more faster-performing alternative to strongSwan.
 
-Kubernetes workers should open UDP port `8472` (VXLAN). See link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.adoc#networking-requirements[the port requirements for user clusters] for more details.
+Kubernetes workers should open UDP port `8472` (VXLAN). See link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md#networking-requirements[the port requirements for user clusters] for more details.
 
 image::/img/flannel-diagram.png[Flannel Diagram]
 
@@ -84,7 +86,7 @@ image::/img/weave-logo.png[Weave Logo]
 
 Weave enables networking and network policy in Kubernetes clusters across the cloud. Additionally, it support encrypting traffic between the peers.
 
-Kubernetes workers should open TCP port `6783` (control port), UDP port `6783` and UDP port `6784` (data ports). See the link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.adoc#networking-requirements[port requirements for user clusters] for more details.
+Kubernetes workers should open TCP port `6783` (control port), UDP port `6783` and UDP port `6784` (data ports). See the link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md#networking-requirements[port requirements for user clusters] for more details.
 
 For more information, see the following pages:
 
@@ -104,18 +106,16 @@ Calico enables networking and network policy in Kubernetes clusters across the c
 
 Calico also provides a stateless IP-in-IP or VXLAN encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
 
-Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. In addition, TCP port `5473` is needed when using Typha. See link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.adoc#networking-requirements[the port requirements for user clusters] for more details.
+Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. In addition, TCP port `5473` is needed when using Typha. See link:../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md#networking-requirements[the port requirements for user clusters] for more details.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. *Note that this issue is resolved in v2.6.4.*
 
 * To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`.
 * There, change the current setting: `+https://raw.githubusercontent.com/rancher/wins/v0.1.3/install.ps1+` to this new setting: `+https://raw.githubusercontent.com/rancher/rke2/master/windows/rke2-install.ps1+`.
-====
 
+:::
 
 image::/img/calico-diagram.svg[Calico Diagram]
 
@@ -223,4 +223,4 @@ Canal is the default CNI network provider. We recommend it for most use cases. I
 
 == How can I configure a CNI network provider?
 
-Please see xref:../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.adoc[Cluster Options] on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a link:../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.adoc#rke-cluster-config-file-reference[Config File] and the options for https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/[Network Plug-ins].
+Please see xref:../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.adoc[Cluster Options] on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a link:../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-cluster-config-file-reference[Config File] and the options for https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/[Network Plug-ins].

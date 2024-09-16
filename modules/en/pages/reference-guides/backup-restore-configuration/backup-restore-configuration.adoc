@@ -1,5 +1,7 @@
 = Rancher Backup Configuration Reference
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/backup-restore-configuration">++++++</link>++++++</head>+++
+
 * xref:backup-configuration.adoc[Backup configuration]
 * xref:restore-configuration.adoc[Restore configuration]
 * xref:storage-configuration.adoc[Storage location configuration]

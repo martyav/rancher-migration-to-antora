@@ -1,5 +1,7 @@
 = Cluster Autoscaler with AWS EC2 Auto Scaling Groups
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups">++++++</link>++++++</head>+++
+
 This guide will show you how to install and use https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/[Kubernetes cluster-autoscaler] on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
 
 We are going to install a Rancher RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`.
@@ -140,7 +142,7 @@ On AWS EC2, we should create a few objects to configure our system. We've define
    }
 ----
  ** IAM role: `K8sMasterRole: [K8sMasterProfile,K8sAutoscalerProfile]`
- ** Security group: `K8sMasterSg` More info at link:../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.adoc#downstream-kubernetes-cluster-nodes[RKE ports (custom nodes tab)]
+ ** Security group: `K8sMasterSg` More info at link:../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.md#downstream-kubernetes-cluster-nodes[RKE ports (custom nodes tab)]
  ** Tags:
 `kubernetes.io/cluster/<clusterID>: owned`
  ** User data: `K8sMasterUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add etcd+controlplane node to the k8s cluster
@@ -199,7 +201,7 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
 ----
 
 * IAM role: `K8sWorkerRole: [K8sWorkerProfile]`
-* Security group: `K8sWorkerSg` More info at link:../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.adoc#downstream-kubernetes-cluster-nodes[RKE ports (custom nodes tab)]
+* Security group: `K8sWorkerSg` More info at link:../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.md#downstream-kubernetes-cluster-nodes[RKE ports (custom nodes tab)]
 * Tags:
  ** `kubernetes.io/cluster/<clusterID>: owned`
  ** `k8s.io/cluster-autoscaler/<clusterName>: true`
@@ -663,12 +665,11 @@ Once the manifest file is prepared, deploy it in the Kubernetes cluster (Rancher
 kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 ----
 
-[NOTE]
-====
+:::note
 
 Cluster-autoscaler deployment can also be set up using https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#manual-configuration[manual configuration]
-====
 
+:::
 
 == Testing
 

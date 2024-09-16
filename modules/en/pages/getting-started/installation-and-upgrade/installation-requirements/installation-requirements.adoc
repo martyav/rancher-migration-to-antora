@@ -1,15 +1,15 @@
 = Installation Requirements
 :description: Learn the node requirements for each node running Rancher server when you’re configuring  Rancher to run either in a Docker or Kubernetes setup
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements">++++++</link>++++++</head>+++
+
 This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 If you install Rancher on a Kubernetes cluster, requirements are different from the xref:../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.adoc[node requirements for downstream user clusters,] which will run your apps and services.
-====
 
+:::
 
 The Rancher UI works best in Firefox or Chromium based browsers (Chrome, Edge, Opera, Brave, etc).
 
@@ -21,7 +21,7 @@ Rancher needs to be installed on a supported Kubernetes version. Consult the htt
 
 === Install Rancher on a Hardened Kubernetes cluster
 
-If you install Rancher on a hardened Kubernetes cluster, check the link:../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.adoc#exempting-required-rancher-namespaces[Exempting Required Rancher Namespaces] section for detailed requirements.
+If you install Rancher on a hardened Kubernetes cluster, check the link:../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md#exempting-required-rancher-namespaces[Exempting Required Rancher Namespaces] section for detailed requirements.
 
 == Operating Systems and Container Runtime Requirements
 
@@ -86,17 +86,15 @@ In particular, requirements on this page are subject to typical use assumptions,
 
 Higher numbers are possible but requirements might be higher. If you have more than 20,000 resources of the same type, loading time of the whole list through the Rancher UI might take several seconds.
 
-[NOTE]
-.Evolution:
-====
+:::note Evolution:
 
 Rancher's codebase evolves, use cases change, and the body of accumulated Rancher experience grows every day.
 
 Hardware requirement recommendations are subject to change over time, as guidelines improve in accuracy and become more concrete.
 
 If you find that your Rancher deployment no longer complies with the listed recommendations, https://rancher.com/contact/[contact Rancher] for a re-evaluation.
-====
 
+:::
 
 === RKE2 Kubernetes
 
@@ -283,12 +281,11 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
-[CAUTION]
-====
+:::caution
 
 If a server containing Rancher has the `X-Frame-Options=DENY` header, some pages in the new Rancher UI will not be able to render after upgrading from the legacy UI. This is because some legacy pages are embedded as iFrames in the new UI.
-====
 
+:::
 
 === Node IP Addresses
 

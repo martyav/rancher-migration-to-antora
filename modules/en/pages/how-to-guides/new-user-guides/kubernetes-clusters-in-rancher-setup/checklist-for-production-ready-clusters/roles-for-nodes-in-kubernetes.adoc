@@ -1,5 +1,7 @@
 = Roles for Nodes in Kubernetes
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/checklist-for-production-ready-clusters/roles-for-nodes-in-kubernetes">++++++</link>++++++</head>+++
+
 This section describes the roles for etcd nodes, controlplane nodes, and worker nodes in Kubernetes, and how the roles work together in a cluster.
 
 This diagram is applicable to Kubernetes clusters xref:../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.adoc[launched with Rancher using RKE.].
@@ -11,23 +13,21 @@ image:/img/clusterdiagram.svg[Cluster diagram] +
 
 Nodes with the `etcd` role run etcd, which is a consistent and highly available key value store used as Kubernetes`' backing store for all cluster data. etcd replicates the data to each node.
 
-[NOTE]
-====
+:::note
 
 Nodes with the `etcd` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
-====
 
+:::
 
 == controlplane
 
 Nodes with the `controlplane` role run the Kubernetes master components (excluding `etcd`, as it's a separate role). See https://kubernetes.io/docs/concepts/overview/components/#master-components[Kubernetes: Master Components] for a detailed list of components.
 
-[NOTE]
-====
+:::note
 
 Nodes with the `controlplane` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
-====
 
+:::
 
 === kube-apiserver
 

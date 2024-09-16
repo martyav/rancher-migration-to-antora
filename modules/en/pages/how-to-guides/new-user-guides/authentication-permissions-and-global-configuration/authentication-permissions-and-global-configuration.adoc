@@ -1,17 +1,18 @@
 = Authentication, Permissions and Global Settings
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration">++++++</link>++++++</head>+++
+
 After installation, the xref:manage-role-based-access-control-rbac/global-permissions.adoc[system administrator] should configure Rancher to configure authentication, authorization, security, default settings, security policies, drivers and global DNS entries.
 
 == First Log In
 
 After you log into Rancher for the first time, Rancher will prompt you for a *Rancher Server URL*.You should set the URL to the main entry point to the Rancher Server. When a load balancer sits in front a Rancher Server cluster, the URL should resolve to the load balancer. The system will automatically try to infer the Rancher Server URL from the IP address or host name of the host running the Rancher Server. This is only correct if you are running a single node Rancher Server installation. In most cases, therefore, you need to set the Rancher Server URL to the correct value yourself.
 
-[WARNING]
-====
+:::danger
 
 After you set the Rancher Server URL, we do not support updating it. Set the URL with extreme care.
-====
 
+:::
 
 == Authentication
 
@@ -63,7 +64,7 @@ Click *☰* in the top left corner, then select *Global Settings*, to view and c
 
 * *Settings*: Various Rancher defaults, such as the minimum length for a user's password (`password-min-length`). You should be cautious when modifying these settings, as invalid values may break your Rancher installation.
 * *Feature Flags*: Rancher features that can be toggled on or off. Some of these flags are for <<enabling-experimental-features,experimental features>>.
-* *Banners*: Elements you can add to fixed locations on the portal. For example, you can use these options to link:custom-branding.adoc#fixed-banners[set a custom banner] for users when they login to Rancher.
+* *Banners*: Elements you can add to fixed locations on the portal. For example, you can use these options to link:custom-branding.md#fixed-banners[set a custom banner] for users when they login to Rancher.
 * *Branding*: Rancher UI design elements that you can xref:custom-branding.adoc[customize]. You can add a custom logo or favicon, and modify UI colors.
 * *Performance*: Performance settings for the Rancher UI, such as incremental resource loading.
 * *Home Links*: Links displayed on the Rancher UI *Home* page. You can modify visibility for the default links or add your own links.
@@ -85,4 +86,4 @@ The following features are available under *Global Configuration*:
 * *Global DNS Entries*
 * *Global DNS Providers*
 
-As these are legacy features, please see the Rancher v2.0--v2.4 docs on xref:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.adoc[catalogs], link:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns.adoc#adding-a-global-dns-entry[global DNS entries], and link:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns.adoc#editing-a-global-dns-provider[global DNS providers] for more details.
+As these are legacy features, please see the Rancher v2.0--v2.4 docs on xref:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.adoc[catalogs], link:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns.md#adding-a-global-dns-entry[global DNS entries], and link:/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns.md#editing-a-global-dns-provider[global DNS providers] for more details.

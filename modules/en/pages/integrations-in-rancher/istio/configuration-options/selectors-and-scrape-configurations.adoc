@@ -1,5 +1,7 @@
 = Selectors and Scrape Configs
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations">++++++</link>++++++</head>+++
+
 The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=false`, which enables monitoring across all namespaces by default.
 
 This ensures you can view traffic, metrics and graphs for resources deployed in a namespace with `istio-injection=enabled` label.
@@ -28,13 +30,11 @@ This option allows you to define which specific services or pods you would like 
 
 The usability tradeoff is that you have to create the service monitor or pod monitor per namespace since you cannot monitor across namespaces.
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 Define a ServiceMonitor or PodMonitor for `<your namespace>`. An example ServiceMonitor is provided below.
-====
 
+:::
 
 . Click *☰ > Cluster Management*.
 . Go to the cluster that you created and click *Explore*.

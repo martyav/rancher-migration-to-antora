@@ -1,6 +1,6 @@
 = Rancher Security Guides
 
-+++<table width="100%">+++<tr style={{verticalAlign: 'top'}}>
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security">++++++</link>++++++</head>++++++<table width="100%">+++<tr style={{verticalAlign: 'top'}}>
 <td width="30%" style={{border: 'none'}}>
 +++<h4>+++Security policy+++</h4>+++
 <p style={{padding: '8px'}}>Rancher Labs supports responsible disclosure, and endeavours to resolve all issues in a reasonable time frame. </p>

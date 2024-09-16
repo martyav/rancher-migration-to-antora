@@ -1,8 +1,10 @@
 = 4. Install Rancher
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha">++++++</link>++++++</head>+++
+
 This section is about how to deploy Rancher for your air gapped environment in a high-availability Kubernetes installation. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
-=== Privileged Access for Rancher
+== Privileged Access for Rancher
 
 When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
@@ -59,12 +61,11 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-[NOTE]
-====
+:::note
 
-If you want terminate SSL/TLS externally, see link:../../installation-references/helm-chart-options.adoc#external-tls-termination[TLS termination on an External Load Balancer].
-====
+If you want terminate SSL/TLS externally, see link:../../installation-references/helm-chart-options.md#external-tls-termination[TLS termination on an External Load Balancer].
 
+:::
 
 |===
 | Configuration | Chart option | Description | Requires cert-manager
@@ -110,14 +111,13 @@ Based on the choice your made in <<2-choose-your-ssl-configuration,2. Choose you
 
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
-[NOTE]
-====
+:::note
 
 Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our xref:../../resources/upgrade-cert-manager.adoc[upgrade cert-manager documentation].
-====
 
+:::
 
-===== 1. Add the cert-manager repo
+===== 1. Add the cert-manager Repo
 
 From a system connected to the internet, add the cert-manager repo to Helm:
 
@@ -127,7 +127,7 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 ----
 
-===== 2. Fetch the cert-manager chart
+===== 2. Fetch the cert-manager Chart
 
 Fetch the latest cert-manager chart available from the https://artifacthub.io/packages/helm/cert-manager/cert-manager[Helm chart repository].
 
@@ -136,7 +136,7 @@ Fetch the latest cert-manager chart available from the https://artifacthub.io/pa
 helm fetch jetstack/cert-manager --version v1.11.0
 ----
 
-===== 3. Retrieve the Cert-Manager CRDs
+===== 3. Retrieve the cert-manager CRDs
 
 Download the required CRD file for cert-manager:
 
@@ -149,160 +149,12 @@ Download the required CRD file for cert-manager:
 
 Copy the fetched charts to a system that has access to the Rancher server cluster to complete installation.
 
-[discrete]
-===== 1. Install Cert-Manager
+==== 1. Install cert-manager
 
 Install cert-manager with the same options you would use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry.
 
-[NOTE]
-====
+:::note
 
 To see options on how to customize the cert-manager install (including for cases where your cluster uses PodSecurityPolicies), see the https://artifacthub.io/packages/helm/cert-manager/cert-manager#configuration[cert-manager docs].
-====
 
-
-.Click to expand
-[%collapsible]
-======
-If you are using self-signed certificates, install cert-manager:
-
-. Create the namespace for cert-manager.
-+
-[,plain]
-----
- kubectl create namespace cert-manager
-----
-
-. Create the cert-manager CustomResourceDefinitions (CRDs).
-+
-[,plain]
-----
- kubectl apply -f cert-manager-crd.yaml
-----
-
-. Install cert-manager.
-+
-[,plain]
-----
- helm install cert-manager ./cert-manager-v1.11.0.tgz \
-     --namespace cert-manager \
-     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller \
-     --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook \
-     --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector \
-     --set startupapicheck.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-ctl
-----
-+
-======
-
-[discrete]
-===== 2. Install Rancher
-
-First, refer to xref:../../resources/add-tls-secrets.adoc[Adding TLS Secrets] to publish the certificate files so Rancher and the ingress controller can use them.
-
-Then, create the namespace for Rancher using kubectl:
-
-[,plain]
-----
-kubectl create namespace cattle-system
-----
-
-Next, install Rancher, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
-
-For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
-
-|===
-| Placeholder | Description
-
-| `<VERSION>`
-| The version number of the output tarball.
-
-| `<RANCHER.YOURDOMAIN.COM>`
-| The DNS name you pointed at your load balancer.
-
-| `<REGISTRY.YOURDOMAIN.COM:PORT>`
-| The DNS name for your private registry.
-
-| `<CERTMANAGER_VERSION>`
-| Cert-manager version running on k8s cluster.
-|===
-
-[,plain]
-----
-   helm install rancher ./rancher-<VERSION>.tgz \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set certmanager.version=<CERTMANAGER_VERSION> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-----
-
-*Optional*: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.8`
-
-==== Option B: Certificates From Files using Kubernetes Secrets
-
-===== 1. Create secrets
-
-Create Kubernetes secrets from your own certificates for Rancher to use. The common name for the cert will need to match the `hostname` option in the command below, or the ingress controller will fail to provision the site for Rancher.
-
-===== 2. Install Rancher
-
-Install Rancher, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
-
-For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
-
-|===
-| Placeholder | Description
-
-| `<VERSION>`
-| The version number of the output tarball.
-
-| `<RANCHER.YOURDOMAIN.COM>`
-| The DNS name you pointed at your load balancer.
-
-| `<REGISTRY.YOURDOMAIN.COM:PORT>`
-| The DNS name for your private registry.
-|===
-
-[,plain]
-----
-   helm install rancher ./rancher-<VERSION>.tgz \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-----
-
-If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
-
-[,plain]
-----
-   helm install rancher ./rancher-<VERSION>.tgz \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set privateCA=true \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-----
-
-The installation is complete.
-
-[CAUTION]
-====
-
-If you don't intend to send telemetry data, opt out xref:../../../../faq/telemetry.adoc[telemetry] during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
-====
-
-
-== Additional Resources
-
-These resources could be helpful when installing Rancher:
-
-* link:../../../../integrations-in-rancher/rancher-extensions.adoc#importing-and-installing-extensions-in-an-air-gapped-environment[Importing and installing extensions in an air-gapped environment]
-* xref:../../installation-references/helm-chart-options.adoc[Rancher Helm chart options]
-* xref:../../resources/add-tls-secrets.adoc[Adding TLS secrets]
-* xref:../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.adoc[Troubleshooting Rancher Kubernetes Installations]
+:::+++<details id="install-cert-manager">++++++<summary>+++Click to expand+++</summary>+++ If you are using self-signed certificates, install cert-manager: 1. Create the namespace for cert-manager. ```plain kubectl create namespace cert-manager ``` 2. Create the cert-manager CustomResourceDefinitions (CRDs). ```plain kubectl apply -f cert-manager-crd.yaml ``` 3. Install cert-manager. ```plain helm install cert-manager ./cert-manager-v1.11.0.tgz \ --namespace cert-manager \ --set image.repository=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/quay.io/jetstack/cert-manager-controller \ --set webhook.image.repository=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/quay.io/jetstack/cert-manager-webhook \ --set cainjector.image.repository=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/quay.io/jetstack/cert-manager-cainjector \ --set startupapicheck.image.repository=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/quay.io/jetstack/cert-manager-ctl ``` </details> #### 2. Install Rancher First, refer to [Adding TLS Secrets](../../resources/add-tls-secrets.md) to publish the certificate files so Rancher and the ingress controller can use them. Then, create the namespace for Rancher using kubectl: ```plain kubectl create namespace cattle-system ``` Next, install Rancher, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools. For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose. Placeholder | Description ------------|------------- `+++<VERSION>+++` | The version number of the output tarball. `+++<RANCHER.YOURDOMAIN.COM>+++` | The DNS name you pointed at your load balancer. `+++<REGISTRY.YOURDOMAIN.COM:PORT>+++` | The DNS name for your private registry. `+++<CERTMANAGER_VERSION>+++` | Cert-manager version running on k8s cluster. ```plain helm install rancher ./rancher-+++<VERSION>+++.tgz \ --namespace cattle-system \ --set hostname=+++<RANCHER.YOURDOMAIN.COM>+++\ --set certmanager.version=+++<CERTMANAGER_VERSION>+++\ --set rancherImage=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/rancher/rancher \ --set systemDefaultRegistry=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++\ # Set a default private registry to be used in Rancher --set useBundledSystemChart=true # Use the packaged Rancher system charts ``` **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.8` #### Option B: Certificates From Files Using Kubernetes Secrets ##### 1. Create Secrets Create Kubernetes secrets from your own certificates for Rancher to use. The common name for the cert will need to match the `hostname` option in the command below, or the ingress controller will fail to provision the site for Rancher. ##### 2. Install Rancher Install Rancher, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools. For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose. | Placeholder | Description | | -------------------------------- | ----------------------------------------------- | | `+++<VERSION>+++` | The version number of the output tarball. | | `+++<RANCHER.YOURDOMAIN.COM>+++` | The DNS name you pointed at your load balancer. | | `+++<REGISTRY.YOURDOMAIN.COM:PORT>+++` | The DNS name for your private registry. | ```plain helm install rancher ./rancher-+++<VERSION>+++.tgz \ --namespace cattle-system \ --set hostname=+++<RANCHER.YOURDOMAIN.COM>+++\ --set rancherImage=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/rancher/rancher \ --set ingress.tls.source=secret \ --set systemDefaultRegistry=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++\ # Set a default private registry to be used in Rancher --set useBundledSystemChart=true # Use the packaged Rancher system charts ``` If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`: ```plain helm install rancher ./rancher-+++<VERSION>+++.tgz \ --namespace cattle-system \ --set hostname=+++<RANCHER.YOURDOMAIN.COM>+++\ --set rancherImage=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++/rancher/rancher \ --set ingress.tls.source=secret \ --set privateCA=true \ --set systemDefaultRegistry=+++<REGISTRY.YOURDOMAIN.COM:PORT>+++\ # Set a default private registry to be used in Rancher --set useBundledSystemChart=true # Use the packaged Rancher system charts ``` The installation is complete. :::caution If you don't intend to send telemetry data, opt out [telemetry](../../../../faq/telemetry.md) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully. ::: ## Additional Resources These resources could be helpful when installing Rancher: - [Importing and installing extensions in an air-gapped environment](../../../../integrations-in-rancher/rancher-extensions.md#importing-and-installing-extensions-in-an-air-gapped-environment) - [Rancher Helm chart options](../../installation-references/helm-chart-options.md) - [Adding TLS secrets](../../resources/add-tls-secrets.md) - [Troubleshooting Rancher Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)+++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</RANCHER.YOURDOMAIN.COM>++++++</VERSION>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</RANCHER.YOURDOMAIN.COM>++++++</VERSION>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</RANCHER.YOURDOMAIN.COM>++++++</VERSION>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</CERTMANAGER_VERSION>++++++</RANCHER.YOURDOMAIN.COM>++++++</VERSION>++++++</CERTMANAGER_VERSION>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</RANCHER.YOURDOMAIN.COM>++++++</VERSION>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</REGISTRY.YOURDOMAIN.COM:PORT>++++++</details>+++

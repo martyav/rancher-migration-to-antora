@@ -1,6 +1,8 @@
 = Rollbacks
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks">++++++</link>++++++</head>+++
+
 This page outlines how to rollback Rancher to a previous version after an upgrade.
 
 Follow the instructions from this page when:
@@ -8,13 +10,12 @@ Follow the instructions from this page when:
 * The running Rancher instance has been upgraded to a newer version after the backup was made.
 * The upstream (local) cluster is the same as where the backup was made.
 
-[TIP]
-====
+:::tip
 
 * Follow these steps to xref:../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.adoc[migrate Rancher].
 * If you need to restore Rancher to its previous state at the same Rancher version, see the xref:../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.adoc[restore documentation].
-====
 
+:::
 
 == Alternative Steps for Special Scenarios
 
@@ -34,12 +35,11 @@ To avoid rollback failure, follow these https://github.com/rancher/rancher-clean
 * `cleanup.sh`: Cleans up the cluster.
 * `verify.sh`:  Checks for any Rancher-related resources in the cluster.
 
-[CAUTION]
-====
+:::caution
 
 There will be downtime while `cleanup.sh` runs, since the script deletes resources created by Rancher.
-====
 
+:::
 
 *Result:* all Rancher-related resources should be cleaned up on the upstream (local) cluster.
 
@@ -48,7 +48,7 @@ See the https://github.com/rancher/rancher-cleanup[rancher/rancher-cleanup repo]
 === Step 2: Restore the Backup and Bring Up Rancher
 
 At this point, there should be no Rancher-related resources on the upstream cluster. Therefore, the next step will be the same as if you were migrating Rancher to a new cluster that contains no Rancher resources.
-/home/btat/rancher-docs/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md
+
 Follow these xref:../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.adoc[instructions] to install the Rancher-Backup Helm chart and restore Rancher to its previous state.
 Please keep in mind that:
 
@@ -63,28 +63,23 @@ Rancher has to be started with the lower/previous version after a rollback.
 
 A restore is performed by creating a Restore custom resource.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 * Follow the instructions from this page for restoring Rancher on the same cluster where it was backed up from. In order to migrate Rancher to a new cluster, follow the steps to xref:../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.adoc[migrate Rancher.]
 * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. As a result, Rancher and its UI will be unavailable until the restore is complete. While the UI is unavailable, use the original cluster kubeconfig with the restore YAML file: `kubectl create -f restore.yaml`.
-====
 
+:::
 
 === Step 1: Create the Restore Custom Resource
 
 . Click *☰ > Cluster Management*.
 . Go to the local cluster and click *Explore*.
 . In the left navigation bar, click menu:Rancher Backups[Restore].
-
-[NOTE]
-====
+ :::note
 +
-If the Rancher Backups app is not visible, you will need to install it from the Charts page in *Apps*. Refer link:../../../how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.adoc#access-charts[here] for more information.
+If the Rancher Backups app is not visible, you will need to install it from the Charts page in *Apps*. Refer link:../../../how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md#access-charts[here] for more information.
 +
-====
-
+:::
 
 . Click *Create*.
 . Create the Restore with the form or with YAML. For help creating the Restore resource using the online form, refer to the xref:../../../reference-guides/backup-restore-configuration/restore-configuration.adoc[configuration reference] and to the xref:../../../reference-guides/backup-restore-configuration/examples.adoc[examples.]
@@ -156,12 +151,11 @@ To roll back to Rancher before v2.5, follow the procedure detailed here: xref:/v
 
 For information on how to roll back Rancher installed with Docker, refer to xref:../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.adoc[this page.]
 
-[NOTE]
-====
+:::note
 
 Managed clusters are authoritative for their state. This means restoring the Rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
-====
 
+:::
 
 == Rolling Back to Rancher v2.0-v2.1
 

@@ -1,5 +1,7 @@
 = Rancher Webhook
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-webhook">++++++</link>++++++</head>+++
+
 Rancher-Webhook is an essential component of Rancher that works in conjunction with Kubernetes to enhance security and enable critical features for Rancher-managed clusters.
 
 It integrates with Kubernetes' extensible admission controllers, as described in the https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/[Kubernetes documentation], which allows Rancher-Webhook to inspect specific requests sent to the Kubernetes API server, and add custom validations and mutations to the requests that are specific to Rancher. Rancher-Webhook manages the resources to be validated using the `rancher.cattle.io` `ValidatingWebhookConfiguration` and the `rancher.cattle.io` `MutatingWebhookConfiguration` objects, and will override any manual edits.
@@ -40,12 +42,11 @@ You can find an in-progress list of the resources that the webhook validates in 
 
 Sometimes, you must bypass Rancher's webhook validation to perform emergency restore operations or fix other critical issues. The bypass operation is exhaustive, meaning no webhook validations or mutations apply when you use it. It is not possible to bypass some validations or mutations and have others still apply - they are either all bypassed or all active.
 
-[WARNING]
-====
+:::danger
 
 Rancher's webhook provides critical security protections. Bypassing the webhook should only be done by administrators in specific scenarios, after all other options have been exhausted. In addition, permission to bypass the webhook should be carefully controlled, and never given to users who are not admins.
-====
 
+:::
 
 To bypass the webhook, impersonate both the `rancher-webhook-sudo` service account and the `system:masters` group (both are required):
 

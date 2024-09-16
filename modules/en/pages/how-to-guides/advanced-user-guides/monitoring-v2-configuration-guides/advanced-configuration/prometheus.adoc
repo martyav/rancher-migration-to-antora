@@ -1,13 +1,14 @@
 = Prometheus Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus">++++++</link>++++++</head>+++
+
 It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.
 
-[NOTE]
-====
+:::note
 
 This section assumes familiarity with how monitoring components work together. For more information, see xref:../../../../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.adoc[this section.]
-====
 
+:::
 
 == About the Prometheus Custom Resource
 

@@ -1,3 +1,5 @@
 = CLI with Rancher
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cli-with-rancher">++++++</link>++++++</head>+++
+
 Interact with Rancher using command line interface (CLI) tools from your workstation. The following docs will describe the xref:rancher-cli.adoc[Rancher CLI] and xref:kubectl-utility.adoc[kubectl Utility].

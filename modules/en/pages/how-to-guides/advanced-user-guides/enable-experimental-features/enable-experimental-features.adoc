@@ -1,5 +1,7 @@
 = Enabling Experimental Features
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/enable-experimental-features">++++++</link>++++++</head>+++
+
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an xref:unsupported-storage-drivers.adoc[unsupported storage type] outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in three ways:
@@ -25,12 +27,11 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 
 === Enabling Features for Kubernetes Installs
 
-[NOTE]
-====
+:::note
 
 Values set from the Rancher API will override the value passed in through the command line.
-====
 
+:::
 
 When installing Rancher with a Helm chart, use the `--set` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
@@ -44,12 +45,11 @@ helm install rancher rancher-latest/rancher \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ----
 
-[NOTE]
-====
+:::note
 
 If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
-====
 
+:::
 
 === Enabling Features for Air Gap Installs
 

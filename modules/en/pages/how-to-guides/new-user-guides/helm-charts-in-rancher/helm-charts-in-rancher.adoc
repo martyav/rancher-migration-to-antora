@@ -1,6 +1,8 @@
 = Helm Charts and Apps
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher">++++++</link>++++++</head>+++
+
 In this section, you'll learn how to manage Helm chart repositories and apps in Rancher.
 
 == How Helm Charts Work in Rancher
@@ -117,12 +119,11 @@ The *Charts* page contains all Rancher, Partner, and Custom charts. You can filt
 
 All three types of charts are deployed and managed in the same way.
 
-[NOTE]
-====
+:::note
 
 Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) continue to be managed only by the Cluster Manager, and apps managed with *Apps* in the new UI must be managed only by *Apps*.
-====
 
+:::
 
 To access the *Charts* page:
 
@@ -194,9 +195,7 @@ To add a private CA to Helm chart repositories, you must add a base64 encoded co
     [...]
 ----
 
-[NOTE]
-.Helm chart repositories with authentication
-====
+:::note Helm chart repositories with authentication
 
 The Repo.Spec contains a `disableSameOriginCheck` value. This value allows you to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories, such as those that have redirects to a different origin URL.
 
@@ -209,17 +208,16 @@ spec:
   disableSameOriginCheck: true
 [...]
 ----
-====
 
+:::
 
 === Add Custom OCI Chart Repositories
 
-[CAUTION]
-====
+:::caution
 
 This feature is currently experimental and is not officially supported in Rancher.
-====
 
+:::
 
 Helm v3 introduced storing Helm charts as https://opencontainers.org/about/overview/[Open Container Initiative (OCI)] artifacts in container registries. With Rancher v2.9.0, you can add https://helm.sh/docs/topics/registries/[OCI-based Helm chart repositories] alongside HTTP-based and Git-based repositories. This means you can deploy apps that are stored as OCI artifacts. For more information, see xref:./oci-repositories.adoc[Using OCI Helm Chart Repositories].
 
@@ -242,7 +240,7 @@ To refresh a chart repository:
 
 Non-Airgap Rancher installations upon refresh will reflect any chart repository changes immediately and you will see the *State* field for updated repositories move from `In Progress` to `Active` once the action is completed.
 
-Airgap installations where Rancher is configured to use the packaged copy of Helm system charts (link:../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.adoc#helm-chart-options-for-air-gap-installations[`useBundledSystemChart=true`]) will only refer to the https://github.com/rancher/system-charts[system-chart] repository that comes bundled and will not be able to be refreshed or synced.
+Airgap installations where Rancher is configured to use the packaged copy of Helm system charts (link:../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md#helm-chart-options-for-air-gap-installations[`useBundledSystemChart=true`]) will only refer to the https://github.com/rancher/system-charts[system-chart] repository that comes bundled and will not be able to be refreshed or synced.
 
 == Deploy and Upgrade Charts
 
@@ -261,16 +259,15 @@ After installing a chart, you can view it by clicking menu:Apps[Installed Apps] 
 
 Most Rancher tools have additional pages located in the toolbar below the *Apps* section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
 
-[CAUTION]
-====
+:::caution
 
 If you are upgrading your chart using *Customize Helm options before upgrade*, and your chart contains immutable fields, using the `--force` option may result in errors. This is because some objects in Kubernetes can't be changed after they're created. To prevent this error:
 
 * Use the default upgrade option (i.e don't use `--force`).
 * Uninstall the existing chart and install the upgraded chart.
 * Delete the resources with immutable fields from the cluster before performing a forced upgrade.
-====
 
+:::
 
 === Legacy Apps
 

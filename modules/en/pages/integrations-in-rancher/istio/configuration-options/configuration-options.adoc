@@ -1,5 +1,7 @@
 = Configuration Options
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/istio/configuration-options">++++++</link>++++++</head>+++
+
 === Egress Support
 
 By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the <<overlay-file,overlay file>>.

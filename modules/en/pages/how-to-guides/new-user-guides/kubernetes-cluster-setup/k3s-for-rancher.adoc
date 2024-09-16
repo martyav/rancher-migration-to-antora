@@ -1,20 +1,20 @@
 = Setting up a High-availability K3s Kubernetes Cluster for Rancher
 
-This section describes how to install a Kubernetes cluster according to the link:../../../reference-guides/rancher-manager-architecture/architecture-recommendations.adoc#environment-for-kubernetes-installations[best practices for the Rancher server environment.]
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher">++++++</link>++++++</head>+++
+
+This section describes how to install a Kubernetes cluster according to the link:../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations[best practices for the Rancher server environment.]
 
 For systems without direct internet access, refer to the air gap installation instructions.
 
-[TIP]
-.Single-node Installation Tip:
-====
+:::tip Single-node Installation Tip:
 
 In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
 
 To set up a single-node K3s cluster, run the Rancher server installation command on just one node instead of two nodes.
 
 In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
-====
 
+:::
 
 == Prerequisites
 
@@ -40,14 +40,11 @@ When running the command to start the K3s Kubernetes API server, you will pass i
 +
 Where `<DATASTORE_ENDPOINT>` is the connection URI for your datastore. For example, `mysql://username:password@tcp(hostname:3306)/database-name` if you're using MySQL. Valid datastores include  etcd, MySQL, PostgreSQL, or SQLite (default).
 +
-
-[NOTE]
-====
+:::note
 +
 The datastore endpoint can also be passed in using the environment variable `$K3S_DATASTORE_ENDPOINT`.
 +
-====
-
+:::
 
 . Get main server node token:
 +

@@ -1,7 +1,9 @@
 = Managing Node Templates
 :experimental:
 
-When you provision a cluster xref:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc[hosted by an infrastructure provider], link:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-templates[node templates] are used to provision the cluster nodes. These templates use Docker Machine configuration options to define an operating system image and settings/parameters for the node. You can create node templates in two contexts:
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/user-settings/manage-node-templates">++++++</link>++++++</head>+++
+
+When you provision a cluster xref:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc[hosted by an infrastructure provider], link:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-templates[node templates] are used to provision the cluster nodes. These templates use Docker Machine configuration options to define an operating system image and settings/parameters for the node. You can create node templates in two contexts:
 
 * While xref:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc[provisioning a node pool cluster].
 * At any time, from your xref:user-settings.adoc[user settings].
@@ -23,14 +25,11 @@ When you create a node template, it is bound to your user profile. Node template
 . Click menu:RKE1 Configuration[Node Templates].
 . Choose the node template that you want to edit and click the *⋮ > Edit*.
 +
-
-[NOTE]
-====
+:::note
 +
-The default `active` xref:../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.adoc[node drivers] and any node driver, that has fields marked as `password`, are required to use link:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#cloud-credentials[cloud credentials].
+The default `active` xref:../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.adoc[node drivers] and any node driver, that has fields marked as `password`, are required to use link:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#cloud-credentials[cloud credentials].
 +
-====
-
+:::
 
 . Edit the required information and click *Save*.
 

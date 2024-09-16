@@ -2,6 +2,8 @@
 :description: Learn about the container image registry and Kubernetes registry, their use cases, and how to use a private registry with the Rancher UI
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries">++++++</link>++++++</head>+++
+
 Registries are Kubernetes secrets containing credentials used to authenticate with https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/[private container registries].
 
 The word "registry" can mean two things, depending on whether it is used to refer to a container or Kubernetes registry:
@@ -15,9 +17,7 @@ Currently, deployments pull the private registry credentials automatically only 
 
 == Creating a Registry in Namespaces
 
-[NOTE]
-.Prerequisite:
-====
+:::note Prerequisite:
 
 You must have an available private registry already deployed.
 
@@ -26,8 +26,8 @@ If you need to create a private registry, refer to the documentation pages for y
 * https://github.com/containerd/containerd/blob/main/docs/cri/config.md#registry-configuration[Containerd].
  ** https://github.com/containerd/nerdctl/blob/main/docs/registry.md[Nerdctl commands and managed registry services].
 * https://docs.docker.com/registry/deploying/[Docker].
-====
 
+:::
 
 . In the upper left corner, click *☰ > Cluster Management*.
 . Go to the cluster where you want to add a registry and click *Explore*.
@@ -36,14 +36,11 @@ If you need to create a private registry, refer to the documentation pages for y
 . Click *Registry*.
 . Enter a *Name* for the registry.
 +
-
-[NOTE]
-====
+:::note
 +
 Kubernetes classifies secrets, certificates, and registries all as https://kubernetes.io/docs/concepts/configuration/secret/[secrets], and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
 +
-====
-
+:::
 
 . Select a namespace for the registry.
 . Select the website that hosts your private registry. Then enter credentials that authenticate with the registry. For example, if you use Docker Hub, provide your Docker Hub username and password.
@@ -57,9 +54,7 @@ Kubernetes classifies secrets, certificates, and registries all as https://kuber
 
 == Creating a Registry in Projects
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 You must have an available private registry already deployed.
 
@@ -68,8 +63,8 @@ If you need to create a private registry, refer to the documentation pages for y
 * https://github.com/containerd/containerd/blob/main/docs/cri/config.md#registry-configuration[Containerd].
  ** https://github.com/containerd/nerdctl/blob/main/docs/registry.md[Nerdctl commands and managed registry services].
 * https://docs.docker.com/registry/deploying/[Docker].
-====
 
+:::
 
 Before v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the Rancher UI was updated to reflect this new functionality. However, you may still create a project-scoped registry if desired. Use the following steps to do so:
 
@@ -84,14 +79,11 @@ Before v2.6, secrets were required to be in a project scope. Projects are no lon
 . In the top navigation bar, filter to see only one project.
 . Enter a *Name* for the registry.
 +
-
-[NOTE]
-====
+:::note
 +
 Kubernetes classifies secrets, certificates, and registries all as https://kubernetes.io/docs/concepts/configuration/secret/[secrets], and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
 +
-====
-
+:::
 
 . Select a namespace for the registry.
 . Select the website that hosts your private registry. Then enter credentials that authenticate with the registry. For example, if you use Docker Hub, provide your Docker Hub username and password.
@@ -103,12 +95,11 @@ Kubernetes classifies secrets, certificates, and registries all as https://kuber
 * You can view the secret in the Rancher UI by clicking either menu:Storage[Secrets] or menu:More Resources[Core > Secrets].
 * Any workload that you create in the Rancher UI will have the credentials to access the registry if the workload is within the registry's scope.
 
-[NOTE]
-====
+:::note
 
 Project-scoped registries on the local cluster are only visible when a single project is selected.
-====
 
+:::
 
 == Using a Private Registry
 

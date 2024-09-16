@@ -1,12 +1,13 @@
 = Configuring a Global Default Private Registry
 
-[NOTE]
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry">++++++</link>++++++</head>+++
+
+:::note
 This page describes how to configure a global default private registry from the Rancher UI, after Rancher is already installed.
 
 For instructions on how to set up a private registry during Rancher installation, refer to the xref:../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.adoc[air-gapped installation guide].
-====
 
+:::
 
 A private registry is a private, consistent, and centralized source of truth for the container images in your clusters. You can use a private container image registry to share custom base images within your organization.
 

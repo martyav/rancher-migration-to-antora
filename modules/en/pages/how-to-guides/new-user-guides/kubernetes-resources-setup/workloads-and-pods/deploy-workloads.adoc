@@ -1,6 +1,8 @@
 = Deploying Workloads
 :description: Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads">++++++</link>++++++</head>+++
+
 Deploy a workload to run an application in one or more containers.
 
 . In the upper left corner, click *☰ > Cluster Management*.
@@ -12,7 +14,7 @@ Deploy a workload to run an application in one or more containers.
 . Enter a *Name* for the workload.
 . From the *Container Image* field, enter the name of the Docker image that you want to deploy to the project, optionally prefacing it with the registry host (e.g. `quay.io`, `registry.gitlab.com`, etc.). During deployment, Rancher pulls this image from the specified public or private registry. If no registry host is provided, Rancher will pull the image from https://hub.docker.com/explore/[Docker Hub]. Enter the name exactly as it appears in the registry server, including any required path, and optionally including the desired tag (e.g. `registry.gitlab.com/user/path/image:tag`). If no tag is provided, the `latest` tag will be automatically used.
 . Either select an existing namespace, or click *Add to a new namespace* and enter a new namespace.
-. Click *Add Port* to enter a port mapping, which enables access to the application inside and outside of the cluster . For more information, see link:workloads-and-pods.adoc#services[Services].
+. Click *Add Port* to enter a port mapping, which enables access to the application inside and outside of the cluster . For more information, see link:workloads-and-pods.md#services[Services].
 . Configure the remaining options:
  ** *Environment Variables*
 +
@@ -29,18 +31,14 @@ When you are deploying a Stateful Set, you should use a Volume Claim Template wh
  ** *Scaling/Upgrade Policy*
 
 +
-
-[NOTE]
-.Amazon Note for Volumes:
-====
+:::note Amazon Note for Volumes:
 +
 To mount an Amazon EBS volume:
  ** In https://aws.amazon.com/[Amazon AWS], the nodes must be in the same Availability Zone and possess IAM permissions to attach/unattach volumes.
  ** The cluster must be using the https://github.com/kubernetes/website/blob/release-1.18/content/en/docs/concepts/cluster-administration/cloud-providers.md#aws[AWS cloud provider] option. For more information on enabling this option see xref:../../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.adoc[Creating an Amazon EC2 Cluster] or xref:../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.adoc[Creating a Custom Cluster].
 
 +
-====
-
+:::
 . Click *Show Advanced Options* and configure:
  ** *Command*
  ** *Networking*

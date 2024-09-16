@@ -1,5 +1,7 @@
 = Contributing to Rancher
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/contribute-to-rancher">++++++</link>++++++</head>+++
+
 Learn about the repositories used for Rancher and Rancher docs, how to build Rancher repositories, and what information to include when you file an issue.
 
 For more detailed information on how to contribute to the development of Rancher projects, refer to the https://github.com/rancher/rancher/wiki[Rancher Developer Wiki]. The wiki has resources on many topics, including the following:
@@ -97,20 +99,17 @@ If you can't find anything related to your issue, contact us by https://github.c
 
 Please follow this checklist when filing an issue which will helps us investigate and fix the issue. More info means more data we can use to determine what is causing the issue or what might be related to the issue.
 
-[NOTE]
-====
+:::note
 
 For large amounts of data, please use https://gist.github.com/[GitHub Gist] or similar and link the created resource in the issue.
-====
 
+:::
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 Please remove any sensitive data as it will be publicly viewable.
-====
 
+:::
 
 * *Resources:* Provide as much as detail as possible on the used resources. As the source of the issue can be many things, including as much of detail as possible helps to determine the root cause. See some examples below:
  ** *Hosts:* What specifications does the host have, like CPU/memory/disk, what cloud does it happen on, what Amazon Machine Image are you using, what DigitalOcean droplet are you using, what image are you provisioning that we can rebuild or use when we try to reproduce
@@ -134,14 +133,11 @@ Please remove any sensitive data as it will be publicly viewable.
   *** Kubernetes install using `kubectl`
 
 +
-
-[NOTE]
-====
+:::note
 +
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if Rancher is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 +
-====
-
+:::
 +
 ----
   kubectl -n cattle-system \
@@ -160,14 +156,11 @@ Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG
   *** Kubernetes Install with RKE Add-On
 
 +
-
-[NOTE]
-====
+:::note
 +
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if the Rancher server is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 +
-====
-
+:::
 +
 ----
   kubectl -n cattle-system \

@@ -1,5 +1,7 @@
 = About rancher-selinux
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux">++++++</link>++++++</head>+++
+
 To allow Rancher to work with SELinux, some functionality has to be manually enabled for the SELinux nodes. To help with that, Rancher provides a SELinux RPM.
 
 The `rancher-selinux` RPM only contains policies for the https://github.com/rancher/charts/tree/dev-v2.5/charts/rancher-logging[rancher-logging application.]
@@ -8,13 +10,11 @@ The `rancher-selinux` GitHub repository is https://github.com/rancher/rancher-se
 
 == Installing the rancher-selinux RPM
 
-[NOTE]
-.Requirement:
-====
+:::note Requirement:
 
 The rancher-selinux RPM was tested with CentOS 7, 8 and 9.
-====
 
+:::
 
 === 1. Set up the yum repo
 
@@ -69,13 +69,11 @@ yum -y install rancher-selinux
 
 == Configuring the Logging Application to Work with SELinux
 
-[NOTE]
-.Requirement:
-====
+:::note Requirement:
 
 Logging v2 was tested with SELinux on RHEL/CentOS 7, 8 and 9.
-====
 
+:::
 
 Applications do not automatically work once the `rancher-selinux` RPM is installed on the host. They need to be configured to run in an allowed SELinux container domain provided by the RPM.
 

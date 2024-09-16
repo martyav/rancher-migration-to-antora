@@ -1,6 +1,8 @@
 = Monitoring and Alerting
 :description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/monitoring-and-alerting">++++++</link>++++++</head>+++
+
 The `rancher-monitoring` application can quickly deploy leading open-source monitoring and alerting solutions onto your cluster.
 
 Introduced in Rancher v2.5, the application is powered by https://prometheus.io/[Prometheus], https://grafana.com/grafana/[Grafana],  https://prometheus.io/docs/alerting/latest/alertmanager/[Alertmanager], the https://github.com/prometheus-operator/prometheus-operator[Prometheus Operator], and the https://github.com/DirectXMan12/k8s-prometheus-adapter[Prometheus adapter.]
@@ -42,22 +44,21 @@ These default exporters automatically scrape metrics for CPU and memory from all
 
 === Default Alerts
 
-The monitoring application deploys some alerts by default. To see the default alerts, go to the link:built-in-dashboards.adoc#alertmanager-ui[Alertmanager UI] and click *Expand all groups.*
+The monitoring application deploys some alerts by default. To see the default alerts, go to the link:built-in-dashboards.md#alertmanager-ui[Alertmanager UI] and click *Expand all groups.*
 
 === Components Exposed in the Rancher UI
 
-For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see link:how-monitoring-works.adoc#components-exposed-in-the-rancher-ui[this section.]
+For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see link:how-monitoring-works.md#components-exposed-in-the-rancher-ui[this section.]
 
 == Role-based Access Control
 
 For more information on configuring access to monitoring, see xref:rbac-for-monitoring.adoc[this page.]
 
-[NOTE]
-====
+:::note
 
-Rancher and Project read permissions don't necessarily apply to monitoring resources. See link:rbac-for-monitoring.adoc#additional-monitoring-clusterroles[monitoring-ui-view] for more details.
-====
+Rancher and Project read permissions don't necessarily apply to monitoring resources. See link:rbac-for-monitoring.md#additional-monitoring-clusterroles[monitoring-ui-view] for more details.
 
+:::
 
 == Guides
 

@@ -1,5 +1,7 @@
 = Kubernetes Components
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/kubernetes-components">++++++</link>++++++</head>+++
+
 The commands and steps listed in this section apply to the core Kubernetes components on xref:../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.adoc[Rancher Launched Kubernetes] clusters.
 
 This section includes troubleshooting tips in the following categories:

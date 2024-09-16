@@ -1,8 +1,10 @@
 = Role-Based Access Control
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/prometheus-federator/rbac">++++++</link>++++++</head>+++
+
 This section describes the expectations for Role-Based Access Control (RBAC) for Prometheus Federator.
 
-As described in the section on link:prometheus-federator.adoc#namespaces[namespaces], Prometheus Federator expects that Project Owners, Project Members, and other users in the cluster with Project-level permissions (e.g. permissions in a certain set of namespaces identified by a single label selector) have minimal permissions in any namespaces except the Project Registration Namespace (which is imported into the project by default) and those that already comprise their projects. Therefore, in order to allow Project Owners to assign specific chart permissions to other users in their Project namespaces, the Helm Project Operator will automatically watch the following bindings:
+As described in the section on link:prometheus-federator.md#namespaces[namespaces], Prometheus Federator expects that Project Owners, Project Members, and other users in the cluster with Project-level permissions (e.g. permissions in a certain set of namespaces identified by a single label selector) have minimal permissions in any namespaces except the Project Registration Namespace (which is imported into the project by default) and those that already comprise their projects. Therefore, in order to allow Project Owners to assign specific chart permissions to other users in their Project namespaces, the Helm Project Operator will automatically watch the following bindings:
 
 * ClusterRoleBindings
 * RoleBindings in the Project Release Namespace
@@ -15,12 +17,11 @@ On observing a change to one of those types of bindings, the Helm Project Operat
 
 By default, these roleRefs will correspond to `admin`, `edit`, and `view` respectively, which are the https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles[default Kubernetes user-facing roles].
 
-[NOTE]
-====
+:::note
 
 For Rancher RBAC users, these https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles[default Kubernetes user-facing roles] directly correlate to the `Project Owner`, `Project Member`, and `Read-Only` default Project Role Templates.
-====
 
+:::
 
 If the `roleRef` matches, the Helm Project Operator will filter the `subjects` of the binding for all Users and Groups and use that to automatically construct a RoleBinding for each Role in the Project Release Namespace with the same name as the role and the following labels:
 

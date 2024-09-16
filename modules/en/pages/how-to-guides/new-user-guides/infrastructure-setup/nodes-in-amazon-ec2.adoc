@@ -1,6 +1,8 @@
 = Setting up Nodes in Amazon EC2
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2">++++++</link>++++++</head>+++
+
 In this tutorial, you will learn one way to set up Linux nodes for the Rancher management server. These nodes will fulfill the node requirements for xref:../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.adoc[OS, Docker, hardware, and networking.]
 
 If the Rancher server will be installed on an RKE Kubernetes cluster, you should provision three instances.
@@ -12,7 +14,7 @@ If the Rancher server is installed in a single Docker container, you only need o
 === 1. Optional Preparation
 
 * *Create IAM role:* To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this xref:../kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.adoc[page.]
-* *Create security group:* We also recommend setting up a security group for the Rancher nodes that complies with the link:../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.adoc#port-requirements[port requirements for Rancher nodes.]
+* *Create security group:* We also recommend setting up a security group for the Rancher nodes that complies with the link:../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md#port-requirements[port requirements for Rancher nodes.]
 
 === 2. Provision Instances
 
@@ -25,7 +27,7 @@ If the Rancher server is installed in a single Docker container, you only need o
 . In the *Number of instances* field, enter the number of instances. A high-availability K3s cluster requires only two instances, while a high-availability RKE cluster requires three instances.
 . Optional: If you created an IAM role for Rancher to manipulate AWS resources, select the new IAM role in the *IAM role* field.
 . Click *Next: Add Storage,* *Next: Add Tags,* and *Next: Configure Security Group*.
-. In *Step 6: Configure Security Group,* select a security group that complies with the link:../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.adoc#port-requirements[port requirements] for Rancher nodes.
+. In *Step 6: Configure Security Group,* select a security group that complies with the link:../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md#port-requirements[port requirements] for Rancher nodes.
 . Click *Review and Launch*.
 . Click *Launch*.
 . Choose a new or existing key pair that you will use to connect to your instance later. If you are using an existing key pair, make sure you already have access to the private key.
@@ -33,12 +35,11 @@ If the Rancher server is installed in a single Docker container, you only need o
 
 *Result:* You have created Rancher nodes that satisfy the requirements for OS, hardware, and networking.
 
-[NOTE]
-====
+:::note
 
 If the nodes are being used for an RKE Kubernetes cluster, install Docker on each node in the next step. For a K3s Kubernetes cluster, the nodes are now ready to install K3s.
-====
 
+:::
 
 === 3. Install Docker and Create User for RKE Kubernetes Cluster Nodes
 
@@ -64,12 +65,11 @@ sudo usermod -aG docker ubuntu
 
 . Repeat these steps so that Docker is installed on each node that will eventually run the Rancher management server.
 
-[TIP]
-====
+:::tip
 
 To find out whether a script is available for installing a certain Docker version, refer to this https://github.com/rancher/install-docker[GitHub repository,] which contains all of Rancher's Docker installation scripts.
-====
 
+:::
 
 *Result:* You have set up Rancher server nodes that fulfill all the node requirements for OS, Docker, hardware and networking.
 

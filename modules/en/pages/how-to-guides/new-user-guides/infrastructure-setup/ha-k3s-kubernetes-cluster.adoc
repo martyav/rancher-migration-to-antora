@@ -1,18 +1,18 @@
 = Setting up Infrastructure for a High Availability K3s Kubernetes Cluster
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster">++++++</link>++++++</head>+++
+
 This tutorial is intended to help you provision the underlying infrastructure for a Rancher management server.
 
 The recommended infrastructure for the Rancher-only Kubernetes cluster differs depending on whether Rancher will be installed on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
 
 For more information about each installation option, refer to xref:../../../getting-started/installation-and-upgrade/installation-and-upgrade.adoc[this page.]
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 These nodes must be in the same region. You may place these servers in separate availability zones (datacenter).
-====
 
+:::
 
 To install the Rancher management server on a high-availability K3s cluster, we recommend setting up the following infrastructure:
 
@@ -50,18 +50,17 @@ When Rancher is installed (also in a later step), the Rancher system creates an 
 For your implementation, consider if you want or need to use a Layer-4 or Layer-7 load balancer:
 
 * *A layer-4 load balancer* is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the Rancher management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the Rancher deployment.
-* *A layer-7 load balancer* is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the link:../../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.adoc#external-tls-termination[Rancher Helm chart options.]
+* *A layer-7 load balancer* is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the link:../../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.md#external-tls-termination[Rancher Helm chart options.]
 
 For an example showing how to set up an NGINX load balancer, refer to xref:nginx-load-balancer.adoc[this page.]
 
 For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to xref:amazon-elb-load-balancer.adoc[this page.]
 
-[CAUTION]
-====
+:::caution
 
 Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
-====
 
+:::
 
 === 4. Set up the DNS Record
 

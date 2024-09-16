@@ -1,5 +1,7 @@
 = Prometheus Federator Guides
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-alerting-guides/prometheus-federator-guides">++++++</link>++++++</head>+++
+
 * xref:enable-prometheus-federator.adoc[Enable Prometheus Operator]
 * xref:uninstall-prometheus-federator.adoc[Uninstall Prometheus Operator]
 * xref:customize-grafana-dashboards.adoc[Customize Grafana Dashboards]

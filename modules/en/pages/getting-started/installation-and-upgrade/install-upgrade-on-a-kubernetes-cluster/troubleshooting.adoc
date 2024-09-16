@@ -1,5 +1,7 @@
 = Troubleshooting the Rancher Server Kubernetes Cluster
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting">++++++</link>++++++</head>+++
+
 This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.
 
 === Relevant Namespaces
@@ -68,12 +70,11 @@ kubectl -n cattle-system logs -f rancher-784d94f59b-vgqzh
 
 Use your browser to check the certificate details. If it says the Common Name is "Kubernetes Ingress Controller Fake Certificate", something may have gone wrong with reading or issuing your SSL cert.
 
-[NOTE]
-====
+:::note
 
 If you are using LetsEncrypt to issue certs, it can sometimes take a few minutes to issue the cert.
-====
 
+:::
 
 === Checking for issues with cert-manager issued certs (Rancher Generated or LetsEncrypt)
 

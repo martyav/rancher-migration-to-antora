@@ -1,19 +1,20 @@
 = Monitoring Configuration Guides
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides">++++++</link>++++++</head>+++
+
 This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.
 
 For information on configuring custom scrape targets and rules for Prometheus, please refer to the upstream documentation for the https://github.com/prometheus-operator/prometheus-operator[Prometheus Operator.] Some of the most important custom resources are explained in the Prometheus Operator https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/design.md[design documentation.] The Prometheus Operator documentation can help also you set up RBAC, Thanos, or custom configuration.
 
 == Setting Resource Limits and Requests
 
-The resource requests and limits for the monitoring application can be configured when installing `rancher-monitoring`. For more information about the default limits, see link:../../../reference-guides/monitoring-v2-configuration/helm-chart-options.adoc#configuring-resource-limits-and-requests[this page.]
+The resource requests and limits for the monitoring application can be configured when installing `rancher-monitoring`. For more information about the default limits, see link:../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#configuring-resource-limits-and-requests[this page.]
 
-[TIP]
-====
+:::tip
 
 On an idle cluster, Monitoring may have high CPU usage. To improve performance, turn off the Prometheus adapter.
-====
 
+:::
 
 == Prometheus Configuration
 

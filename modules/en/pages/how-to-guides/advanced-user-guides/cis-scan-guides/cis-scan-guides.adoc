@@ -1,5 +1,7 @@
 = CIS Scan Guides
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/cis-scan-guides">++++++</link>++++++</head>+++
+
 * xref:install-rancher-cis-benchmark.adoc[Install rancher-cis-benchmark]
 * xref:uninstall-rancher-cis-benchmark.adoc[Uninstall rancher-cis-benchmark]
 * xref:run-a-scan.adoc[Run a Scan]

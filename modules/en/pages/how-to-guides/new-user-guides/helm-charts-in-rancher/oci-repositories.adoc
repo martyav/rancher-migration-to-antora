@@ -1,12 +1,13 @@
 = Using OCI-Based Helm Chart Repositories
 :experimental:
 
-[CAUTION]
-====
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher/oci-registries">++++++</link>++++++</head>+++
+
+:::caution
 
 This feature is currently experimental and is not officially supported in Rancher.
-====
 
+:::
 
 Helm v3 introduced storing Helm charts as https://opencontainers.org/about/overview/[Open Container Initiative (OCI)] artifacts in container registries. With Rancher v2.9.0, you can add https://helm.sh/docs/topics/registries/[OCI-based Helm chart repositories] alongside HTTP-based and Git-based repositories. This means that you can deploy apps that are stored as OCI artifacts.
 
@@ -21,8 +22,7 @@ To add an OCI-based Helm chart repository through the Rancher UI:
 . Enter a *Name* for the registry. Select *OCI Repository* as the target.
 . Enter the *OCI Repository Host URL* for the registry. The registry endpoint must not contain anything besides OCI Helm Chart artifacts. The artifacts should all have unique names. If you attempt to add an endpoint that contains any other kinds of files or artifacts, the OCI repository will not be added.
 
-[NOTE]
-====
+:::note
 
 You can use the *OCI URL* field to fine-tune how many charts from the registry are available for installation on Rancher. More generic endpoints target more charts, as the following examples demonstrate:
 
@@ -32,8 +32,8 @@ You can use the *OCI URL* field to fine-tune how many charts from the registry a
 - `oci://<registry-host>/<namespace>/<chart-name>`: Only the specified chart and any associated tags or versions of that chart become available for installation.
 - `oci://<registry-host>/<namespace>/<chart-name>:<tag>`: Only the chart with the specified tag becomes available for installation.
 ....
-====
 
+:::
 
 . Set up authentication. Select *Basicauth* from the authentication field and enter a username and password as required. Otherwise, create or select an *Authentication* secret. See <<authentication-for-oci-based-helm-chart-repositories,Authentication>> for a full description.
 . (optional) Enter a base64 encoded DER certificate in the *CA Cert Bundle* field. This field is for cases where you have a private OCI-based Helm chart repository and need Rancher to trust its certificates.
@@ -68,7 +68,7 @@ To view Helm charts in the OCI-based Helm chart repository after it achieves an 
 
 Rancher automatically refreshes the OCI-based Helm chart repository every 6 hours.
 
-If you need to update immediately, you can link:../helm-charts-in-rancher/helm-charts-in-rancher.adoc#refresh-chart-repositories[perform a manual refresh].
+If you need to update immediately, you can link:../helm-charts-in-rancher/helm-charts-in-rancher.md#refresh-chart-repositories[perform a manual refresh].
 
 == Update an OCI-Based Helm Chart Repository Configuration
 
@@ -107,6 +107,6 @@ For example, if you have an OCI-based Helm chart repository that doesn't return 
 
 == Troubleshooting OCI-based Helm Registries
 
-* To enhance logging information, link:../../../troubleshooting/other-troubleshooting-tips/logging.adoc#kubernetes-install[enable the debug option] while deploying Rancher.
+* To enhance logging information, link:../../../troubleshooting/other-troubleshooting-tips/logging.md#kubernetes-install[enable the debug option] while deploying Rancher.
 * If there is any discrepancy between the repository contents and Rancher, you should refresh the cluster repository as a first resort. If the discrepancy persists, delete the OCI-based Helm chart repository from Rancher and add it again. Deleting the repository won't delete any Helm charts that are already installed.
-* Apps installed through OCI-based Helm chart repositories are subject to a known issue with how Rancher displays upgradeable version information. See the link:./helm-charts-in-rancher.adoc#limitations[Limitations] section of *Helm Charts and Apps* for more details.
+* Apps installed through OCI-based Helm chart repositories are subject to a known issue with how Rancher displays upgradeable version information. See the link:./helm-charts-in-rancher.md#limitations[Limitations] section of *Helm Charts and Apps* for more details.

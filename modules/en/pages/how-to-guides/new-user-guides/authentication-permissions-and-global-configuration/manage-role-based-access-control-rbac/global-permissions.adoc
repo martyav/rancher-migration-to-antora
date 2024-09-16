@@ -1,6 +1,8 @@
 = Global Permissions
 :experimental:
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions">++++++</link>++++++</head>+++
+
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
 Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are four default global permissions: `Administrator`, `Restricted Admin`,`Standard User` and `User-base`.
@@ -136,14 +138,12 @@ For details on which Kubernetes resources correspond to each global permission,
 . In the left navigation bar, click *Role Templates*.
 . If you click the name of an individual role, a table shows all of the operations and resources that are permitted by the role.
 
-[NOTE]
-.Notes:
-====
+:::note Notes:
 
 * Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
 * When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
-====
 
+:::
 
 === Custom GlobalRoles
 
@@ -161,12 +161,11 @@ The `escalate` verb allows users to change a GlobalRole and add any permission, 
 
 The `bind` verb allows users to create a GlobalRoleBinding to the specified GlobalRole, even if they do not have the permissions in the GlobalRole.
 
-[WARNING]
-====
+:::danger
 
 The wildcard verb `*` also includes the `bind` and `escalate` verbs. This means that giving `*` on GlobalRoles to a user also gives them both `escalate` and `bind`.
-====
 
+:::
 
 ===== Custom GlobalRole Examples
 
@@ -251,23 +250,21 @@ inheritedClusterRoles:
 
 Any user with this permission will be a cluster-owner on all downstream clusters. If a new cluster is added, regardless of type, the user will be an owner on that cluster as well.
 
-[WARNING]
-====
+:::danger
 
 Using this field on <<configuring-default-global-permissions,default GlobalRoles>> may result in users gaining excessive permissions.
-====
 
+:::
 
 === Configuring Default Global Permissions
 
 If you want to restrict the default permissions for new users, you can remove the `user` permission as default role and then assign multiple individual permissions as default instead. Conversely, you can also add administrative permissions on top of a set of other standard permissions.
 
-[NOTE]
-====
+:::note
 
 Default roles are only assigned to users added from an external authentication provider. For local users, you must explicitly assign global permissions when adding a user to Rancher. You can customize these global permissions when adding the user.
-====
 
+:::
 
 To change the default global permissions that are assigned to external users upon their first log in, follow these steps:
 
@@ -302,17 +299,15 @@ For new users, the new permissions take effect when the users log in to Rancher 
 
 If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have any remaining roles that were assigned to them, which would typically include the roles marked as *New User Default*. Rancher will remove the permissions that are associated with the group when the user logs out, or when an administrator <<refreshing-group-memberships,refreshes group memberships,>> whichever comes first.
 
-[NOTE]
-.Prerequisites:
-====
+:::note Prerequisites:
 
 You can only assign a global role to a group if:
 
-* You have set up an link:../authentication-config/authentication-config.adoc#external-vs-local-authentication[external authentication provider]
+* You have set up an link:../authentication-config/authentication-config.md#external-vs-local-authentication[external authentication provider]
 * The external authentication provider supports xref:../authentication-config/manage-users-and-groups.adoc[user groups]
 * You have already set up at least one user group with the authentication provider
-====
 
+:::
 
 To assign a custom global role to a group, follow these steps:
 
@@ -342,13 +337,11 @@ To refresh group memberships,
 
 == Restricted Admin
 
-[CAUTION]
-.Deprecated
-====
+:::warning Deprecated
 
 The Restricted Admin role is deprecated, and will be removed in a future version of Rancher (2.10 or higher). You should make a custom role with the desired permissions instead of relying on this built-in role.
-====
 
+:::
 
 A new `restricted-admin` role was created in Rancher v2.5 in order to prevent privilege escalation on the local Rancher server Kubernetes cluster. This role has full administrator access to all downstream clusters managed by Rancher, but it does not have permission to alter the local Kubernetes cluster.
 

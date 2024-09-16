@@ -1,5 +1,7 @@
 = Rancher HA
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/rancher-ha">++++++</link>++++++</head>+++
+
 The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml`).
@@ -107,4 +109,4 @@ kubectl -n cattle-system set env deploy/rancher CATTLE_ELECTION_LEASE_DURATION=2
 ----
 
 This will temporarily increase the lease duration, renew deadline and retry period to 120, 90 and 10 seconds respectively.
-Alternatively, in order to make such changes permanent, these environment variables can be set by link:../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.adoc#setting-extra-environment-variables[using Helm values] instead.
+Alternatively, in order to make such changes permanent, these environment variables can be set by link:../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.md#setting-extra-environment-variables[using Helm values] instead.

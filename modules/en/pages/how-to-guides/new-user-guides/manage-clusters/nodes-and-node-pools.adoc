@@ -1,5 +1,7 @@
 = Nodes and Node Pools
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/nodes-and-node-pools">++++++</link>++++++</head>+++
+
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's *Node* tab.
 
 . Click *☰* in the top left corner.
@@ -9,12 +11,11 @@ After you launch a Kubernetes cluster in Rancher, you can manage individual node
 
 Depending on the xref:../kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.adoc[option used] to provision the cluster, there are different node options available.
 
-[NOTE]
-====
+:::note
 
 If you want to manage the _cluster_ and not individual nodes, see xref:../../../reference-guides/cluster-configuration/cluster-configuration.adoc[Editing Clusters].
-====
 
+:::
 
 == Node Options Available for Each Cluster Creation Option
 
@@ -86,11 +87,11 @@ The following table lists which node options are available for each type of clus
 
 Node pools are available when you provision Rancher-launched Kubernetes clusters on nodes that are xref:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc[hosted in an infrastructure provider.]
 
-Clusters provisioned using link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-pools[one of the node pool options] can be scaled up or down if the node pool is edited.
+Clusters provisioned using link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-pools[one of the node pool options] can be scaled up or down if the node pool is edited.
 
-A node pool can also automatically maintain the node scale that's set during the initial cluster provisioning if link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#about-node-auto-replace[node auto-replace is enabled.] This scale determines the number of active nodes that Rancher maintains for the cluster.
+A node pool can also automatically maintain the node scale that's set during the initial cluster provisioning if link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#about-node-auto-replace[node auto-replace is enabled.] This scale determines the number of active nodes that Rancher maintains for the cluster.
 
-Rancher uses link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-templates[node templates] to replace nodes in the node pool. Each node template uses cloud provider credentials to allow Rancher to set up the node in the infrastructure provider.
+Rancher uses link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-templates[node templates] to replace nodes in the node pool. Each node template uses cloud provider credentials to allow Rancher to set up the node in the infrastructure provider.
 
 === Nodes Provisioned by Hosted Kubernetes Providers
 
@@ -119,18 +120,17 @@ Select this option to view the node's xref:../../../api/quickstart.adoc[API endp
 
 Use *Delete* to remove defective nodes from the cloud provider.
 
-When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#about-node-auto-replace[node auto-replace is enabled.]
+When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#about-node-auto-replace[node auto-replace is enabled.]
 
-[TIP]
-====
+:::tip
 
 If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, <<scaling-nodes,scale down>> rather than delete.
-====
 
+:::
 
 == Scaling Nodes
 
-For nodes hosted by an infrastructure provider, you can scale the number of nodes in each link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.adoc#node-pools[node pool] by using the scale controls. This option isn't available for other cluster types.
+For nodes hosted by an infrastructure provider, you can scale the number of nodes in each link:../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#node-pools[node pool] by using the scale controls. This option isn't available for other cluster types.
 
 == SSH into a Node Hosted by an Infrastructure Provider
 
@@ -184,13 +184,11 @@ The timeout given to each pod for cleaning things up so they have a chance to ex
 
 The amount of time drain should continue to wait before giving up.
 
-[NOTE]
-.Kubernetes Known Issue:
-====
+:::note Kubernetes Known Issue:
 
 The https://github.com/kubernetes/kubernetes/pull/64378[timeout setting] was not enforced while draining a node before Kubernetes 1.12.
-====
 
+:::
 
 === Drained and Cordoned State
 
@@ -212,12 +210,11 @@ In that case, you may want to label the node to be ignored by Rancher so that Ra
 
 You can label nodes to be ignored by using a setting in the Rancher UI, or by using `kubectl`.
 
-[NOTE]
-====
+:::note
 
 There is an https://github.com/rancher/rancher/issues/24172[open issue] in which nodes labeled to be ignored can get stuck in an updating state.
-====
 
+:::
 
 === Labeling Nodes to be Ignored with kubectl
 

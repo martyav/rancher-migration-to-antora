@@ -1,5 +1,7 @@
 = Monitoring Configuration Examples
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/monitoring-v2-configuration/examples">++++++</link>++++++</head>+++
+
 === ServiceMonitor
 
 See the official prometheus-operator GitHub repo for an example https://github.com/prometheus-operator/prometheus-operator/blob/master/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml[ServiceMonitor] YAML.
@@ -18,4 +20,4 @@ See the https://prometheus-operator.dev/docs/user-guides/alerting/[Prometheus Op
 
 === Alertmanager Config
 
-See the Rancher docs page on Receivers for an example link:./receivers.adoc#example-alertmanager-configs[Alertmanager config].
+See the Rancher docs page on Receivers for an example link:./receivers.md#example-alertmanager-configs[Alertmanager config].

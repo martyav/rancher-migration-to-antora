@@ -1,5 +1,7 @@
 = General FAQ
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/faq/general-faq">++++++</link>++++++</head>+++
+
 This FAQ is a work in progress designed to answer the questions most frequently asked about Rancher v2.x.
 
 See the xref:technical-items.adoc[Technical FAQ] for frequently asked technical questions.

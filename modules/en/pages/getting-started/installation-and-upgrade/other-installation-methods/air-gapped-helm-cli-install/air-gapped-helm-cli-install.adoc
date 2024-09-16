@@ -1,5 +1,7 @@
 = Air-Gapped Helm CLI Install
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install">++++++</link>++++++</head>+++
+
 This section is about using the Helm CLI to install the Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
 The installation steps differ depending on whether Rancher is installed on an RKE Kubernetes cluster, a K3s Kubernetes cluster, or a single Docker container.
@@ -8,13 +10,11 @@ For more information on each installation option, refer to xref:../../installati
 
 Throughout the installation instructions, there will be _tabs_ for each installation option.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
 If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker Installation to a Kubernetes Installation.
-====
 
+:::
 
 == Installation Outline
 

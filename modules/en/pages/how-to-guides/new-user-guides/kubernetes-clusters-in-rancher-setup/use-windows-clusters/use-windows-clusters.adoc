@@ -1,5 +1,7 @@
 = Launching Kubernetes on Windows Clusters
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters">++++++</link>++++++</head>+++
+
 When provisioning a xref:../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.adoc[custom cluster] using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to install Kubernetes on your existing nodes.
 
 In a Windows cluster provisioned with Rancher, the cluster must contain both Linux and Windows nodes. The Kubernetes controlplane can only run on Linux nodes, and the Windows nodes can only have the worker role. Windows nodes can only be used for deploying workloads.
@@ -26,12 +28,11 @@ The RKE2 provisioning feature also includes installing RKE2 on Windows clusters.
 
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
-[NOTE]
-====
+:::note
 
 Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector[Kubernetes documentation] for more information on how to use `nodeSelector` to assign pods to nodes.
-====
 
+:::
 
 * HostProcess containers in Windows RKE2 are supported in Kubernetes v1.24.1 and up. See https://kubernetes.io/docs/tasks/configure-pod-container/create-hostprocess-pod/[the upstream documentation] for more information.
 
@@ -69,18 +70,17 @@ Rancher only supports Windows using Flannel as the network provider.
 
 There are two network options: https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw[*Host Gateway (L2bridge)*] and https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan[*VXLAN (Overlay)*]. The default option is *VXLAN (Overlay)* mode.
 
-For *Host Gateway (L2bridge)* networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the link:network-requirements-for-host-gateway.adoc#cloud-hosted-vm-routes-configuration[documentation on configuring cloud-hosted VM routes.] You will also need to link:network-requirements-for-host-gateway.adoc#disabling-private-ip-address-checks[disable private IP address checks] if you are using Amazon EC2, Google GCE, or Azure VM.
+For *Host Gateway (L2bridge)* networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the link:network-requirements-for-host-gateway.md#cloud-hosted-vm-routes-configuration[documentation on configuring cloud-hosted VM routes.] You will also need to link:network-requirements-for-host-gateway.md#disabling-private-ip-address-checks[disable private IP address checks] if you are using Amazon EC2, Google GCE, or Azure VM.
 
 For *VXLAN (Overlay)* networking, the https://support.microsoft.com/en-us/help/4489899[KB4489899] hotfix must be installed. Most cloud-hosted VMs already have this hotfix.
 
 If you are configuring DHCP options sets for an AWS virtual private cloud, note that in the `domain-name` option field, only one domain name can be specified. According to the DHCP options https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html[documentation:]
 
-[NOTE]
-====
+:::note
 
 Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
-====
 
+:::
 
 === Rancher on VMware vSphere with ESXi 6.7u2 and above
 
@@ -207,13 +207,11 @@ The instructions for creating a Windows cluster on existing nodes are very simil
 . Optional: After you enable Windows support, you will be able to choose the Flannel backend. There are two network options: https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw[*Host Gateway (L2bridge)*] and https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan[*VXLAN (Overlay)*]. The default option is *VXLAN (Overlay)* mode.
 . Click *Next*.
 
-[NOTE]
-.Important:
-====
+:::note Important:
 
-For *Host Gateway (L2bridge)* networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the link:network-requirements-for-host-gateway.adoc#cloud-hosted-vm-routes-configuration[documentation on configuring cloud-hosted VM routes.] You will also need to link:network-requirements-for-host-gateway.adoc#disabling-private-ip-address-checks[disable private IP address checks] if you are using Amazon EC2, Google GCE, or Azure VM.
-====
+For *Host Gateway (L2bridge)* networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the link:network-requirements-for-host-gateway.md#cloud-hosted-vm-routes-configuration[documentation on configuring cloud-hosted VM routes.] You will also need to link:network-requirements-for-host-gateway.md#disabling-private-ip-address-checks[disable private IP address checks] if you are using Amazon EC2, Google GCE, or Azure VM.
 
+:::
 
 === 3. Add Nodes to the Cluster
 
@@ -261,8 +259,7 @@ After the initial provisioning of your cluster, your cluster only has a single L
 
 *Result:* The *Worker* role is installed on your Linux host, and the node registers with Rancher. It may take a few minutes for the node to be registered in your cluster.
 
-[NOTE]
-====
+:::note
 
 Taints on Linux Worker Nodes
 
@@ -275,8 +272,8 @@ For each Linux worker node added into the cluster, the following taints will be 
 | `linux`
 | `NoSchedule`
 |===
-====
 
+:::
 
 ==== Add a Windows Worker Node
 
@@ -298,8 +295,8 @@ You can add Windows hosts to the cluster by editing the cluster and choosing the
 
 After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-* *Access your cluster with the kubectl CLI:* Follow link:../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.adoc#accessing-clusters-with-kubectl-from-your-workstation[these steps] to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server's authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-* *Access your cluster with the kubectl CLI, using the authorized cluster endpoint:* Follow link:../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.adoc#authenticating-directly-with-a-downstream-cluster[these steps] to access your cluster with kubectl directly, without authenticating through the Rancher server. We recommend setting up this alternative method to access your cluster so that in case you can't connect to Rancher, you can still access the cluster.
+* *Access your cluster with the kubectl CLI:* Follow link:../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation[these steps] to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server's authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
+* *Access your cluster with the kubectl CLI, using the authorized cluster endpoint:* Follow link:../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster[these steps] to access your cluster with kubectl directly, without authenticating through the Rancher server. We recommend setting up this alternative method to access your cluster so that in case you can't connect to Rancher, you can still access the cluster.
 
 == Configuration for Storage Classes in Azure
 

@@ -1,5 +1,7 @@
 = Advanced Configuration
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration">++++++</link>++++++</head>+++
+
 === Alertmanager
 
 For information on configuring the Alertmanager custom resource, see xref:alertmanager.adoc[this page.]

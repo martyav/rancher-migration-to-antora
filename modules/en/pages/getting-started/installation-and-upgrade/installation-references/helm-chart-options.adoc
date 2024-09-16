@@ -1,6 +1,8 @@
 = Rancher Helm Chart Options
 :keywords: ["rancher helm chart", "rancher helm options", "rancher helm chart options", "helm chart rancher", "helm options rancher", "helm chart options rancher"]
 
++++<head>++++++<link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-references/helm-chart-options">++++++</link>++++++</head>+++
+
 This page is a configuration reference for the Rancher Helm chart.
 
 For help choosing a Helm chart version, refer to xref:../../../getting-started/installation-and-upgrade/resources/choose-a-rancher-version.adoc[this page.]
@@ -56,7 +58,7 @@ For information on enabling experimental features, refer to xref:../../../how-to
 
 | `agentTLSMode`
 | ""
-| `string` - either `system-store` or `strict`. See link:./tls-settings.adoc#agent-tls-enforcement[Agent TLS Enforcement]
+| `string` - either `system-store` or `strict`. See link:./tls-settings.md#agent-tls-enforcement[Agent TLS Enforcement]
 |
 
 | `antiAffinity`
@@ -191,7 +193,7 @@ For information on enabling experimental features, refer to xref:../../../how-to
 
 | `restrictedAdmin`
 | `false`
-| `bool` - When this option is set to `true`, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the link:../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.adoc#restricted-admin[restricted-admin role].
+| `bool` - When this option is set to `true`, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the link:../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md#restricted-admin[restricted-admin role].
 |
 
 | `systemDefaultRegistry`
@@ -219,7 +221,7 @@ For information on enabling experimental features, refer to xref:../../../how-to
 
 You can xref:../resources/bootstrap-password.adoc[set a specific bootstrap password] during Rancher installation. If you don't set a specific bootstrap password, Rancher randomly generates a password for the first admin account.
 
-When you log in for the first time, use the bootstrap password you set to log in. If you did not set a bootstrap password, the Rancher UI shows commands that can be used to link:../resources/bootstrap-password.adoc#retrieving-the-bootstrap-password[retrieve the bootstrap password]. Run those commands and log in to the account. After you log in for the first time, you are asked to reset the admin password.
+When you log in for the first time, use the bootstrap password you set to log in. If you did not set a bootstrap password, the Rancher UI shows commands that can be used to link:../resources/bootstrap-password.md#retrieving-the-bootstrap-password[retrieve the bootstrap password]. Run those commands and log in to the account. After you log in for the first time, you are asked to reset the admin password.
 
 === API Audit Log
 
@@ -262,12 +264,11 @@ See xref:tls-settings.adoc[TLS settings] for more information and options.
 
 By default Rancher server will detect and import the `local` cluster it's running on. User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
 
-[CAUTION]
-====
+:::caution
 
 If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner.
-====
 
+:::
 
 If this is a concern in your environment you can set this option to "false" on your initial install.
 
@@ -368,12 +369,11 @@ We recommend configuring your load balancer as a Layer 4 balancer, forwarding pl
 
 You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-[NOTE]
-====
+:::note
 
 If you are using a Private CA signed certificate (or if `agent-tls-mode` is set to `strict`), add `--set privateCA=true` and see xref:../../../getting-started/installation-and-upgrade/resources/add-tls-secrets.adoc[Adding TLS Secrets - Using a Private CA Signed Certificate] to add the CA cert for Rancher.
-====
 
+:::
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
@@ -410,12 +410,11 @@ Rancher will respond `200` to health checks on the `/healthz` endpoint.
 
 This NGINX configuration is tested on NGINX 1.14.
 
-[CAUTION]
-====
+:::caution
 
 This NGINX configuration is only an example and may not suit your environment. For complete documentation, see https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/[NGINX Load Balancing - HTTP Load Balancing].
-====
 
+:::
 
 * Replace `IP_NODE1`, `IP_NODE2` and `IP_NODE3` with the IP addresses of the nodes in your cluster.
 * Replace both occurrences of `FQDN` to the DNS name for Rancher.
