@@ -1,4 +1,4 @@
-# This action gets all changed markdown files in /docs and /versioned_docs using tj-actions/changed-files@v42
+# This action gets all changed markdown files in /docs and /versioned_docs using tj-actions/changed-files@v46
 # It compares new commits in the PR with the base commit (github.event.pull_request.base.sha)
 # It checks if no markdown files are changed 
 # It shows a count of markdown files and lists all changed markdown files
@@ -23,7 +23,7 @@ jobs:
       - name: Get all changed markdown files
         continue-on-error: true
         id: changed-markdown-files
-        uses: tj-actions/changed-files@v42
+        uses: tj-actions/changed-files@v46
         with:
             # Avoid using single or double quotes for multiline patterns
             files: |
